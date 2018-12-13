@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -25,7 +25,7 @@ lastupdated: "2018-08-31"
 - {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan provides a production environment. If you need a development and testing environment, see [About Starter Plan](starter_plan.html).
 - {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Enterprise Plan networks are provisioned across **multiple environments** in geographically separated data-centers.
 
-For members who are going to initiate the network, IBM provides a graphical user interface to guide the network initiator through key steps to set up and provision the network. This includes inviting other members and setting the governance rules. For more information, see [Govern the Enterprise Plan network](get_start.html). After the network is deployed, an interactive graphical user interface, the Network Monitor, is available to monitor health and activity of the network; manage key network activities that include new deployments, members addition or removal, chaincode lifecycle, and channel management; and seek technical support. Find more information about the Network Monitor, see [Operate the Enterprise Plan network](v10_dashboard.html).
+For members who are going to initiate the network, IBM provides a graphical user interface to guide the network initiator through key steps to set up and provision the network. This includes inviting other members and setting the governance rules. For more information, see [Govern the Enterprise Plan network](get_start.html). After the network is deployed, an interactive graphical user interface, the Network Monitor, is available to monitor health and activity of the network; manage key network activities that include new deployments, members addition or removal, chaincode lifecycle, and channel management; and seek technical support. For more information, see [Using the Network Monitor](v10_dashboard.html).
 
 Sign up now for your [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
 
@@ -40,7 +40,7 @@ It’s important to understand that for a transaction to be appended to the ledg
 
 The Fabric peers owned by the members are the interface or gateway for applications to execute chain code, providing the business logic to execute transactions against the ledger.  All transactions must be endorsed. The other members of the network do this endorsement. After endorsement,  transactions are sent to an IBM provided ordering service (Kafka).
 
-Besides the core blockchain components, the Enterprise Membership option provides an infrastructure with secure data storage and communications (TLS), and high availability.  While Fabric networks share these infrastructure resources, isolation is provided for the Fabric component nodes in a network, and each node executes in a secure docker container that protects the execution environment.
+Besides the core blockchain components, the Enterprise Membership option provides an infrastructure with secure data storage and communications (TLS), and high availability.  While Fabric networks share these infrastructure resources, isolation is provided for the Fabric component nodes in a network, and each node executes in a secure Docker container that protects the execution environment.
 
 The sole aspect that must be determined is the size of the peers that the network requires. This decision is based on the number of channels that are required, plus the workload per channel, memory usage, and disk space (storage).
 

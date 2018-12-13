@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-13"
+lastupdated: "2018-11-27"
 
 ---
 
@@ -19,18 +19,18 @@ lastupdated: "2018-11-13"
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-After you set up {{site.data.keyword.blockchainfull}} Platform remote peers in an environment outside {{site.data.keyword.cloud_notm}}, you need to complete several operational steps before your peer can issue transactions to query and invoke the ledger of the blockchain network. The steps include adding your organization to a channel, joining your remote peer to the channel, installing chaincode on your remote peer, instantiating chaincode on the channel, and connecting applications to your remote peer. You can use either the [Fabric SDKs](#aws-peer-operate-with-sdk) or the [command line](#aws-peer-cli-operate) to complete these operational steps. The Fabric SDK's are the recommended path, although the instructions assume familiarity with the operation of the SDK.
+After you set up {{site.data.keyword.blockchainfull}} Platform peers in AWS, you need to complete several operational steps before your peer can issue transactions to query and invoke the ledger of the blockchain network. The steps include adding your organization to a channel, joining your peer to the channel, installing chaincode on your peer, instantiating chaincode on the channel, and connecting applications to your peer. You can use either the [Fabric SDKs](#aws-peer-operate-with-sdk) or the [command line](#aws-peer-cli-operate) to complete these operational steps. The Fabric SDKs are the recommended path, although the instructions assume familiarity with the operation of the SDK.
 
-**Note**: An {{site.data.keyword.blockchainfull_notm}} Platform remote peer does not have access to the full functionality or support of peers that are hosted on {{site.data.keyword.blockchainfull_notm}} Platform. As a result, you cannot use the Network Monitor to operate a remote peer. Before you start running remote peers, ensure that you review the [considerations](remote_peer.html#remote-peer-limitations).
+**Note**: An {{site.data.keyword.blockchainfull_notm}} Platform peer in AWS does not have access to the full functionality or support of peers that are hosted on {{site.data.keyword.blockchainfull_notm}} Platform. As a result, you cannot use the Network Monitor to operate your peer. Before you start running peers in AWS, ensure that you review the [considerations](remote_peer.html#remote-peer-limitations).
 
-## Using Fabric SDKs to operate the remote peer
+## Using Fabric SDKs to operate the peer
 {: #aws-peer-operate-with-sdk}
 
-The Hyperledger Fabric SDKs provide a powerful set of APIs that enable applications to interact with and operate blockchain networks. You can find the latest list of supported languages and the complete list of available APIs within the Hyperledger Fabric SDKs in the [Hyperledger Fabric SDK Community documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK Community documentation"). You can use the Fabric SDK's to join your remote peer to a channel on the {{site.data.keyword.blockchainfull_notm}} Platform, install a chaincode on your peer, and instantiate the chaincode on a channel.
+The Hyperledger Fabric SDKs provide a powerful set of APIs that enable applications to interact with and operate blockchain networks. You can find the latest list of supported languages and the complete list of available APIs within the Hyperledger Fabric SDKs in the [Hyperledger Fabric SDK Community documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK Community documentation"). You can use the Fabric SDKs to join your peer to a channel on the {{site.data.keyword.blockchainfull_notm}} Platform, install a chaincode on your peer, and instantiate the chaincode on a channel.
 
-The following instructions use the [Fabric Node SDK ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/ "Hyperledger Fabric SDK for jode.js") to operate the remote peer and assume prior familiarity with the SDK. You can use the [developing applications tutorial](../v10_application.html) to learn how to use the Node SDK before you get started, and as a guide to developing applications with your remote peer once you are ready to invoke and query chaincode.
+The following instructions use the [Fabric Node SDK ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/ "Hyperledger Fabric SDK for jode.js") to operate the peer and assume prior familiarity with the SDK. You can use the [developing applications tutorial](../v10_application.html) to learn how to use the Node SDK before you get started, and as a guide to developing applications with your peer once you are ready to invoke and query chaincode.
 
-The {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer on AWS Quick Start creates two peers for high availability. Therefore, you will need to follow the operations steps once for each peer. Once you are ready to query and invoke chaincode from your application, have your SDK connect to both peers to ensure your [applications are highly available](../v10_application.html#ha-app).
+The {{site.data.keyword.blockchainfull_notm}} Platform Peer on AWS Quick Start creates two peers for high availability. Therefore, you need to follow the operations steps once for each peer. Once you are ready to query and invoke chaincode from your application, have your SDK connect to both peers to ensure your [applications are highly available](../v10_application.html#ha-app).
 
 ### Installing the Node SDK
 
@@ -42,10 +42,10 @@ npm install fabric-client@1.2
 
 It is recommended that you use version 1.2 of the Node SDK.
 
-### Preparing the SDK to work with the remote peer
+### Preparing the SDK to work with the peer
 {: #remote-peer-node-sdk}
 
-Before you use the SDK to operate the remote peer, you need to generate necessary certificates (enrollment) that will allow your application to communicate with your network on {{site.data.keyword.blockchainfull_notm}} Platform and your remote peer. Follow the steps to [enroll with the SDK](../v10_application.html#enroll-app-sdk) using your **admin** identity. The [Developing Applications](../v10_application.html) tutorial also enrolls as the **admin**, so you don't need to modify the sample code.
+Before you use the SDK to operate the peer, you need to generate necessary certificates (enrollment) that will allow your application to communicate with your network on {{site.data.keyword.blockchainfull_notm}} Platform and your peer. Follow the steps to [enroll with the SDK](../v10_application.html#enroll-app-sdk) using your **admin** identity. The [Developing Applications](../v10_application.html) tutorial also enrolls as the **admin**, so you don't need to modify the sample code.
 
 ### Uploading a signcert to the IBM Blockchain Platform
 {: #remote-peer-upload-SDK}
@@ -54,14 +54,14 @@ You need to upload your SDK signing cert to the network on {{site.data.keyword.b
 
 - You can find your signing cert in the directory your SDK generated your crypto material, in the file named admin. Copy the certificate inside the quotation marks after the `certificate` field, starting with  `-----BEGIN CERTIFICATE-----` and ending with `-----END CERTIFICATE-----`. You can use the CLI to convert the certificate into PEM format by issuing the command `echo -e "<CERT>" > admin.pem`. You can then paste the contents of the certificate into your blockchain network using the Network Monitor. Log in to the network on {{site.data.keyword.blockchainfull_notm}} Platform. On the "Members" screen of the Network Monitor, click **Certificates** > **Add Certificate**. Specify any name for your certificate and paste the contents in to the **Certificate** field. Click **Restart** when your are asked if you want to restart your peers. This action must be performed before your organization joins the channel.
 
-### Uploading a signcert to the remote peer
+### Uploading a signcert to the peer
 {: #remote-peer-upload-signcert}
 
-You also need to upload the SDK's signing cert into the remote peer and restart it. You will need to install the same sign cert you [uploaded to the IBM Blockchain Platform](#remote-peer-upload-SDK) inside the remote peer container.
+You also need to upload the SDK's signing cert into the remote peer and restart it. You need to install the same signing cert as the one that you [uploaded to the IBM Blockchain Platform](#remote-peer-upload-SDK) inside the remote peer container.
 
 SSH into your VPC instance by selecting the instance in the AWS console (click **Services > EC2 > Instances**) and then clicking the Connect button. Follow the instructions from AWS for issuing the ssh command.
 
-Now run the following commands from inside the peer container to upload your cert.  
+Run the following commands from inside the peer container to upload your cert.  
 ```
 cd /etc/hyperledger/<PEER_ENROLL_ID>/msp/admincerts/
 echo -e "<CERT.PEM>" > cert2.pem
@@ -71,11 +71,11 @@ echo -e "<CERT.PEM>" > cert2.pem
 - Replace `<PEER_ENROLL_ID>` with the enroll ID that is specified in the Quick Start template and associated with this remote peer instance.  
 - Replace `<CERT.PEM>` with your signcert, which starts with `-----BEGIN CERTIFICATE-----` and ends with `-----END CERTIFICATE-----`.    
 
-**Note:** If the file `cert.pem` exists, do not overwrite it, but create a new file, for example, `cert2.pem`.
+  **Note:** If the file `cert.pem` exists, do not overwrite it, but create a new file, for example, `cert2.pem`.
 
 Because you add a new certificate, you need to restart the container for the peer to pick up the cert. Follow these [instructions](#remote-peer-aws-restart) to restart your peer.
 
-### Passing your remote peer's TLS cert to the SDK
+### Passing your peer's TLS cert to the SDK
 {: #aws-remote-peer-download-tlscert}
 
 You need to copy the contents of the TLS `cacert.pem` from the peer container to your application to authenticate communication from your SDK. Run the following command in the the Peer CLI container. Replace `<PEER_ENROLL_ID>` with the stack name of the remote peer you specified in the Quick Start template. (Recall two VPC instances are created.)
@@ -90,53 +90,53 @@ var caCert = fs.readFileSync(path.join(__dirname, './ca.pem'));
 ```
 {:codeblock}
 
-### Providing the remote peer endpoint information to the SDK
+### Providing the peer endpoint information to the SDK
 {: #remote-peer-SDK-endpoints}
 
-To retrieve the endpoint information of your remote peer, locate your peer instance in the AWS console. Make note of the value of the `AWS EC2 dashboard Public DNS (IPv4)` for the EC2 instance and provide it to the SDK by declaring a new peer variable or by updating your connection profile. Concatenate the public DNS address with port `7051`. The following example defines the peer on your fabric network and passes it the TLS cert you imported.
+To retrieve the endpoint information of your peer, locate your peer instance in the AWS console. Make note of the value of the `AWS EC2 dashboard Public DNS (IPv4)` for the EC2 instance and provide it to the SDK by declaring a new peer variable or by updating your connection profile. Concatenate the public DNS address with port `7051`. The following example defines the peer on your fabric network and passes it the TLS cert you imported.
 
 ```
 var peer = fabric_client.newPeer('grpcs://<AWS_EC2_dashboard_Public_DNS>:7051', { pem:  Buffer.from(caCert).toString()});
 ```
 {:codeblock}
 
-**Note:** Because the peer is remote, other organizations on the {{site.data.keyword.blockchainfull_notm}} Platform network will not be able to find your peer's endpoint information in their connection profile. If other organizations need to send your remote peer a transaction to be endorsed, you will need to provide the Public IP and TLS certs in an out of band operation.
+**Note:** Because the peer is remote, other organizations on the {{site.data.keyword.blockchainfull_notm}} Platform network will not be able to find your peer's endpoint information in their connection profile. If other organizations need to send your peer a transaction to be endorsed, you need to provide the Public IP and TLS certs in an out of band operation.
 
 ### Using the SDK to join to a channel
 {: #remote-peer-join-channel-sdk}
 
-As a member of the blockchain network, your organization needs to be added to a channel in the network before you can join your remote peer to the channel.
+As a member of the blockchain network, your organization needs to be added to a channel in the network before you can join your peer to the channel.
 
-  - You can start a new channel for the remote peer. As the channel initiator, you can automatically include your organization during [channel creation](create_channel.html#creating-a-channel).
+  - You can start a new channel for the peer. As the channel initiator, you can automatically include your organization during [channel creation](create_channel.html#creating-a-channel).
 
   - Another member of the blockchain network can also add your organization to an existing channel using a [channel update](create_channel.html#updating-a-channel).
 
-    After your organization is added to a channel, you need to add your peer's signing certificate to the channel so that other members can verify your digital signature during transactions. The remote peer uploads its signing cert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joins and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel. You might need to wait for a few minutes so that the channel sync can complete before you issue join channel commands.
+    After your organization is added to a channel, you need to add your peer's signing certificate to the channel so that other members can verify your digital signature during transactions. The peer uploads its signing cert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joins and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel. You might need to wait for a few minutes so that the channel sync can complete before you issue join channel commands.
 
 After your organization is part of the channel, follow the instructions of [Joining a channel](../v10_application.html#join-channel-sdk). You need to provide the URL of the ordering service and the channel name.
 
 ### Using the SDK to install chaincode on the peer
 {: #remote-peer-install-cc-sdk}
 
-Follow the instructions to use the SDK to [install a chaincode](../v10_application.html#install-cc-sdk) on your remote peer.
+Follow the instructions to use the SDK to [install a chaincode](../v10_application.html#install-cc-sdk) on your peer.
 
 ### Using the SDK to instantiate chaincode on the channel
 {: #remote-peer-instantiate-cc-sdk}
 
-Only one member of the channel needs to instantiate or update chaincode. Therefore, any network member of the channel with peers on {{site.data.keyword.blockchainfull_notm}} Platform can use the Network Monitor to instantiate chaincode and specify endorsement policies. However, if you want to use the remote peer to instantiate chaincode on a channel, you can use the SDK and follow the instructions to [instantiate a chaincode](../v10_application.html#instantiate-cc-sdk).
+Only one member of the channel needs to instantiate or update chaincode. Therefore, any network member of the channel with peers on {{site.data.keyword.blockchainfull_notm}} Platform can use the Network Monitor to instantiate chaincode and specify endorsement policies. However, if you want to use the peer to instantiate chaincode on a channel, you can use the SDK and follow the instructions to [instantiate a chaincode](../v10_application.html#instantiate-cc-sdk).
 
 
-## Using the CLI to operate the remote peer
+## Using the CLI to operate the peer
 {: #aws-peer-cli-operate}
 
-You can also operate your remote peer from the command line using the Fabric CA Client and Fabric tools container. In these instructions we will first generate required certificates using the Fabric CA Client. We will then use the Fabric tools container to operate the peer by joining it to a channel, installing a chaincode, and then instantiating the chaincode on a channel.
+You can also operate your peer from the command line using the Fabric CA client and Fabric tools container. In these instructions, we will first generate required certificates by using the Fabric CA client. We will then use the Fabric tools container to operate the peer by joining it to a channel, installing a chaincode, and then instantiating the chaincode on a channel.
 
-### Enrollment using Fabric CA Client.
+### Enrollment by using Fabric CA client
 {: #peer-client-enroll}
 
-The first step is to generate the required certificates (enrollment) using the Fabric CA Client. You will need to install the Fabric CA Client first. Download the [fabric-ca binaries v1.2.0 for your platform](https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric-ca/hyperledger-fabric-ca/) to your local machine, extract them, and move them to a folder such as `$HOME/fabric-ca-remote/`.
+The first step is to generate the required certificates (enrollment) by using the Fabric CA client. You need to install the Fabric CA client first. Download the [fabric-ca binaries v1.2.0 for your platform](https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric-ca/hyperledger-fabric-ca/) to your local machine, extract them, and move them to a folder such as `$HOME/fabric-ca-remote/`.
 
-1.  Prepare your environment to use the Fabric CA Client. Change to the directory where you moved your client binaries so that you can reference it directly in your commands.
+1.  Prepare your environment to use the Fabric CA client. Change to the directory where you moved your client binaries so that you can reference it directly in your commands.
     ```
     cd $HOME/fabric-ca-remote/
     ```
@@ -200,7 +200,7 @@ The first step is to generate the required certificates (enrollment) using the F
 ### Managing the certificates on your local system
 {: #manage-certs}
 
-Before we can operate the remote peer, we need to do some management of the certificates on our local machine, and upload some of the certs the Fabric CA Client generated to the {{site.data.keyword.blockchainfull_notm}} Platform and your peer. We also need to download TLS certificates from the Platform and the peer. If you want to learn more about the certificates you will be working with and the tasks you will be performing, visit [Managing certificates on {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html).
+Before we can operate the peer, we need to do some management of the certificates on our local machine, and upload some of the certs the Fabric CA client generated to the {{site.data.keyword.blockchainfull_notm}} Platform and your peer. We also need to download TLS certificates from the Platform and the peer. If you want to learn more about the certificates you will be working with and the tasks you will be performing, visit [Managing certificates on {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html).
 
 On your local machine, open a command terminal and navigate to the directory where you moved the Fabric-CA-Client binaries and stored the MSP folder.
 
@@ -222,9 +222,9 @@ On your local machine, open a command terminal and navigate to the directory whe
     ```
     {:codeblock}
 
-3. You will also need to copy your remote peer's TLS certificate from the peer container on AWS to your local machine.
+3. You also need to copy your peer's TLS certificate from the peer container on AWS to your local machine.
 
-    - [Follow these instructions](remote_peer_aws.html#remote-peer-aws-test) to log in to your peer container and run the following command, replacing <PEER_ENROLL_ID> with the stack name of the remote peer you specified in the Quick Start template, followed by its number. (Recall two VPC instances are created.)
+    - [Follow these instructions](remote_peer_aws.html#remote-peer-aws-test) to log in to your peer container and run the following command, replacing <PEER_ENROLL_ID> with the stack name of the peer, which you specified in the Quick Start template, followed by its number. (Recall that two VPC instances are created.)
       ```
       cat /etc/hyperledger/<PEER_ENROLL_ID>/tls/ca.crt
       ```
@@ -241,9 +241,9 @@ On your local machine, open a command terminal and navigate to the directory whe
       ```
       {:codeblock}
 
-      **Note:** By default, the AWS Quick Start template creates two remote peer instances in two different availability zones. If you have already completed these steps for one of these peers, when you run through these steps for the second instance, the cacert.pem file will already exist. Go ahead and replace it with the certificate from the second remote peer.
+      **Note:** By default, the AWS Quick Start template creates two peer instances in two different availability zones. If you have already completed these steps for one of these peers, when you run through these steps for the second instance, the cacert.pem file will already exist. Go ahead and replace it with the certificate from the second peer.
 
-4. To give your CLI the authorization to to install chaincode on the peer, you will need to upload the signCert generated by the Fabric CA Client to the peer's admin folder and restart the peer. Therefore, copy the `admincert/cert.pem` certificate from your local machine into the `/etc/hyperledger/<PEER_ENROLL_ID>/msp/admincerts/` directory in the peer container as `cert2.pem`.
+4. To give your CLI the authorization to install chaincode on the peer, upload the signCert generated by the Fabric CA client to the peer's admin folder and restart the peer. Therefore, copy the `admincert/cert.pem` certificate from your local machine into the `/etc/hyperledger/<PEER_ENROLL_ID>/msp/admincerts/` directory in the peer container as `cert2.pem`.
 
     - On your local machine, run the following commands:
 
@@ -267,14 +267,14 @@ On your local machine, open a command terminal and navigate to the directory whe
 
     - Since we added a new certificate, we need to restart the container for the peer pick up the cert. Follow these instructions to [restart the peer container](#remote-peer-aws-restart).
 
-5. You will upload the same `admincert/cert.pem` certificate from your local machine to the {{site.data.keyword.blockchainfull_notm}} Platform in order for a remote CLI or application to perform channel operations such as fetching the channel genesis block and instantiating chaincode.
+5. Upload the same `admincert/cert.pem` certificate from your local machine to the {{site.data.keyword.blockchainfull_notm}} Platform in order for a remote CLI or application to perform channel operations such as fetching the channel genesis block and instantiating chaincode.
     1. On your local machine, cat the file `/$FABRIC_CA_CLIENT_HOME/msp/admincerts/cert.pem` and then copy it to the clipboard.
     2. Enter the Network Monitor of your network on {{site.data.keyword.blockchainfull_notm}} Platform.
     3. Click **Members** in the left navigator and click the **Certificates** tab.
     4. Click the **Add Certificate** button.
     5. In the **Add certificate** window, give your certificate a name, such as `fabrictools.pem`, paste in the certificate you just copied to the clipboard and click **Submit**.
     6. You will be asked  if you want to restart the peers. Click **Restart**.
-    7. Click **Channels** in the left navigator and locate the channel that the remote peer will join.
+    7. Click **Channels** in the left navigator and locate the channel that the peer will join.
     8. Click the three dots under the **Actions** header and click **Sync Certificate**. In the **Sync certificate** window, click **Submit**.
 
     **Note**: It is important to sync the channel certificate before the peer joins the channel or instantiates chaincode on the channel. You might need to wait for a few minutes so that the channel sync can complete before you issue join channel or instantiate chaincode commands.   
@@ -282,9 +282,9 @@ On your local machine, open a command terminal and navigate to the directory whe
 ### Setting up the Fabric tools container
 {: #setup-fabric-cli}
 
-After we have moved all of our certificates to the necessary location, we are ready to install and use the fabric tools container from docker. Once again, we will need to run these commands from the directory where you stored your MSP folder.
+After you move all of our certificates to the necessary location, you can install and use the Fabric tools container from Docker. Ensure that you run these commands from the directory where you stored your MSP folder.
 
-1.  Download the Fabric tools docker image with the following command:
+1.  Download the Fabric tools Docker image with the following command:
     ```
     docker pull ibmblockchain/fabric-tools:1.2.0
     ```
@@ -300,7 +300,7 @@ After we have moved all of our certificates to the necessary location, we are re
     This command will mount the MSP directory inside your tools container.
 
 <!--
-3.  The remote peer address must resolve to a domain name with a suffix of `blockchain.com`. You can do this either via your DNS or modify your /etc/hosts file. For purposes of these instructions, we will modify the `/etc/hosts` file in the Fabric Tools container. To retrieve the endpoint information of your remote peer, locate your peer instance in the AWS console. Make note of the value of the AWS `IPv4 Public IP` for the EC2 instance.
+3.  The peer address must resolve to a domain name with a suffix of `blockchain.com`. You can do this either via your DNS or modify your /etc/hosts file. For purposes of these instructions, we will modify the `/etc/hosts` file in the Fabric tools container. To retrieve the endpoint information of your peer, locate your peer instance in the AWS console. Make note of the value of the AWS `IPv4 Public IP` for the EC2 instance.
 
     ```
     echo -e "<AWS_IPv4_PUBLIC_IP> remotepeer.blockchain.com" >> /etc/hosts
@@ -308,16 +308,16 @@ After we have moved all of our certificates to the necessary location, we are re
     {:codeblock}
 -->
 
-### Using the Fabric tools CLI to join the remote peer to the channel
+### Using the Fabric tools CLI to join the peer to the channel
 {: #fabric-cli-join-peer-to-channel}
 
-Before you can run the CLI commands to join the remote peer to a channel, your organization needs to be added to a channel in the network.
+Before you can run the CLI commands to join the peer to a channel, your organization needs to be added to a channel in the network.
 
-  - You can start a new channel for the remote peer. As the channel initiator, you can automatically include your organization during [channel creation](create_channel.html#creating-a-channel).
+  - You can start a new channel for the peer. As the channel initiator, you can automatically include your organization during [channel creation](create_channel.html#creating-a-channel).
 
   - Another member of the blockchain network can also add your organization to an existing channel using a [channel update](create_channel.html#updating-a-channel).
 
-    After your organization is added to a channel, you need to add your peer's signing certificate to the channel so that other members can verify your digital signature during transactions. The remote peer uploads its signing cert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joins and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
+    After your organization is added to a channel, you need to add your peer's signing certificate to the channel so that other members can verify your digital signature during transactions. The peer uploads its signing cert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joins and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
 
 1. Retrieve configuration information from your `Connection Profile` available in the Overview panel of the Network Monitor. Click **Connection Profile** and then **Download**.
 
@@ -327,9 +327,9 @@ Before you can run the CLI commands to join the remote peer to a channel, your o
     ash-zbc07b.4.secure.blockchain.ibm.com:21239
     ```
 
-  - Find the name of your organization by searching for **organizations**. This should be the same organization as you use to register your remote peer. You can find your organization's name together with its associated `mspid`. Make a note of the value of the `mspid`.
+  - Find the name of your organization by searching for **organizations**. This should be the same organization as you use to register your peer. You can find your organization's name together with its associated `mspid`. Make a note of the value of the `mspid`.
 
-2. Locate the endpoint information of your AWS VPC remote peer (the Public DNS IPv4 address) in the AWS EC2 dashboard Public DNS (IPv4). It will look something like:
+2. Locate the endpoint information of your AWS VPC peer (the Public DNS IPv4 address) in the AWS EC2 dashboard Public DNS (IPv4). It will look something like:
 
   ```
   ec2-10-221-8-71.us-north-2.compute.amazonaws.com
@@ -415,10 +415,10 @@ Before you can run the CLI commands to join the remote peer to a channel, your o
   2018-07-06 18:32:09.992 UTC [main] main -> INFO 003 Exiting.....
   ```
 
-### Using the Fabric tools container to install chaincode on the remote peer
+### Using the Fabric tools container to install chaincode on the peer
 {: #aws-toolcontainer-install-cc}
 
-We are now ready to install and instantiate chaincode on the remote peer. For these instructions, we'll install the `fabcar` chaincode from the `fabric-samples` repository. Download the `fabric-samples` chaincode from `github.com` using the following commands:
+We are now ready to install and instantiate chaincode on the peer. For these instructions, we'll install the `fabcar` chaincode from the `fabric-samples` repository. Download the `fabric-samples` chaincode from GitHub using the following commands:
 
   ```
   cd /
@@ -428,7 +428,7 @@ We are now ready to install and instantiate chaincode on the remote peer. For th
   ```
   {:codeblock}
 
-Run the following Peer CLI command to install the `fabcar` chaincode onto the remote peer.
+Run the following Peer CLI command to install the `fabcar` chaincode onto the peer.
 
   ```
   GOPATH=/ CORE_PEER_TLS_ROOTCERT_FILE=/mnt/msp/tls/cacert.pem CORE_PEER_TLS_ENABLED=true CORE_PEER_ADDRESS=${PEERADDR} CORE_PEER_LOCALMSPID=${ORGID} CORE_PEER_MSPCONFIGPATH=/mnt/msp/ GOPATH=/ peer chaincode install -n ${CC_NAME} -v v0 -p fabric-samples/chaincode/fabcar/go/
@@ -446,7 +446,7 @@ Run the following Peer CLI command to install the `fabcar` chaincode onto the re
 ### Using the Fabric tools container to instantiate chaincode on a channel
 {: #aws-toolcontainer-instantiate-cc}
 
-Because only one peer has to instantiate chaincode on a channel, you do not have use your remote peer to instantiate chaincode. Peers hosted on {{site.data.keyword.blockchainfull_notm}} Platform can do that. However, if you would like the remote peer to instantiate the chaincode onto the channel, you can run the following command in the Fabric tools container:
+Because only one peer has to instantiate chaincode on a channel, you do not have use your peer to instantiate chaincode. Peers hosted on {{site.data.keyword.blockchainfull_notm}} Platform can do that. However, if you would like the peer to instantiate the chaincode onto the channel, you can run the following command in the Fabric tools container:
 
 ```
 CORE_PEER_TLS_ROOTCERT_FILE=/mnt/msp/tls/cacert.pem CORE_PEER_TLS_ENABLED=true CORE_PEER_ADDRESS=${PEERADDR} CORE_PEER_LOCALMSPID=${ORGID} CORE_PEER_MSPCONFIGPATH=/mnt/msp/ GOPATH=/ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c '{"Args":[""]}' --tls --cafile /mnt/msp/orderer_tlscacert.pem -P ""
@@ -462,26 +462,24 @@ When this command completes successfully, you should see something similar to:
 ```
 
 
-## Restart a remote peer running in AWS
+## Restart a peer that is running in AWS
 {: #remote-peer-aws-restart}
 
-You can start, stop, or restart your remote peer in the environment where you deploy the remote peer. Whenever
-a certificate is added to the remote peer, the peer needs to be restarted in order for the new cert to be
-recognized. There are multiple ways to do this:
+You can start, stop, or restart your peer in the environment where you deploy the peer. Whenever a certificate is added to the peer, the peer needs to be restarted in order for the new cert to be recognized. There are multiple ways to do this:
 
-- In the AWS console, reboot the remote peer VPC instance.
-- From inside your peer container run the command:
+- In the AWS console, reboot the peer VPC instance.
+- From inside your peer container run the following command:
 
  ```
  docker restart peer
  ```
  {:codeblock}  
 
-Additionally, you can use the [HEAD request](monitor_network.html#monitor-nodes) to check the availability of your remote peer.
+Additionally, you can use the [HEAD request](monitor_network.html#monitor-nodes) to check the availability of your peer.
 
 ## Viewing peer logs
 
-SSH into the AWS VPC remote peer instance and then run the following command to view the remote peer logs:
+SSH into the AWS VPC peer instance and then run the following command to view the peer logs:
 
 ```
 docker logs peer
@@ -490,19 +488,13 @@ docker logs peer
 
 ## Updating chaincode
 
-Over time it is likely you will need to modify chaincode running on the remote peer.
-Because chaincode is installed on the peers and instantiated on the channel you will
-need to update the chaincode on all of the peers on the channel.
+Over time it is likely that you need to modify chaincode that is running on the peer. Because chaincode is installed on the peers and instantiated on the channel, you need to update the chaincode on all of the peers on the channel.
 
 Complete the following steps to update your chaincode:
 
-1. To update the chaincode on each remote peer, simply rerun the process you used to
-install the chaincode on the peers, using either a client application or a CLI command.
-Be sure to specify the same chaincode name as was
-originally used. However, this time increment the chaincode `Version` number.
+1. To update the chaincode on each peer in AWS, simply rerun the process that you used to install the chaincode on the peers by using either a client application or a CLI command. Be sure to specify the same chaincode name as was originally used. However, this time increment the chaincode `Version` number.
 
-2. After installing the new chaincode on all the peers in the channel, use the Network Monitor or the
-[peer chaincode upgrade ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) command to update the channel to use the new chaincode.
+2. After installing the new chaincode on all the peers in the channel, use the Network Monitor or the [peer chaincode upgrade ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) command to update the channel to use the new chaincode.
 
 See step two of these [instructions](install_instantiate_chaincode.html#updating-a-chaincode) for more information on using the Install code panel of Network Monitor to update the chaincode on the channel.
 
@@ -510,11 +502,12 @@ See step two of these [instructions](install_instantiate_chaincode.html#updating
 
 ### **Problem:** Remote peer is unable to connect to blockchain network
 
-Stack creation completes successfully, but docker logs contain the error:
+Stack creation completes successfully, but Docker logs contain the error:
 
 ```
 [main] main -> ERRO 001 Cannot run peer because error when setting up MSP of type bccsp from directory /etc/hyperledger/awspeer1/msp: Setup error: nil conf reference
 ```
+
 **Solution:**  
 This error can be caused by neglecting to specify a port on the CAUrl when the Quick Start template was deployed.
 The CAUrl should look similar to `https://<network>-org1-ca.stage.blockchain.ibm.com:31011`.

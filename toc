@@ -1,64 +1,80 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="blockchain" audience="service" arm="339" href="/docs/services/blockchain/index.html"}
+{: .toc subcollection="blockchain" audience="service" arm="339" href="/docs/services/blockchain/index.html" path="services/blockchain"}
 IBM Blockchain Platform
 
 	{: .navgroup id="learn"}
 	index.md
 	whats_new.md
+	blockchain_component_overview.md
 
 	{: .topicgroup}
-	Develop the network
-		develop.md
-		develop_install.md
-
-	{: .topicgroup}
-	Starter Plan
+	IBM Cloud Plans
 		starter_plan.md
 		get_start_starter_plan.md
-		develop_starter.md
-		dashboard.md
-
-	{: .topicgroup}
-	Enterprise Plan
 		enterprise_plan.md
 		get_start.md
-		develop_enterprise.md
-		v10_dashboard.md
+		howto/pricing.md
+		howto/paying_mode.md
 
+	ibp-for-icp-about.md
 	howto/remote_peer.md
 	needtoknow.md
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
 	{: .topicgroup}
-	Paying for the network
-		howto/pricing.md
-		howto/paying_mode.md
-
-	certificates.md
-	howto/create_channel.md
-	howto/develop_chaincode.md
-	howto/install_instantiate_chaincode.md
+	Developing smart contracts, applications, and business networks
+		howto/develop_chaincode.md
+		vscode-extension.md
+		v10_application.md
+		develop.md
+		develop_install.md
+		develop_starter.md
+		develop_enterprise.md
 
 	{: .topicgroup}
-	Trying out APIs with Swagger
+	Starter and Enterprise Plan on IBM Cloud
+		v10_dashboard.md
+		howto/prebuilt_samples.md
+		howto/create_channel.md
+		howto/install_instantiate_chaincode.md
 		howto/swagger_apis.md
 		howto/create_join_network_with_apis.md
-
-	howto/monitor_network.md
-	howto/prebuilt_samples.md
-	v10_application.md
-	howto/migrate_sp_ep.md
+		howto/monitor_network.md
+		certificates.md
+		howto/migrate_sp_ep.md
 
 	{: .topicgroup}
-	Running remote peers on IBM Cloud Private
-		howto/remote_peer_icp.md
-		howto/remote_peer_operate_icp.md
+	Deploying IBM Blockchain Platform on ICP
+		ibp_for_icp_deployment_guide.md
+		ICP_setup.md
+		howto/helm_install_icp.md
+
 
 	{: .topicgroup}
-	Running remote peers on Amazon Web Services
+	Certificate Authorities on ICP
+		[About Certificate Authorities](services/blockchain/ibp-for-icp-about.html#ibp-icp-ca)
+		howto/CA_deploy_icp.md
+		howto/CA_operate.md
+
+	{: .topicgroup}
+	Orderers on ICP
+		[About orderers](services/blockchain/ibp-for-icp-about.html#ibp-icp-orderer)
+		howto/orderer_deploy_icp.md
+		howto/orderer_operate.md
+
+	{: .topicgroup}
+	Peers on ICP
+		[About peers](services/blockchain/ibp-for-icp-about.html#ibp-icp-peer)
+		howto/peer_deploy_icp.md
+		howto/peer_operate_icp.md
+		howto/peer_deploy_ibp.md
+		howto/peer_operate_ibp.md
+
+	{: .topicgroup}
+	IBM Blockchain Platform for Amazon Web Services
 		howto/remote_peer_aws.md
 		howto/remote_peer_operate_aws.md
 	{: .navgroup-end}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -16,11 +16,9 @@ lastupdated: "2018-08-31"
 # Glossary
 {: #glossary}
 
-
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-
-{{site.data.keyword.blockchainfull}} Platform simplifies your journey on blockchain. This topic defines terms that appear in this documentation and is meant to introduce you to blockchain concepts. For a deeper understanding of terms, you can refer to  [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/glossary.html).
+This topic defines {{site.data.keyword.blockchainfull}} Platform-specific terms that appear in this documentation. For a deeper understanding of terms, and for a glossary of terms that relate to Hyperledger Fabric concepts, refer to the [Hyperledger Fabric glossary ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html).
 {:shortdesc}
 
 ## Asset
@@ -33,13 +31,13 @@ An ordered set of transactions, which is cryptographically linked to the precedi
 A definition of a blockchain network, which includes the data model, transaction logic, and access control rules for your blockchain solution. Business Network Definitions are created by using [Hyperledger Composer](#hyperledger-composer). Business Network Definitions are packaged into deployable **.bna** (business network archive) files.
 
 ## CA
-Certificate Authority. A blockchain network resource that issues certificates to all the participating members. These certificates represent a member’s identity. All entities in the network (peers, orderers, clients, etc.) must have an identity to communicate, authenticate, and ultimately transact. These identities are required for any direct participation in the blockchain network. You can create a business network card for the CA. The [CA Card](develop_starter.html) can then be imported and the card will be used to exchange the admin secret for valid certificates from the Starter Plan certificate authority.
+An abbreviation of "Certificate Authority", this is the component that issues certificates to all the participating members. These certificates represent a member’s identity. All entities in the network (peers, orderers, clients, etc.) must have an identity to communicate, authenticate, and ultimately transact. These identities are required for any direct participation in the blockchain network. You can create a business network card for the CA. The [CA Card](develop_starter.html) can then be imported and the card will be used to exchange the admin secret for valid certificates from the Starter Plan certificate authority.
 
 ## Chain
 The ledger’s chain is a transaction log structured as hash-linked blocks of transactions. Peers receive blocks of transactions from the ordering service, mark the block’s transactions as valid or invalid based on endorsement policies and concurrency violations, and append the block to the hash chain on the peer’s file system.
 
 ## Chaincode
-Also known as smart contracts, chaincode are the pieces of software that contain a set of functions to query or update the ledger.
+Also known as **smart contracts**, chaincode are the pieces of software that contain a set of functions to query or update the ledger.
 
 ## Channel
 Consisting of a subset of network members who want to transact privately. Channels provide data isolation and confidentiality by allowing the members of a channel to establish specific rules and a separate ledger that only channel members can access. Peers, which are the nodes that function as transaction endpoints for organizations, are joined to channels.
@@ -52,6 +50,9 @@ The Connection profile is visible in the "Overview" screen of the Network Monito
 
 ## Consensus
 A collaborative process to keep the ledger transactions synchronized across the network. Consensus ensures that ledgers are updated only when the appropriate participants approve transactions, and that ledgers are updated with the same transactions in the same order. There are many different algorithmic ways of achieving consensus.
+
+## Consortium
+The group of non-orderer organizations listed on the orderer system channel. These are the only organizations that can create channels. At channel creation time, all organizations added to the channel must be part of a consortium. However, an organization that is not defined in a consortium may be added to an existing channel. While a blockchain network can have multiple consortia, most blockchain networks have a single consortium.
 
 ## CouchDB
 A document store that is used for the state database in Starter Plan networks. CouchDB is also an option for Enterprise Plan networks, along with LevelDB. CouchDB supports the use of indexes and allows you to issue rich queries against the data on your peer.
@@ -90,7 +91,7 @@ The process of placing a chaincode on a peer’s file system. You must install t
 The process of starting and initializing a chaincode container on a specific channel. After chaincode is installed on the Peers and every Peer has joined the channel, the chaincode must be instantiated on the channel. Instantiation performs any necessary initialization of the chaincode, which includes setting the key value pairs that comprise a chaincode's initial world state. After instantiation, peers that have the chaincode installed can accept chaincode invocations.
 
 ## Kafka
-A consensus plugin implementation for Hyperledger Fabric that results in a cluster of ordering service nodes in the blockchain network. A kafka implementation is intended for a production network.
+A consensus plugin implementation for Hyperledger Fabric that results in a cluster of ordering service nodes in the blockchain network. A Kafka implementation is intended for a production network.
 
 ## Ledger
 Comprised of a literal "chain of blocks" that store the immutable, sequenced record of transactions, as well as a state database to maintain current state. There is one ledger per channel, and updates to it are managed by the consensus process according to the policies of a particular channel.
@@ -114,16 +115,13 @@ Visible from the "APIs" screen of the Network Monitor. Credentials include your 
 The GUI dashboard the {{site.data.keyword.blockchainfull_notm}} Platform provides to view and manage the blockchain network.
 
 ## Node
-The communication entity of the blockchain. There are three types of nodes: CA, Peer, and Ordering Service (the collection of orderers for a channel) nodes.
+The communication entity of the blockchain. There are three types of nodes: CA, Peer, and orderer.
 
 ## Orderer
-An Ordering Service node. A blockchain network resource that provides client authentication services. Additionally it provides services to order and broadcast transactions.
+The node that collects transactions from network members, orders the transactions and bundles them into blocks. These blocks are then distributed to peers, which then verify the blocks and add them to the ledgers on each channel. Orderers contain the cryptographic identity material that is tied to each member and authenticate the identity of clients and peers to access the network. The overall function that an ordering node or collection of nodes provides is known as the **ordering service**.
 
 ## Organization
 See [Member](#member).
-
-## Ordering Service
-Every blockchain network requires an Ordering Service. The ordering service collects transactions from network members, orders the transactions and bundles them into blocks. The ordering service then distributes the new blocks to peers, which then verify the blocks and add them to the ledgers on each channel. The ordering service is also a common binding for the overall network. It contains the cryptographic identity material that is tied to each member and authenticates the identity of clients and peers to access the network.
 
 ## Participant
 Any organization, individual, application, or device that interact with the blockchain network. Under the participant umbrella there are two distinct groupings, which are members and users.
@@ -132,10 +130,16 @@ Any organization, individual, application, or device that interact with the bloc
 A blockchain network resource that provides the services to execute and validate transactions, and maintain ledgers. The Peer runs chaincode and is the holder of transaction history and the current state of assets on the network’s channels, that is, the ledger. They are owned and managed by organizations and are joined to channels.
 
 ## Service credentials
-Service credentials are in JSON format and contain the API endpoint information and enrollIDs/secrets for your network resources, that is, peers, ordering nodes, and CAs. Your application interacts with network resources through these API endpoints.
+Service credentials are in JSON format and contain the API endpoint information and enrollIDs/secrets for your network resources, that is, CAs, orderers, and peers. Your application interacts with network resources through these API endpoints.
 
 ## SDK
 The Hyperledger Fabric supports two Software Development Kits (SDKs). A Node SDK and Java SDK.  The Node SDK can be installed via NPM and the Java SDK via Maven.  The SDKs have their own git repositories, that is, [Fabric Node SDK ![External link icon](images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-sdk-node) and  [Fabric Java SDK ![External link icon](images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-sdk-java), with documentation for the available APIs. The Hyperledger Fabric Client SDKs enable interaction between your client application and your blockchain network.
+
+## SignCert
+The certificate that any entities, whether organizations or admins, attach to their proposals or proposal responses. These signCerts are unique to an entity and are checked by the ordering service to make sure they match the signCert on file for that entity.
+
+## Smart contracts
+See [Chaincode](#chaincode).
 
 ## SOLO
 A consensus plugin implementation for Hyperledger Fabric that results in a single ordering service node in the blockchain network. The Starter Plan network uses the SOLO implementation. A SOLO implementation is not intended for a production network. The alternative to SOLO is a Kafka cluster.

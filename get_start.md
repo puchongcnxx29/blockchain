@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -107,6 +107,9 @@ You can retrieve the connection profile on the "Overview" screen in your Network
 
 
 ## Developing and deploying customized business networks
+
+**IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.**
+
 You can develop business networks based on your business needs with {{site.data.keyword.blockchainfull_notm}} Platform: Develop developer environment and Hyperledger Composer developer toolset. After you develop a network for your business, you can deploy your business network to Enterprise Plan network.
 
 For more information, see [Develop the network](develop.html) and [Deploying a business network on Enterprise Plan](develop_enterprise.html).

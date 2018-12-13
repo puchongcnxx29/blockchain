@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-13"
+lastupdated: "2018-11-27"
 
 ---
 
@@ -96,9 +96,9 @@ You need to add a new peer identity to your network on the {{site.data.keyword.b
   ![CA screen](../images/CA_screen_starter.png "CA screen")
   *Figure 2. CA screen*
 
-2. Click the **Add User** button at the top of the panel. This will open up a pop up screen that will allow you register your  peer to the network after filling out the fields below. **Save the value of the ID and Secret for later when you configure your peer in the Quick Start template.**
-  - **ID:** The name you want to use for your peer, which is referred to as your `enroll ID` when you configure your peer. **Save this value** for future usage.
-  - **Secret:** The password you want to use for your peer, which is referred to as your `enroll Secret` when you configure your peer. **Save this Value** for future usage.
+2. Click the **Add User** button on the panel. A pop-up screen opens and allows you to register your peer to the network after filling out the fields below. **Save the value of the ID and Secret for later when you configure your peer in the Quick Start template.**
+  - **Enroll ID:** The name you want to use for your peer, which is referred to as your `enroll ID` when you configure your peer. **Save this value** for future usage.
+  - **Enroll Secret:** The password you want to use for your peer, which is referred to as your `enroll Secret` when you configure your peer. **Save this Value** for future usage.
   - **Type:** Select `peer` for this field.
   - **Affiliation:** This is the affiliation under your organization, `org1` for example, that your  peer belongs to. You can specify a new affiliation or use an existing one.
   - **Maximum Enrollments:** You can use this field to limit the number of times your can enroll or generate certificates using this identity. If not specified, the value defaults to unlimited enrollments.
@@ -119,7 +119,7 @@ You are responsible for the cost of the AWS services that you use while you run 
   **Important:**     
   If you’re deploying the {{site.data.keyword.blockchainfull_notm}} Platform for AWS into an existing VPC, make sure that your VPC has two public subnets in different Availability Zones for the database instances. These subnets require NAT gateways or NAT instances in their route tables, to allow the instances to download packages and software without exposing them to the internet. You will also need the domain name option configured in the DHCP options as explained in the Amazon VPC documentation.  
 
-  Also, be sure to create a security group tied to your existing VPC and add inbound rules on ports 22 and 7051 to this security group. TCP connections on port 22 allow for SSH access to the generated instance while TCP connections on port 7051 allow for external gRPC access to the peer instance (needed for operating the peer using the Fabric Tools CLI and Fabric SDKs). You will be prompted for these VPC settings when you launch the Quick Start.
+  Also, be sure to create a security group tied to your existing VPC and add inbound rules on ports 22 and 7051 to this security group. TCP connections on port 22 allow for SSH access to the generated instance while TCP connections on port 7051 allow for external gRPC access to the peer instance (needed for operating the peer using the Fabric tools CLI and Fabric SDKs). You will be prompted for these VPC settings when you launch the Quick Start.
 
 2. Check the region that is displayed in the upper-right corner of the navigation bar, and change it if necessary. This is where the network infrastructure for the peer will be built. The template is launched in the US East (Ohio) Region by default.
 
@@ -162,7 +162,7 @@ The following table lists the configurable parameters of the AWS chart and their
 | | | |
 |**IBM Blockchain Service Credentials**| | |
 | `Organization MSP` | This value can be found in your IBM Blockchain Platform UI. Click the Remote Peer Configuration button on the Overview panel and copy and paste that information here. | |
-| `Certificate Authority (CA) Name` | This value can be found in your IBM Blockchain Platform UI. Click the Remote  Peer Configuration button on the Overview panel and  copy and paste that information here.| |
+| `Certificate Authority (CA) Name` | This value can be found in your IBM Blockchain Platform UI. Click the Remote Peer Configuration button on the Overview panel and  copy and paste that information here.| |
 | `Certificate Authority (CA) URL` | This value can be found in your IBM Blockchain Platform UI. Click the Remote Peer Configuration button on the Overview panel and  copy and paste that information here, including the port. If not specified the default port is 443. | |
 | `Certificate Authority (CA)  TLS Certificate`| This value can be found in your IBM Blockchain Platform UI. Click the Remote Peer Configuration button on the Overview panel and  copy and paste that information here.| |
 | | | |
@@ -190,7 +190,7 @@ If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform for 
 
  - Configure the domain name option in the DHCP options as explained in the [Amazon VPC documentation ![External link icon](../images/external_link.svg "External link icon")](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html "DHCP Options Sets").  
 
-- Create a security group tied to your existing VPC and add inbound rules on ports 22 and 7051 to this security group. TCP connections on port 22 allow for SSH access to the generated instance while TCP connections on port 7051 allow for external gRPC access to the peer instance (needed for operating the peer using the Fabric Tools CLI and Fabric SDKs). You will be prompted for these VPC settings when you launch the Quick Start.
+- Create a security group tied to your existing VPC and add inbound rules on ports 22 and 7051 to this security group. TCP connections on port 22 allow for SSH access to the generated instance while TCP connections on port 7051 allow for external gRPC access to the peer instance (needed for operating the peer using the Fabric tools CLI and Fabric SDKs). You will be prompted for these VPC settings when you launch the Quick Start.
 
  When deploying a {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer into an existing VPC, the following parameters replace the parameters in the corresponding sections [above](#remote-peer-aws-parameters-newvpc):
 
@@ -199,9 +199,9 @@ If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform for 
 | **Network Configuration** | | |
 | `VPCID` |	ID of your existing VPC for deployment.| |
 | `AvailabilityZone1` | The Availability Zone in which to deploy the first peer node. | |
-| `SubnetID1` |	ID of the subnet to use for the first peer node. | |
+| `SubnetID1` |	ID of the subnet to use for the first peer node. The subnet should belong to the chosen VPC. To find the subnets belonging to the VPC, please check your AWS VPC dashboard, and select "subnets" menu.| |
 | `AvailabilityZone2` | The Availability Zone in which to deploy the second peer node. | |
-| `SubnetID2` |	ID of the subnet to use for the second peer node. | |
+| `SubnetID2` |	ID of the subnet to use for the second peer node. The subnet should belong to the chosen VPC. To find the subnets belonging to the VPC, please check your AWS VPC dashboard, and select "subnets" menu. | |
 | | | |
 | **Amazon EC2 Configuration**| | |
 | `InstanceType` 	| Type of EC2 instance for the peer instances. 	| m4.xlarge |
@@ -255,7 +255,8 @@ Additionally, to verify that the  peer connection is working to your {{site.data
    echo -e "<orderer cert>" > /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem
    ```
    {:codeblock}
-   Replace  `<PEER_ENROLL_ID>` with the enroll id specified in the Quick Start template and associated with this  peer instance.
+
+   Replace  `<PEER_ENROLL_ID>` with the enroll ID that is specified in the Quick Start template and is associated with this peer instance.
 
 2. Your organization needs to be added to a channel in the network before you can fetch the genesis block.
 
@@ -289,7 +290,6 @@ Additionally, to verify that the  peer connection is working to your {{site.data
    export ORGID=PeerOrg1
    export PEERADDR=localhost:7051
    ```
-  {:codeblock}
 
 4. Run the following peer CLI command to fetch the genesis block of the channel.
 
@@ -301,14 +301,14 @@ Additionally, to verify that the  peer connection is working to your {{site.data
    {:codeblock}
 
 
-   **Note:** It is possible when running any of these CLI commands that you may experience the following warning which can be safely ignored.
+   **Note:** It is possible when running any of these CLI commands that you may experience the following warning that can be safely ignored.
 
    ```
    [msp] getPemMaterialFromDir -> WARN 001 Failed reading file
    /etc/hyperledger/<PEER_ENROLL_ID>/msp/intermediatecerts/<intermediate cert name>.pem: no pem content for file  /etc/hyperledger/<PEER_ENROLL_ID>/msp/intermediatecerts/<intermediate cert name>.pem
    ```
 
-   Verify the command worked successfully and that genesis block is added to your peer container by running the following command:
+   Verify that the command worked successfully and that genesis block is added to your peer container by running the following command:
 
    ```
    ls *.block
@@ -369,12 +369,12 @@ A security group acts as a firewall that controls the traffic for one or more in
 ### Peer Security
 {: #aws-security}
 
-The peers are deployed outside of {{site.data.keyword.blockchainfull}} Platform; therefore, you are responsible for managing the security of the  peer. This includes important areas of security provided by Enterprise Plan networks such as key management and data encryption. Review the following topics when you consider security for your  peers.
+The peers are deployed outside of {{site.data.keyword.blockchainfull_notm}} Platform; therefore, you are responsible for managing the security of the  peer. This includes important areas of security provided by Enterprise Plan networks such as key management and data encryption. Review the following topics when you consider security for your  peers.
 
 #### Data security
 {: #aws-security-data}
 
-{{site.data.keyword.blockchainfull}} Platform Enterprise Plan uses whole disk encryption that is based on [symmetric key encryption ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSB23S_1.1.0.14/gtps7/s7symm.html "Symmetric cryptography") to protect all the data that the networks use. You must take similar steps in your own environment to protect your  peer data.
+{{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan uses whole disk encryption that is based on [symmetric key encryption ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSB23S_1.1.0.14/gtps7/s7symm.html "Symmetric cryptography") to protect all the data that the networks use. You must take similar steps in your own environment to protect your  peer data.
 
 The data in your state database, whether you are using levelDB or couchDB, is not encrypted. You can use application level encryption to protect the data at rest in your state database.
 
@@ -402,7 +402,6 @@ In IBP when a private key is created, two sets of independent key material is ge
 
 [Transport Layer Security ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "An overview of the SSL or TLS handshake") (TLS) is embedded in the trust model of Hyperledger Fabric. All components on {{site.data.keyword.blockchainfull_notm}} Platform use TLS to communicate authenticate and communicate with each other. Therefore, the network components on {{site.data.keyword.blockchainfull_notm}} Platform need to be able to complete a TLS handshake with your  peers. One implication of this is that you need to enable passthru, by using white listing for example, in your firewall from client apps to your peer.
 
-You can use Mutual TLS, which requires two way (server-client) rather than one way (server only) authentication, to secure the communication between your application and Enterprise Plan networks. You can use the Network Monitor [to enable mutual TLS](../v10_dashboard.html#mutual-tls) for peers on {{site.data.keyword.blockchainfull_notm}} Platform. To enable Mutual TLS on your  peer, follow the instructions to [enable mutual-TLS for peer nodes ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/enable_tls.html "Securing Communication with Transport Security Layer") in the Hyperledger Fabric documentation. It is strongly recommended that you enable mutual-TLS for your applications.
 
 #### Membership Service Provider configuration
 {: #aws-security-MSP}

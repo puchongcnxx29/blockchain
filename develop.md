@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -13,19 +13,20 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 {:tip: .tip}
 
-# Develop the network
+# Developing business networks
 {: #develop-the-network}
 
+**IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.**
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-Developing blockchain solutions by using the {{site.data.keyword.blockchainfull}} Platform leverages the Hyperledger Composer open source development toolset. Hyperledger Composer uses a bespoke modelling language, which is combined with JavaScript transactions and access control rules to model a blockchain business network in full _before_ you deploy anything to a real blockchain network.
+Developing blockchain solutions by using the {{site.data.keyword.blockchainfull}} Platform leverages the Hyperledger Composer open source development toolset. Hyperledger Composer uses a bespoke modeling language, which is combined with JavaScript transactions and access control rules to model a blockchain business network in full _before_ you deploy anything to a real blockchain network.
 {:shortdesc}
 
-**Note**: Starter Plan provides sample applications that you can learn and try. You can run sample applications in Starter Plan before you develop your customized business network. For more information, see [About Starter Plan](starter_plan.html).
+**Note:** Starter Plan provides sample applications that you can learn and try. You can run sample applications in Starter Plan before you develop your customized business network. For more information, see [About Starter Plan](starter_plan.html).
 
-This tutorial goes through the development of a {{site.data.keyword.blockchain}} solution that begins with creating and modelling a business network, and then deploys it to a running blockchain network.
+This tutorial goes through the development of a {{site.data.keyword.blockchain}} solution that begins with creating and modeling a business network, and then deploys it to a running blockchain network.
 
 The following steps outline the basic development of a {{site.data.keyword.blockchain}} solution that is hosted on  {{site.data.keyword.blockchainfull_notm}} Platform:
 

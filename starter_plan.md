@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-13"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -29,7 +29,7 @@ lastupdated: "2018-11-13"
 ## What Starter Plan offers
 
 - **_One-click-ready network_**
-    Starter Plan provisions you a live blockchain network with a single click. Each network comes with an ordering service, CA's, two organizations (with one peer per organization), and a default channel on which to transact and deploy chaincode. {{site.data.keyword.blockchainfull_notm}} Platform handles the creation and configuration of this network (you'll be able to update it after it goes live), letting you focus on development. Starter Plan networks are built on Fabric V1.2, and use CouchDB as the state database. <!--The free trial provides you up to two organizations and two peers.-->
+    Starter Plan provisions you a live blockchain network with a single click. Each network comes with a CA, an orderer, two organizations (with one peer per organization), and a default channel on which to transact and deploy chaincode. {{site.data.keyword.blockchainfull_notm}} Platform handles the creation and configuration of this network (you'll be able to update it after it goes live), letting you focus on development. Starter Plan networks are built on Fabric V1.2, and use CouchDB as the state database. <!--The free trial provides you up to two organizations and two peers.-->
 - **_Cost efficiency_**
     The Starter Plan membership option provides many of the same blockchain capabilities as Enterprise Plan membership options, but at a lower cost. {{site.data.keyword.blockchainfull_notm}} Platform offers $500 of cloud credits to new users of Starter Plan. These credits allow you to provision a blockchain network with basic network resources for free for one month. See [Starter Plan considerations](#starter-plan-considerations) for more details.
 - **_Multi-organization network simulation_**
@@ -39,6 +39,8 @@ lastupdated: "2018-11-13"
     Starter Plan uses the Toolchain service in {{site.data.keyword.cloud_notm}} to deploy samples with simple clicks. After you deploy and launch a sample, the chaincode and applications automatically run for your blockchain network. For more information about sample applications, see [Deploying sample applications](howto/prebuilt_samples.html). -->
 - **_{{site.data.keyword.blockchainfull_notm}} Platform: Develop application Integration_**
     Starter Plan enables you to deploy business networks that you have developed on [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](https://blockchaindevelop.mybluemix.net/login). For more information, see [Deploying a business network on Starter Plan](develop_starter.html).
+
+    **IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.**
 
 ## Is Starter Plan suitable for you
 
@@ -70,18 +72,31 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
     - [CA](glossary.html#ca) and [ordering service](glossary.html#orderer) are not fault tolerant because each organization has only one CA and a network has only one [orderer](glossary.html#orderer).
     - Ordering service uses only [SOLO](glossary.html#solo) [consensus](glossary.html#consensus). A Starter Plan network consists of only one [orderer](glossary.html#orderer) that performs consensus for all peers.
     - [Hardware Security Module (HSM)](glossary.html#hsm) is not available to safeguard and manage digital keys for strong authentication and crypto processing.
-- **Versions and upgrade**
+- **Starter Plan versions and upgrade**
     - New Starter Plan networks that are created after October 04, 2018 are built on Hyperledger Fabric V1.2.1. Older Starter Plan networks remain at Fabric V1.1.0 level.
     - New peers that are added to older Starter Plan networks will be built on Fabric v1.2.1. The performance of your network is not affected because of backwards compatibility.
     - You can use [private data ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "private data") feature of Hyperledger Fabric v1.2 in new Starter Plan networks. For more information about how to use private data with your chaincode, see [Private data](howto/develop_chaincode.html#private-data).
     - You have the option of using more advanced [channel configuration ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/config_update.html "channel configuration") settings and [Access Control Lists ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/access_control.html "Access Control Lists") when you create or update a channel.
     - The [Service discovery ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "service discovery") feature of Hyperledger Fabric v1.2 is not supported on the {{site.data.keyword.blockchainfull_notm}}.
-    - If you [reset](dashboard.html#reset-network) an older Starter Plan network that is at Fabric V1.1.0, your new network will be at Fabric V1.2 level. If you reset your network, you will need to install your chaincode or .bna files on the new network, as well as re-invite members of your old network.
-- **Maintenance and updates**
-    Starter Plan maintenance and network updates are performed on a fixed schedule. During the maintenance period, you cannot provision new networks and might notice brief periods of network interruption.
+    - If you [reset](v10_dashboard.html#reset-network) an older Starter Plan network that is at Fabric V1.1.0, your new network will be at Fabric V1.2 level. If you reset your network, you need to install your chaincode or .bna files on the new network, as well as re-invite members of your old network.
 - **Network resource limitation**
-    Starter Plan assigns 1 CPU and 4 Gi RAM for each peer, and 20 Gi storage for each {{site.data.keyword.cloud_notm}} service instance, including peers. Chaincode containers and ledger blocks are the most resource intensive network components. Users that have many peers on their network, generate a lot of blocks, or use large chaincode files might experience the effect of resource limitations on performance. You can view your networks usage of storage in the ["Overview" screen of your Network Monitor](dashboard.html#storage).
+    Starter Plan assigns 1 CPU and 4 Gi RAM for each peer, and 20 Gi storage for each {{site.data.keyword.cloud_notm}} service instance, including peers. Chaincode containers and ledger blocks are the most resource intensive network components. Users that have many peers on their network, generate a lot of blocks, or use large chaincode files might experience the effect of resource limitations on performance. You can view your networks usage of storage in the ["Overview" screen of your Network Monitor](v10_dashboard.html#storage).
+- **Maintenance and upgrade**
+    Starter Plan maintenance and network updates are performed on a fixed schedule. During the maintenance period, you cannot provision new networks and might notice brief periods of network interruption.
 - **Data retention**
     Starter Plan does not guarantee data retention with release upgrades.
 - **Migration considerations**
     Migrating the data from a Starter Plan network to other membership plans is not currently supported. However, it is possible to migrate `.bna` files, chaincode, and applications that were tested on Starter Plan. For more information, see [Migrating from Starter Plan to Enterprise Plan](howto/migrate_sp_ep.html).
+
+
+<!--
+## Migrating from Beta to GA
+{: #beta-to-ga}
+
+Starter Plan moves to the GA stage on June 14, 2018. Upon GA, {{site.data.keyword.blockchainfull_notm}} Platform offers $500 trial credits for each {{site.data.keyword.cloud_notm}} account to create blockchain networks with Starter Plan. For more information about the trial credits, see the *Starter Plan trial* section in [Starter Plan pricing](howto/pricing.html#starter-plan-pricing). Ensure that you have a paid {{site.data.keyword.cloud_notm}} account, for example, a **Pay-As-You-Go** type.
+
+Any blockchain networks that are created with Starter Plan Beta remains **free** until they are deleted **30 days** after the Starter Plan GA. Data migration is not supported from Starter Plan Beta networks to GA networks. **Your data in Beta networks will be lost.**  However, you can migrate your chaincode, business networks, and applications manually.
+- If you have running chaincode in Beta networks, install and instantiate the chaincode in GA networks. For more information, see [Installing, instantiating, and updating a chaincode](howto/install_instantiate_chaincode.html).
+- If you deployed a business network on Beta networks, deploy the business network with the `.bna` file on GA networks. For more information, see [Deploying a business network on Starter Plan](develop_starter.html).
+- If you ran self-developed applications against Beta networks, update the API endpoints in your applications to point to GA network nodes. For more information, see [Adding network API endpoints to your application](v10_application.html#adding-network-api-endpoints-to-your-application).
+-->

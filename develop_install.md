@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-05"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -13,9 +13,10 @@ lastupdated: "2018-10-05"
 {:pre: .pre}
 {:tip: .tip}
 
-# Installing a development environment
+# Installing a business network development environment
 {: #installing-a-development-environment}
 
+**IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.**
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 

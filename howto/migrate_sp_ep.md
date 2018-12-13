@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -31,7 +31,7 @@ Enterprise Plan networks offer the following production-ready features to suppor
   - Secure Service Container (SSC) ensures that the blockchain image cannot be tampered and loaded at any given point in time and the appliance code and data is protected confidential at both flight and rest.
   - [Hardware secure module (HSM)](../glossary.html#hsm) for key management and key storage.
   - Pervasive disk encryption.
-- High Availability, Disaster Recovery, Crash Fault Tolerance and rolling upgrades.
+- High Availability, Disaster Recovery, Crash Fault Tolerance, and rolling upgrades.
 - Optional advanced support.
 
 ## Considerations
@@ -39,12 +39,12 @@ Enterprise Plan networks offer the following production-ready features to suppor
 
 Before you migrate from your Starter Plan network to an Enterprise Plan network, you might read the following considerations.
 
-- **Pricing:** The monthly fee for your organization to use an Enterprise Plan network includes $1000 membership fee on a per-instance basis and $1000 peer fee on a per-peer basis. For more information, see
-[Enterprise Plan pricing](pricing.html#enterprise-plan-pricing).
-- **Hyperledger Fabric version:** Enterprise Plan networks run on Hyperledger Fabric v1.1.  
-- **Resources affected:** Chaincode (smart contracts), business network definitions, client applications.
+- **Pricing:** The monthly fee for your organization to use an Enterprise Plan network includes $1000 membership fee on a per-instance basis and $1000 peer fee on a per-peer basis. For more information, see [Enterprise Plan pricing](pricing.html#enterprise-plan-pricing).
+- **Hyperledger Fabric version:** Enterprise Plan networks run on Hyperledger Fabric v1.1. Starter Plan networks run on Fabric v1.2. A component like [Private Data](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html), as an example --- meaning, a chaincode developed to use Private Data --- that works with with a Starter Plan network, will not work in Enterprise Plan.
+- **Resources affected:** Chaincode (smart contracts), business network definitions, client applications. Again, be aware of whether your chaincode is leveraging a Fabric v1.2 component or functionality that is not compatible with v1.1 networks.
 - **Time required:** It will take at least half a day to migrate a basic network from Starter Plan to Enterprise Plan.
 - **Existing ledger data** cannot be moved from Starter Plan networks to Enterprise Plan networks because it is not appropriate for test data to exist in a production environment.
+- **Hyperledger Composer** IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.
 
 **Note:** A *basic* network includes two organizations with two peers, a single channel, and a single chaincode or Business Network Archive (`.bna`) file. Actual time to migrate might vary depending on the size and complexity of the network components that you require in the Enterprise Plan network.
 
@@ -54,7 +54,6 @@ Before you migrate from your Starter Plan network to an Enterprise Plan network,
 There are a number of tasks required for preparing to move to an Enterprise Plan network from a Starter network. You can find detailed instructions in later sections, but here is a summary:
 
 - Create an Enterprise Plan network.
-- If you developed a `.bna` using Hyperledger Composer, locate and migrate the `.bna` file.
 - Recreate the desired configuration of organizations and peers from your test Starter Plan network.
 - Identify which chaincode, written in Go or Node, that will run in the Enterprise Plan network.
 - Update client applications with new API endpoint information for the Enterprise Plan network.
@@ -64,23 +63,13 @@ There are a number of tasks required for preparing to move to an Enterprise Plan
 
 You need to create an Enterprise Plan network before you migrate. For more information, see [Creating an Enterprise Plan network](../get_start.html#creating-a-network).
 
-### Migrate a `.bna` file
-{: #migrate_starter_to_enterprise_bna}
-
-**Note:** You can skip this step if you don't use a `.bna` file in your Starter Plan network.
-
-If you used Hyperleger Composer to define a business network and deployed a `.bna` file to your Starter Plan network, you can deploy the same `.bna` file to your Enterprise Plan network.
-
-- If you have your business network archive file (`.bna`), follow the instructions in [Deploying a business network on Enterprise Plan](../develop_enterprise.html).
-- If you do not have your `.bna` file, use the `composer network download` command to retrieve it from the Starter Plan instance. For more information about the `composer network download` command, see [Hyperledger Composer command line documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}. Then, you can follow the instructions in [Deploying a business network on Enterprise Plan](../develop_enterprise.html).
-
 ### Recreate network configuration
 {: #migrate_starter_to_enterprise_config_network}
 
 You might recreate the configuration of organizations (members), channels, and peers of your Starter Plan network in your Enterprise Plan network. You can use the Network Monitor UI to recreate these network resources by inviting the appropriate organizations (note that you won't be able to **switch** organizations as you can in Starter), create channels, and create peers (again, invited organizations will have to create their own peers).
 
 1. Login to your Enterprise Plan network on {{site.data.keyword.cloud_notm}} and enter the Network Monitor.
-2. Recreate organizations (members) on the "Members" screen, recreate channels on the "Channels" screen, and recreate peers on the "Overview" screen. For more information about creating network resources, see [Operating your Enterprise Plan network](../v10_dashboard.html#overview).
+2. Recreate organizations (members) on the "Members" screen, recreate channels on the "Channels" screen, and recreate peers on the "Overview" screen. For more information about creating network resources, see [Using the Network Monitor](../v10_dashboard.html#overview).
 3. Configure channels by adding members and setting channel policies the same way as in your Starter Plan network.
 
 **Note:** To achieve High Availability, you must create at least two peers for your organization, join them to the same channel, and code client applications properly to switch from one peer to the other when necessary.

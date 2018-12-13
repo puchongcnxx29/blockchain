@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-04"
+lastupdated: "2018-12-07"
 ---
 
 {:new_window: target="_blank"}
@@ -22,21 +22,21 @@ lastupdated: "2018-10-04"
 {{site.data.keyword.blockchainfull}} Platform is based on Hyperledger Fabric and builds permissioned blockchain networks. Participants are known as members of the network, and their activities and access to network resources are verified continuously. A participant's identity is provided in the form of a trusted x509 digital certificate. The verification is provided by an underlying public key infrastructure and sign/verify operations that secure transactions and management within the network.
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} Platform manages most of the certificate operations without users needing to handle their certificates. However, there are times when you will have to manage the certificates that allow you to communicate with the network, such as developing applications or expanding your network with a remote peer. The following is a short guide to your Certificate Authority, and the underlying certificate infrastructure. This tutorial can help you understand the certificates you will be working with and the tasks you need to perform.
+{{site.data.keyword.blockchainfull_notm}} Platform manages most of the certificate operations without users needing to handle their certificates. However, there are times when you will have to manage the certificates that allow you to communicate with the network, such as developing applications or expanding your network with a remote peer. The following is a short guide to your Certificate Authority, and the underlying certificate infrastructure. This tutorial can help you understand the certificates that you will be working with and the tasks you need to perform.
 
 ## Certificate authorities
 {: #network-ca}
 
 Certificate authorities (CAs) provide identity on the network. A CA can be considered as a publicly trusted notary that acts as an anchor of trust among multiple parties. All entities in the network are given a certificate signed by a root CA that encapsulates their digital identity. This certificate is the root of trust for all the sign and verify operations that are performed on the network. For more details about how certificate authorities are used to establish identity, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/identity/identity.html).
 
-Each member in the network possesses their own CA, which is issued a certificate from the root CA of the network. This tie to the root CA establishes the anchor of trust for your organization. Your org CA signs requests for all the entities that your organization owns, such as your admin, peers, or applications. If you want to add a remote peer or new application to your network, you need to register the new identity with your Certificate Authority (registration). Then, the CA can provide the new entity with the certificates it will need to interact with the network (enrollment).
+Each member in the network possesses their own CA. Your organization CA signs requests for all of the entities and components that you own, such as your admin, peers, or applications. If you want to add a remote peer or new application to your network, you need to register the new identity with your Certificate Authority (registration). Then, the CA can provide the new entity with the certificates that the entity needs to interact with the network (enrollment).
 
-### Registration using the Network Monitor
+### Registration with the Network Monitor
 {: #ca-panel}
 
-You can use the {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor to view the identities that are registered with your CA and add new ones. Navigate to the "Certificate Authority" panel of the Network Monitor. This panel displays all the identities that have been registered with your CA, including your organization admin, peers, and client applications. To register a new identity in your organization, click the **Add User** button at the top of the panel. A pop-up window opens and displays the following fields that are necessary to register a new identity.
-  - **ID:** This will the name of your new identity, sometimes referred to as your `enroll ID`. **Save this value** for when you configure a remote peer or enroll a new application.
-  - **Secret:** This will be the password to your identity, sometimes referred to as your `enroll Secret`. **Save this value** for when you configure a remote peer or enroll a new application.
+You can use the {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor to view the identities that are registered with your CA and add new ones. Navigate to the "Certificate Authority" panel of the Network Monitor. This panel displays all the identities that have been registered with your CA, including your organization admin, peers, and client applications. To register a new identity in your organization and click the **Add User** button on the panel. A pop-up window opens and displays the following fields that are necessary to register a new identity.
+  - **Enroll ID:** This will the name of your new identity, sometimes referred to as your `enroll ID`. **Save this value** for when you configure a remote peer or enroll a new application.
+  - **Enroll Secret:** This will be the password to your identity, sometimes referred to as your `enroll Secret`. **Save this value** for when you configure a remote peer or enroll a new application.
   - **Type:** Select the type of identity the you want to register, either peer or client application.
   - **Affiliation:** This will be the affiliation within your organization, such as `org1` for example, that the identity will belong to.
   - **Maximum Enrollments:** You can use this field to limit the number of times your can enroll or generate certificates using this identity. If you leave the field blank, the value defaults to an unlimited number of enrollments.
@@ -45,7 +45,7 @@ You can use this panel to register a new peer identity if you are deploying a [r
 
 ### Generating client side certificates (enrollment)
 {: #enrollment}
-Before you connect a third party client to {{site.data.keyword.blockchainfull_notm}} Platform, you need will need to be authenticated. The process of generating the necessary certificates, your private key and your public cert (also known as your enrollment cert or signCert), is called enrollment. These certificates will be needed anytime your client communicates with the network. Any client that submits calls to the network will need to sign payloads using a private key and attach a properly signed x509 certificate.
+Before you can connect a third party client to {{site.data.keyword.blockchainfull_notm}} Platform, you need to be authenticated. The process of generating the necessary certificates, your private key and your public cert (also known as your enrollment cert or signCert), is called enrollment. These certificates will be needed anytime your client communicates with the network. Any client that submits calls to the network need to sign payloads by using a private key and attach a properly signed x509 certificate.
 
 Visit the [developing applications tutorial](v10_application.html) to learn how to [enroll using Fabric Node SDK](v10_application.html#enroll-app). Enrolling with the SDK generates 3 separate items: a private key, signCert, and a public key that was used to create the signCert.
 
@@ -58,18 +58,18 @@ You can generate certificates with only identities that have been registered wit
 ### Generating certificates using the Network Monitor
 {: #certs-panel}
 
-You can use the Network Monitor to generate certificates using the admin identity, and then pass those certificates directly to to the SDK. Click the **Generate Certificate** button next to your admin identity to get a new signCert and private key from your CA. The **Certificate** field contains the signCert, just above the **Private Key**. You can click the copy icon at the end of each field to copy the value. You then need to save these certificates in a place where then can import then into your application. For more information, see [developing applications tutorial](v10_application.html#enroll-panel). **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them.
+You can use the Network Monitor to generate certificates using the admin identity, and then pass those certificates directly to to the SDK. Click the **Generate Certificate** button next to your admin identity to get a new signCert and private key from your CA. The **Certificate** field contains the signCert, just above the **Private Key**. You can click the copy icon at the end of each field to copy the value. You then need to save these certificates in a place where you can then import then into your application. For more information, see [developing applications tutorial](v10_application.html#enroll-panel). **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them.
 
 ### Uploading signing certificates to {{site.data.keyword.blockchainfull_notm}} Platform
 {: #upload-certs}
 
-An application requires only a valid signCert to submit transactions to the network. However, if a client wants to operate the network, by installing chaincode on peers or joining peers to channels, for example, the client needs to be recognized as an administrator. Each component recognizes a set of signCerts that are owned by an admin. If you need to operate your network from a client, you will need to upload your signCert and have it added to the list of admin certs. You can do this on the platform by uploading your signCert in the **Certificates** tab of the ["Overview" panel](v10_dashboard.html#members) of your Network Monitor. Sync this certificate to your peers by hitting the restart button that comes up after uploading. Afterwards, your client will be able to operate the network. You can also upload your signCert using the [Swagger API](howto/swagger_apis.html) to add an admin certificate.
+An application requires only a valid signCert to submit transactions to the network. However, if a client wants to operate the network, by installing chaincode on peers or joining peers to channels, for example, the client needs to be recognized as an administrator. Each component recognizes a set of signCerts that are owned by an admin. If you need to operate your network from a client, you need to upload your signCert and have it added to the list of admin certs. You can do this on the platform by uploading your signCert in the **Certificates** tab of the ["Overview" panel](v10_dashboard.html#members) of your Network Monitor. Sync this certificate to your peers by hitting the restart button that comes up after uploading. Afterward, your client will be able to operate the network. You can also upload your signCert using the [Swagger API](howto/swagger_apis.html) to add an admin certificate.
 
 Channels also recognize a set of admin certs from the identities that are allowed to operate the channel, including being able to instantiate a chaincode on the channel. If you use a new signCert with a remote client, you must sync the certificate to the channel before you can instantiate a chaincode. Perform the following steps in the Network Monitor to add the certificate to the channel:
 
 1. Navigate to the **Certificates** tab of the "Members" screen. Click the **Add Certificate** button to upload the signCert to the platform.
 2. Navigate to the "Channels" screen and find the name of relevant channel.
-3. click **Sync Certificate** from the drop-down list under the **Actions** header to add the new certificate to the list of channel admin certs.
+3. Click **Sync Certificate** from the drop-down list under the **Actions** header to add the new certificate to the list of channel admin certs.
 
 **Note:** Certificates that are generated by using the admin identity of your organization are not automatically considered admin certs. A signCert and private key that are generated by using the **Generate Certificates** button will not let your SDK operate the network. They have been generated by the Fabric CA client, the SDK, or the Network Monitor, and have no connection to the pre-existing list of admin certs that network components recognize. You need to upload the signCert in the Network Monitor before your SDK can operate the network.
 
@@ -123,7 +123,6 @@ Certificate:
     ...
     ...
 ```
-{:codeblock}
 
 The domain name is listed in the subject line as `CN=*.us01.blockchain.ibm.com`. You can also find alternative domain names that are listed farther down in the certificate.
 
@@ -137,7 +136,7 @@ Components of {{site.data.keyword.blockchainfull_notm}} Platform consume identit
 The MSP folders within Fabric have a defined structure. When you enroll using the Fabric CA client, the client stores the certificates in an MSP folder on your local file system with the following subfolders:
 
 - **cacerts:** This folder contains the root certificate of the root CA of your network.
-- **intermediatecerts:** These are certificates of the intermediate CAs of your network. These intermediate CAs are linked to the root CA and form a chain of trust. Each Enterprise Plan organization has two intermediate CA's for failover and high availability.
+- **intermediatecerts:** These are certificates of the intermediate CAs of your network. These intermediate CAs are linked to the root CA and form a chain of trust. Each Enterprise Plan organization has two intermediate CAs for failover and high availability.
 - **signcerts:** This folder contains your public signing certificate, which is also called your signCert or enrollment certificate. This certificate is attached to your calls to the network (a chaincode invoke, for example) when you reference your MSP directory from the command line or build a user context object with the SDKs. You can upload this certificate to the platform if you want to operate a network from the SDK or command line.
 - **keystore:** This folder contains your private key. This key is used to sign your calls to the network when you reference your MSP directory from the command line or build a user context object with the SDKs. Keep this key safe to protect your network and your data.
 
@@ -148,7 +147,7 @@ You can also build an MSP folder that the Fabric CA client can reference by usin
 
 Many Fabric components contain additional information inside their MSP folder. For example, if you operate a remote peer, you might see the following folders:
 
-- **admincerts:** This folder contains the list of administrators for this organization or component. You will need to upload your signCert to this folder if you are operating a remote peer from the command line or the SDKs. If you use the Fabric CA client, you also need an admincerts folder in your MSP containing the corresponding signCerts to be recognized as administrator certs.
+- **admincerts:** This folder contains the list of administrators for this organization or component. You need to upload your signCert to this folder if you are operating a remote peer from the command line or the SDKs. If you use the Fabric CA client, you also need an admincerts folder in your MSP containing the corresponding signCerts to be recognized as administrator certs.
 - **tls:** This is a folder where you store TLS certs that are used for communicating with other network components.
 
 For more information about the structure of MSPs, see [Membership ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Membership") and [Membership Service Providers ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "Membership Service Providers") in Hyperledger Fabric documentation.
@@ -156,7 +155,7 @@ For more information about the structure of MSPs, see [Membership ![External lin
 ## Enrollment and registration by using the Fabric CA client
 {: #enroll-register-caclient}
 
-You can also use the Fabric CA Client to generate certificates and register a new identity with the Certificate Authority. The instructions below generate certificates by using your admin identity, then use those certificates to register a new client. For more information about enrolling by using the Fabric CA Client and generating certificates, see [Membership Services Providers](#msp).
+You can also use the Fabric CA client to generate certificates and register a new identity with the Certificate Authority. The instructions below generate certificates by using your admin identity, then use those certificates to register a new client. For more information about enrolling by using the Fabric CA client and generating certificates, see [Membership Services Providers](#msp).
 
 ### Enrolling by using the Fabric CA client
 {: #enroll-app-caclient}
@@ -165,6 +164,7 @@ You can also use the Fabric CA Client to generate certificates and register a ne
     ```
     cd $HOME/fabric-ca-platform/
     ```
+    {:codeblock}
 
 2.  Set the path where the client can create your keys. Ensure that you remove the configuration material that past attempt create. If you don't run the `enroll` command before, the `msp` folder and the `.yaml` file do not exist.
     ```
@@ -172,8 +172,9 @@ You can also use the Fabric CA Client to generate certificates and register a ne
     rm -rf $FABRIC_CA_CLIENT_HOME/fabric-ca-client-config.yaml
     rm -rf $FABRIC_CA_CLIENT_HOME/msp
     ```
+    {:codeblock}
 
-3. Download the TLS certs from {{site.data.keyword.cloud_notm}} depending on the service plan, location, and cluster that you use.
+3. Download the TLS certs from {{site.data.keyword.cloud_notm}} depending on the service plan, location, and cluster that you use. You can find your service plan based on the URL of your certificate authority.
   - Root TLS Cert for Starter Plan
     - US: [us01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - UK: [uk01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
@@ -198,7 +199,6 @@ You can also use the Fabric CA Client to generate certificates and register a ne
   ```
   ./fabric-ca-client enroll -u https://admin:dda0c53f7b@n7413e3b503174a58b112d30f3af55016-org1-ca.us3.blockchain.ibm.com:31011 --caname org1CA --tls.certfiles $HOME/tls/us2.blockchain.ibm.com.cert
   ```
-  {:codeblock}
 
 6. Find your admin certificate in `$FABRIC_CA_CLIENT_HOME/msp/signcerts/cert.pem`. You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Member" panel](v10_dashboard.html#members) in the Network Monitor.
 
@@ -206,14 +206,14 @@ You can also use the Fabric CA Client to generate certificates and register a ne
   * CA root certificate: `$FABRIC_CA_CLIENT_HOME/msp/cacerts/--<ca_name>.pem`
   * The admin private key: `$FABRIC_CA_CLIENT_HOME/msp/keystore/<>_sk file`
 
-For an example of where you would enroll by using the Fabric CA client and use the generated certificates to operate a network component, see the instructions to [operate a remote peer](howto/remote_peer_operate_icp.html#remote-peer-cli-operate).
+For an example of where you would enroll by using the Fabric CA client and use the generated certificates to operate a network component, see the instructions to [operate a remote peer](howto/peer_operate_icp.html#peer-cli-operate).
 
-### Registering by using the Fabric CA Client
+### Registering by using the Fabric CA client
 {: #register-app-caclient}
 
 1. Issue the following command to find your affiliation and your organization name in your blockchain network.
   ```
-  ./fabric-ca-client affiliation list --tls.certfiles pathToPem
+  ./fabric-ca-client affiliation list --tls.certfiles <tls_cert_path>
   ```
   {:codeblock}
 
@@ -222,21 +222,19 @@ For an example of where you would enroll by using the Fabric CA client and use t
   affiliation: ibp
       affiliation: ibp.PeerOrg1
   ```
-  {:codeblock}
 
   Make a note of the second **affiliation** value, for example, `ibp.PeerOrg1`. You need to use this value in the command below.
 
 2. Run the following command to register the peer.
   ```
-  ./fabric-ca-client register --id.name <name> --id.affiliation <affiliation> --id.secret <password> --tls.certfiles pathToPem
+  ./fabric-ca-client register --id.name <name> --id.affiliation <affiliation> --id.secret <password> --tls.certfiles <tls_cert_path>
   ```
   {:codeblock}
 
   Specify a name and password for your peer and replace `name` and `password` with your peer name and password. Make a note of this information. You need to need it when you configure your peer. For example:
   ```
-  ./fabric-ca-client register --id.name user1 --id.affiliation ibp.PeerOrg1 --id.secret userpw  --tls.certfiles --tls.certfiles $HOME/tls/us2.blockchain.ibm.com.cert
+  ./fabric-ca-client register --id.name user1 --id.affiliation ibp.PeerOrg1 --id.secret userpw  --tls.certfiles $HOME/tls/us2.blockchain.ibm.com.cert
   ```
-  {:codeblock}
 
   You can only register an identity once. If you experience a problem, try a command with a new user name and password.
 
@@ -247,4 +245,3 @@ For an example of where you would enroll by using the Fabric CA client and use t
   2018/06/18 16:53:00 [INFO] TLS Enabled
   Password: userpw
   ```
-  {:codeblock}

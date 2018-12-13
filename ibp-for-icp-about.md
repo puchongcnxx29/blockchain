@@ -28,7 +28,7 @@ lastupdated: "2018-12-07"
 
 ## Is {{site.data.keyword.blockchainfull_notm}} Platform for ICP suitable for you
 
-Running the {{site.data.keyword.blockchainfull_notm}} Platform components outside of {{site.data.keyword.cloud_notm}} provides you with more flexibility to grow or join a blockchain network. It helps network founders grow their networks by allowing new members to join while using the platform of their choice. It will allow organizations that are interested in joining blockchain networks collocate their peers with their existing applications or and integrate with your systems of record.
+Running the {{site.data.keyword.blockchainfull_notm}} Platform components outside of {{site.data.keyword.cloud_notm}} provides you with more flexibility to grow or join a blockchain network. It helps network founders grow their networks by allowing new members to join while using the platform of their choice. It will allow organizations that are interested in joining blockchain networks to collocate their peers with their existing applications or integrate with their systems of record.
 
 **Important:** The process for deploying {{site.data.keyword.blockchainfull_notm}} Platform for ICP is complicated and presumes a high degree of expertise in Fabric. If you are new to Fabric, ICP, or {{site.data.keyword.blockchainfull_notm}} Platform, and your goal is to set up a development environment or proof of concept, consider to use [Starter Plan](starter_plan.html) instead. Note also that not every potential deployment configuration is supported in {{site.data.keyword.blockchainfull_notm}} Platform for ICP.
 

@@ -263,7 +263,7 @@ tree
 以下指示信息提供了[模板 JSON 配置文件](#config-file-template)（您可以编辑该模板并保存到本地文件系统），并指导您如何使用 CA 来填写此文件。
 
 - 如果要在 ICP 上部署排序节点或部署同级以连接到在 ICP 上托管的联盟，请遵循以下指示信息进行操作。
-- 如果要部署同级以连接到入门套餐或企业套餐，请遵循[在 IBM Cloud Private 中部署同级以连接到入门套餐或企业套餐](peer_deploy_ibp.html)上的指示信息进行操作。这些步骤将指导您如何在 {{site.data.keyword.blockchainfull_notm}} Platform 上使用 CA 在 ICP 上部署同级。
+- 如果要部署同级以连接到入门套餐或企业套餐，请遵循[在 IBM Cloud Private 中部署同级以连接到入门套餐或企业套餐](/docs/services/blockchain/peer_deploy_ibp.html)上的指示信息进行操作。这些步骤将指导您如何在 {{site.data.keyword.blockchainfull_notm}} Platform 上使用 CA 在 ICP 上部署同级。
 
 ### 配置文件
 {: #config-file-template}
@@ -675,7 +675,7 @@ fabric-ca-client register --caname tlsca --id.affiliation org1.department1 --id.
 ```
 {:codeblock}
 
-可以将其他字段保留为空白。保存此文件，在部署[排序节点](orderer_deploy_icp.html)或[同级](peer_deploy_icp.html)时需要使用此文件。
+可以将其他字段保留为空白。保存此文件，在部署[排序节点](/docs/services/blockchain/orderer_deploy_icp.html)或[同级](/docs/services/blockchain/peer_deploy_icp.html)时需要使用此文件。
 
 ## 成员资格服务提供者 (MSP)
 {: #msp}
@@ -691,7 +691,7 @@ MSP 文件夹必须具有定义的结构，供 Fabric 组件使用。Fabric CA �
 
 您还可以使用“网络监视器”和 Swagger API 来构建 fabric-ca-client 可引用的 MSP 文件夹。
 
-- **cacerts** 和 **intermediatecerts**：您可以通过向 MSP API 发出 `Get` 请求，使用 [Swagger API](swagger_apis.html) 访存这些证书。
+- **cacerts** 和 **intermediatecerts**：您可以通过向 MSP API 发出 `Get` 请求，使用 [Swagger API](/docs/services/blockchain/swagger_apis.html) 访存这些证书。
 - **signCerts** 和 **keystore**：您可以通过单击“认证中心”面板上的**生成证书**按钮，生成这些证书。这样将打开一个列出两个证书的弹出窗口。复制并存储 signCerts 中的**证书**和 keystore 中的**专用密钥**。请将这些证书保存在安全位置，因为这些证书未存储在平台上。
 
 多个 Fabric 组件在其 MSP 文件夹中包含其他信息。例如，如果运行远程同级，那么可能会看到以下文件夹：

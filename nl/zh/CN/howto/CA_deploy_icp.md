@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-导入 {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) Helm 图表后，可以部署各个组件。认证中心 (CA) 是组织的信任根，允许您为将部署的其他组件生成凭证。因此，在部署其他组件之前，您需要先部署 CA。多云区块链网络中的每个组织都必须部署自己的 CA。有关 CA 及其在区块链网络中所扮演角色的更多信息，请参阅[认证中心](../blockchain_component_overview.html#ca)。
+导入 {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) Helm 图表后，可以部署各个组件。认证中心 (CA) 是组织的信任根，允许您为将部署的其他组件生成凭证。因此，在部署其他组件之前，您需要先部署 CA。多云区块链网络中的每个组织都必须部署自己的 CA。有关 CA 及其在区块链网络中所扮演角色的更多信息，请参阅[认证中心](/docs/services/blockchain/blockchain_component_overview.html#ca)。
 {:shortdesc}
 
-部署认证中心之前，请查看[注意事项和限制](../ibp-for-icp-about.html#ibp-icp-considerations)。
+部署认证中心之前，请查看[注意事项和限制](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)。
 
 ## 需要的资源
 {: #ca-resources-required}
@@ -50,7 +50,7 @@ lastupdated: "2018-12-07"
 ## 部署 CA 的先决条件
 {: #prerequisites-ca-icp}
 
-1. 必须先[安装 ICP](../ICP_setup.html) 并[安装 {{site.data.keyword.blockchainfull_notm}} Platform Helm 图表](helm_install_icp.html)，然后才能在 ICP 上安装 CA。
+1. 必须先[安装 ICP](/docs/services/blockchain/ICP_setup.html) 并[安装 {{site.data.keyword.blockchainfull_notm}} Platform Helm 图表](helm_install_icp.html)，然后才能在 ICP 上安装 CA。
 
 2. 如果使用 Community Edition 并且希望在没有因特网连接的 ICP 集群上运行此 Helm 图表，那么需要在连接因特网的机器上创建归档，然后才能在 ICP 集群上安装归档。有关更多信息，请参阅[向没有因特网连接的集群中添加精选应用程序 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "向没有因特网连接的集群中添加精选应用程序"){:new_window}。请注意，您可以在 Helm 图表中的 ibm-blockchain-platform-dev/ibm_cloud_pak 下找到规范文件 manifest.yaml。
 
@@ -195,7 +195,7 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 
 完成配置参数并单击**安装**按钮后，单击**查看 Helm 发布**按钮可查看部署。如果部署成功，您应该会在“部署”表中看到 `DESIRED`、`CURRENT`、`UP TO DATE` 和 `AVAILABLE` 字段中的值为 1。您可能需要单击“刷新”并等待该表更新。您还可以通过单击 ICP 控制台左上角的**菜单**图标来找到“部署”表。在菜单列表中，单击**工作负载**，然后单击 **Helm 发布**。
 
-如果向下滚动到`注释`部分，可以找到将用于[操作 CA](CA_operate.html#ca-operate) 的重要信息。
+如果向下滚动到`注释`部分，可以找到将用于[操作 CA](/docs/services/blockchain/CA_operate.html#ca-operate) 的重要信息。
 
 在 ICP 中安装 {{site.data.keyword.blockchainfull_notm}} Platform CA 后，将使用缺省环境变量设置来创建配置映射。然后，可以更改或添加 CA 服务器的环境变量以配置其行为。有关 CA 服务器配置参数的更多信息，请参阅 [Fabric CA Server 文档 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Fabric CA Server")。
 
@@ -209,4 +209,4 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 ## 操作 CA
 {: #operate-ca}
 
-CA 将是您组织的信任根。您需要使用 CA 来为其他组件生成证书。因此，在部署排序节点或同级之前，必须[设置 CA 并完成若干操作步骤](CA_operate.html)。
+CA 将是您组织的信任根。您需要使用 CA 来为其他组件生成证书。因此，在部署排序节点或同级之前，必须[设置 CA 并完成若干操作步骤](/docs/services/blockchain/CA_operate.html)。

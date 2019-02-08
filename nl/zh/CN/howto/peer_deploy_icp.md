@@ -18,10 +18,10 @@ lastupdated: "2018-12-07"
 
 ***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-以下指示信息描述了如何在 {{site.data.keyword.cloud_notm}} Private (ICP) 上部署 {{site.data.keyword.blockchainfull}} Platform 同级。通过这些指示信息，您可以连接到 ICP 上的 {{site.data.keyword.blockchainfull_notm}} Platform。如果要将同级连接到 {{site.data.keyword.cloud_notm}} 上的入门套餐或企业套餐网络，请参阅[部署同级以连接到入门套餐或企业套餐](peer_deploy_ibp.html)。
+以下指示信息描述了如何在 {{site.data.keyword.cloud_notm}} Private (ICP) 上部署 {{site.data.keyword.blockchainfull}} Platform 同级。通过这些指示信息，您可以连接到 ICP 上的 {{site.data.keyword.blockchainfull_notm}} Platform。如果要将同级连接到 {{site.data.keyword.cloud_notm}} 上的入门套餐或企业套餐网络，请参阅[部署同级以连接到入门套餐或企业套餐](/docs/services/blockchain/peer_deploy_ibp.html)。
 {:shortdesc}
 
-部署同级之前，请查看[注意事项和限制](../ibp-for-icp-about.html#ibp-icp-considerations)。
+部署同级之前，请查看[注意事项和限制](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)。
 
 ## 需要的资源
 {: #peer-resources-required}
@@ -51,11 +51,11 @@ lastupdated: "2018-12-07"
 ## 部署同级的先决条件
 {: #prerequisites-peer-icp}
 
-1. 必须先[安装 ICP](../ICP_setup.html) 并[安装 {{site.data.keyword.blockchainfull_notm}} Platform Helm 图表](helm_install_icp.html)，然后才能在 ICP 上安装同级。
+1. 必须先[安装 ICP](/docs/services/blockchain/ICP_setup.html) 并[安装 {{site.data.keyword.blockchainfull_notm}} Platform Helm 图表](helm_install_icp.html)，然后才能在 ICP 上安装同级。
 
 2. 如果使用 Community Edition 并且希望在没有因特网连接的 ICP 集群上运行此 Helm 图表，那么需要在连接因特网的机器上创建归档，然后才能在 ICP 集群上安装归档。有关更多信息，请参阅[向没有因特网连接的集群中添加精选应用程序 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "向没有因特网连接的集群中添加精选应用程序"){:new_window}。请注意，您可以在 Helm 图表中的 `ibm-blockchain-platform-dev/ibm_cloud_pak` 下找到规范文件 `manifest.yaml`。
 
-3. 必须首先在 ICP 上[部署 CA](CA_deploy_icp.html)。您需要使用 CA 来创建[同级配置文件，并将其作为 Kubernetes 私钥存储在 ICP 中](#peer-config-file)。
+3. 必须首先在 ICP 上[部署 CA](/docs/services/blockchain/CA_deploy_icp.html)。您需要使用 CA 来创建[同级配置文件，并将其作为 Kubernetes 私钥存储在 ICP 中](/docs/services/blockchain/#peer-config-file)。
 
 4. 在 ICP 控制台中检索 CA 的集群代理 IP 地址的值。**注：**您需要是[集群管理员 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "集群管理员角色和操作") 才能访问代理 IP。登录到 ICP 集群。在左侧导航面板中，单击**平台**，然后单击**节点**以查看在集群中定义的节点。单击具有角色`代理`的节点，然后从表中复制`主机 IP` 的值。**重要信息：**请保存此值，配置 Helm 图表的`代理 IP` 字段时会使用此值。
 
@@ -170,10 +170,10 @@ WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
 |`同级映像存储库`|同级 Helm 图表的位置。此字段会自动填充为安装的路径。|ibmcom/ibp-fabric-peer|是|
 |`同级 Docker 映像标记`|与同级映像关联的标记的值。|1.2.1，自动填充为正确的值。|是|
 |`同级配置`|可以通过在此字段中粘贴您自己的 `core.yaml` 配置文件来定制同级配置。要查看样本 `core.yaml` 文件，请参阅 [`core.yaml` 样本配置 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml)（**仅限高级用户**）。|无|否|
-|`同级配置私钥（必需）`|在 ICP 中创建的[同级配置私钥](#peer-config-secret)的名称。|无|是|
+|`同级配置私钥（必需）`|在 ICP 中创建的[同级配置私钥](/docs/services/blockchain/#peer-config-secret)的名称。|无|是|
 |`组织 MSP（必需）`|可以创建新的组织 MSPID 值，例如“org1”，也可以指定同级将属于的现有组织 MSP。如果已部署排序节点组织，请确保任何同级 MSPID 都与排序节点 MSPID 不同。另外，请记下此值，因为稍后需要将其用于 `CORE_PEER_LOCALMSPID` 和 `configtx.yaml`。|无|是|
 |`同级服务类型`|用于指定是否应该在同级上[公开外部端口 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types)。选择 NodePort 以向外部公开端口（建议），选择 ClusterIP 以不公开端口。此发行版中不支持 LoadBalancer 和 ExternalName。|NodePort|是|
-|`状态数据库`|用于存储通道分类帐的[状态数据库](../glossary.html#state-database)。同级需要使用与[区块链网络](../v10_dashboard.html#network-preferences)相同的数据库。|无|是|
+|`状态数据库`|用于存储通道分类帐的[状态数据库](/docs/services/blockchain/glossary.html#state-database)。同级需要使用与[区块链网络](/docs/services/blockchain/v10_dashboard.html#network-preferences)相同的数据库。|无|是|
 |`CouchDB 映像存储库`|仅当选择了 CouchDB 作为分类帐数据库时才适用。此字段会自动填充为安装的路径。如果您使用的是 Community Edition，但无法访问因特网，那么此值应该与 Fabric CouchDB 映像的下载目录相匹配。|ibmcom/ibp-fabric-couchdb|是|
 |`CouchDB Docker 映像标记`|仅当选择了 CouchDB 作为分类帐数据库时才适用。与 CouchDB 映像关联的标记的值。|自动填充为正确的值。|是|
 |`同级数据持久性已启用`|启用在集群重新启动或发生故障后持久存储数据的功能。有关更多信息，请参阅 [Kubernetes 中的存储器 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://kubernetes.io/docs/concepts/storage/ "卷")。*如果未选中此项，那么在故障转移或 pod 重新启动时将丢失所有数据。*|已选中|否|
@@ -252,13 +252,13 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 
 完成配置参数并单击**安装**按钮后，单击**查看 Helm 发布**按钮可查看部署。如果部署成功，您应该会在“部署”表中看到 `DESIRED`、`CURRENT`、`UP TO DATE` 和 `AVAILABLE` 字段中的值为 1。您可能需要单击“刷新”并等待该表更新。您还可以通过单击 ICP 控制台左上角的**菜单**图标来找到“部署”表。在菜单列表中，单击**工作负载**，然后单击 **Helm 发布**。
 
-如果向下滚动到`注释`部分，可看到在[操作同级](peer_operate_icp.html)时将使用的重要信息。
+如果向下滚动到`注释`部分，可看到在[操作同级](/docs/services/blockchain/peer_operate_icp.html)时将使用的重要信息。
 
 ## 查看同级日志
 {: #peer-deploy-view-logs}
 
-使用 [kubectl CLI 命令](peer_operate_icp.html#peer-kubectl-configure)或通过 [Kibana ![外部链接图标](../images/external_link.svg "外部链接图标")](https://www.elastic.co/products/kibana "您使用 Elasticsearch 的窗口") 可以查看同级日志。有关更多信息，请参阅[有关访问日志的指示信息](peer_operate_icp.html#peer-icp-view-logs)。
+使用 [kubectl CLI 命令](/docs/services/blockchain/peer_operate_icp.html#peer-kubectl-configure)或通过 [Kibana ![外部链接图标](../images/external_link.svg "外部链接图标")](https://www.elastic.co/products/kibana "您使用 Elasticsearch 的窗口") 可以查看同级日志。有关更多信息，请参阅[有关访问日志的指示信息](/docs/services/blockchain/peer_operate_icp.html#peer-icp-view-logs)。
 
 ## 下一步做什么
 
-部署同级后，需要完成若干操作步骤，然后才能将交易提交到区块链网络的分布式分类账，并读取该分布式分类账。有关更多信息，请参阅[在使用多云网络的环境中操作同级](peer_operate_icp.html)。
+部署同级后，需要完成若干操作步骤，然后才能将交易提交到区块链网络的分布式分类账，并读取该分布式分类账。有关更多信息，请参阅[在使用多云网络的环境中操作同级](/docs/services/blockchain/peer_operate_icp.html)。

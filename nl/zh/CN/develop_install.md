@@ -42,7 +42,7 @@ lastupdated: "2018-12-07"
 
 ## 步骤 1：安装命令行工具
 
-命令行工具包括 **composer-cli**（主 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 命令行模块）、**generator-hyperledger-composer**、**composer-rest-server** 和 **Yeoman**，这些模块用于生成业务网络、定制的 REST 服务器和 Angular 应用程序。您安装的版本取决于您的入门套餐或企业套餐运行的 Hyperledger Fabric 版本。可以通过打开“网络监视器”中的[“网络首选项”窗口](../v10_dashboard.html#network-preferences)来找到 Fabric 版本。
+命令行工具包括 **composer-cli**（主 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 命令行模块）、**generator-hyperledger-composer**、**composer-rest-server** 和 **Yeoman**，这些模块用于生成业务网络、定制的 REST 服务器和 Angular 应用程序。您安装的版本取决于您的入门套餐或企业套餐运行的 Hyperledger Fabric 版本。可以通过打开“网络监视器”中的[“网络首选项”窗口](/docs/services/blockchain/v10_dashboard.html#network-preferences)来找到 Fabric 版本。
 
 1. 要用于运行 Hyperledger Fabric V1.2.1 的入门套餐新实例，请使用以下命令来安装 **composer-cli**：
 

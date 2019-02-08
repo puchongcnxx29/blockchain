@@ -17,7 +17,7 @@ lastupdated: "2018-11-27"
 
 ***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-**注：**{{site.data.keyword.blockchainfull}} Platform Remote Peer on ICP (Beta) 程序已终结。如果您仍希望在 ICP 环境中运行同级，请改为使用 **{{site.data.keyword.blockchainfull_notm}} Platform for ICP** 产品。有关更多信息，请参阅[关于 ICP 上的同级](../ibp-for-icp-about.html#ibp-icp-peer)。
+**注：**{{site.data.keyword.blockchainfull}} Platform Remote Peer on ICP (Beta) 程序已终结。如果您仍希望在 ICP 环境中运行同级，请改为使用 **{{site.data.keyword.blockchainfull_notm}} Platform for ICP** 产品。有关更多信息，请参阅[关于 ICP 上的同级](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-peer)。
 
 在将 {{site.data.keyword.blockchainfull_notm}} Platform 同级连接到 {{site.data.keyword.cloud_notm}} 中的现有区块链网络后，可以在 AWS 云中运行该同级。在 {{site.data.keyword.cloud_notm}} 之外运行同级不但让扩展或加入区块链网络变得更加灵活，而且可利用 {{site.data.keyword.cloud_notm}} 中的现有网络。AWS 云中的同级利用 Platform 上的认证中心 (CA) 和排序服务，但是允许您将同级与 {{site.data.keyword.cloud_notm}} 之外的其他应用程序并置在一起。
 {:shortdesc}
@@ -30,7 +30,7 @@ lastupdated: "2018-11-27"
 - 在其他云环境中运行的同级在 {{site.data.keyword.cloud_notm}} 上的区块链网络的“网络监视器”中不可见。
 - 无法使用“网络监视器 UI”中的 Swagger UI 寻址到在 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 上运行的同级。
 - 您负责管理 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级节点的运行状况监视、安全性、日志记录和资源使用情况。
-- 只能将 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级连接到 Fabric V1.1 或 V1.2.1 级别的区块链网络。可以通过打开“网络监视器”中的[“网络首选项”窗口](../v10_dashboard.html#network-preferences)来找到 Fabric 版本。
+- 只能将 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级连接到 Fabric V1.1 或 V1.2.1 级别的区块链网络。可以通过打开“网络监视器”中的[“网络首选项”窗口](/docs/services/blockchain/v10_dashboard.html#network-preferences)来找到 Fabric 版本。
 - {{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级的数据库类型必须匹配区块链网络的数据库类型，即 LevelDB 或 CouchDB。
 - CouchDB Fauxton 接口在 AWS 同级上不可用。
 - 目前不支持将 [Gossip](../glossary.html#gossip) 用于 AWS 同级。这意味着也不支持依赖于 Gossip 的功能，例如[专用数据 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "private data") 和[服务发现 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "service discovery")。
@@ -38,14 +38,14 @@ lastupdated: "2018-11-27"
 ## 先决条件
 {: #remote-peer-prereq}
 
-要使用 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级，您必须具有属于 {{site.data.keyword.blockchainfull_notm}} Platform 上的入门套餐或企业套餐网络的组织。{{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级利用 {{site.data.keyword.blockchainfull_notm}} Platform 网络的 API 端点、Hyperledger Fabric CA 和排序服务进行操作。如果您不是任何区块链网络的成员，那么需要创建或加入一个网络。有关更多信息，请参阅[创建网络](../get_start.html#creating-a-network)或[加入网络](../get_start.html#joining-a-network)。
+要使用 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级，您必须具有属于 {{site.data.keyword.blockchainfull_notm}} Platform 上的入门套餐或企业套餐网络的组织。{{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级利用 {{site.data.keyword.blockchainfull_notm}} Platform 网络的 API 端点、Hyperledger Fabric CA 和排序服务进行操作。如果您不是任何区块链网络的成员，那么需要创建或加入一个网络。有关更多信息，请参阅[创建网络](/docs/services/blockchain/get_start.html#creating-a-network)或[加入网络](/docs/services/blockchain/get_start.html#joining-a-network)。
 
 ## 许可和定价
 {: #remote-peer-license-pricing}
 
 目前，{{site.data.keyword.blockchainfull_notm}} Platform for AWS 作为 Community Edition 免费提供；未来，IBP for AWS 可能会更改为自带许可证 (BYOL) 模型，该模型将要求向 IBM 购买许可证。
 
-**注：**要操作 AWS 同级，您必须具有属于 {{site.data.keyword.blockchainfull_notm}} Platform 上的入门套餐或企业套餐网络的组织。这意味着您或网络中的其他成员必须为组织支付 {{site.data.keyword.blockchainfull_notm}} [成员资格费用](pricing.html#key-elements-of-pricing)。有关支付费用的更多信息，请参阅[付费方式](paying_mode.html)。
+**注：**要操作 AWS 同级，您必须具有属于 {{site.data.keyword.blockchainfull_notm}} Platform 上的入门套餐或企业套餐网络的组织。这意味着您或网络中的其他成员必须为组织支付 {{site.data.keyword.blockchainfull_notm}} [成员资格费用](/docs/services/blockchain/pricing.html#key-elements-of-pricing)。有关支付费用的更多信息，请参阅[付费方式](/docs/services/blockchain/paying_mode.html)。
 
 
 ## 部署 AWS 同级
@@ -53,7 +53,7 @@ lastupdated: "2018-11-27"
 
 使用 AWS 的[快速入门模板 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "快速入门模板") 可轻松部署 {{site.data.keyword.blockchainfull_notm}} Platform for AWS。有关更多信息，请参阅 [{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Deployment Guide ![外部链接图标](../images/external_link.svg "外部链接图标")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "IBM Blockchain Platform for AWS Quick Start Reference Deployment")。
 
-有关如何部署 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 的指示信息，请参阅[在 Amazon Web Services 中部署同级](remote_peer_aws.html "在 Amazon Web Services 中部署同级")。
+有关如何部署 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 的指示信息，请参阅[在 Amazon Web Services 中部署同级](/docs/services/blockchain/remote_peer_aws.html "在 Amazon Web Services 中部署同级")。
 
 下图描述了部署 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级的过程。
 
@@ -78,18 +78,18 @@ lastupdated: "2018-11-27"
 ## 操作 AWS 同级
 {: #operate-remote-peer}
 
-部署 AWS 同级后，需要完成若干操作步骤，然后同级才能向网络提交事务。这些操作步骤包括将组织添加到通道，将同级加入通道，在同级上安装链代码，在通道上实例化链代码，以及将应用程序连接到同级。有关更多信息，请参阅[在 Amazon Web Services 中操作同级](remote_peer_operate_aws.html#remote-peer-operate-aws)。
+部署 AWS 同级后，需要完成若干操作步骤，然后同级才能向网络提交事务。这些操作步骤包括将组织添加到通道，将同级加入通道，在同级上安装链代码，在通道上实例化链代码，以及将应用程序连接到同级。有关更多信息，请参阅[在 Amazon Web Services 中操作同级](/docs/services/blockchain/remote_peer_operate_aws.html#remote-peer-operate-aws)。
 
 ## 数据存储位置
 {: #data-residency}
 
-由于区块链网络并不关注所处理的数据类型，因此有时必须采取额外的步骤来确保某些类型数据的安全。数据存储位置的最常见需求与特定国家或地区的法律相关，这要求在 IT 系统中处理和存储的所有数据必须保留在特定国家或地区境内。与此类似，受到高度监管的行业（例如，政府、医疗保健和金融服务）中的某些公司要求必须将数据完全存储在其防火墙之后。因此，为实现数据存储位置，区块链网络的所有组件都必须属于相同[通道](../glossary.html#channel)并且位于单个国家或地区境内。
+由于区块链网络并不关注所处理的数据类型，因此有时必须采取额外的步骤来确保某些类型数据的安全。数据存储位置的最常见需求与特定国家或地区的法律相关，这要求在 IT 系统中处理和存储的所有数据必须保留在特定国家或地区境内。与此类似，受到高度监管的行业（例如，政府、医疗保健和金融服务）中的某些公司要求必须将数据完全存储在其防火墙之后。因此，为实现数据存储位置，区块链网络的所有组件都必须属于相同[通道](/docs/services/blockchain/glossary.html#channel)并且位于单个国家或地区境内。
 
 为满足数据存储位置需求，重要的是了解作为 {{site.data.keyword.blockchainfull_notm}} Platform 基础的 Hyperledger Fabric 体系结构。该体系结构主要围绕着三个关键组件：认证中心 (CA)、排序节点和同级。同级以区块形式接收来自排序服务的已排序状态更新并维护状态和分类帐。因此，同级和排序节点具有直接关系。分类帐包含所有事务日志所包含的所有密钥和数据的最新值。
 
-此外，客户机应用程序使用 [Fabric SDK](../v10_application.html#using-the-fabric-sdks) 以将事务发送给同级和排序服务。这些事务包含[读/写集语义 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "读/写集语义") 数据，其中包含有关分类帐的密钥/值对。
+此外，客户机应用程序使用 [Fabric SDK](./docs/services/blockchain/v10_application.html#using-the-fabric-sdks) 以将事务发送给同级和排序服务。这些事务包含[读/写集语义 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "读/写集语义") 数据，其中包含有关分类帐的密钥/值对。
 
-如果国家或地区内数据存储位置是您企业的需求，那么排序节点、同级和客户机应用程序必须位于同一国家或地区内。在 {{site.data.keyword.cloud_notm}} 中创建 {{site.data.keyword.blockchainfull_notm}} Platform 网络时，您可以选择网络的位置。<!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->有关区域和位置的更多信息，请参阅 [{{site.data.keyword.blockchainfull_notm}} Platform 区域和位置](../reference/ibp_regions.html)。要在其中一个国家或地区中实现数据存储位置，同级应位于与 {{site.data.keyword.blockchainfull_notm}} Platform 网络位置相同的国家或地区中。
+如果国家或地区内数据存储位置是您企业的需求，那么排序节点、同级和客户机应用程序必须位于同一国家或地区内。在 {{site.data.keyword.cloud_notm}} 中创建 {{site.data.keyword.blockchainfull_notm}} Platform 网络时，您可以选择网络的位置。<!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->有关区域和位置的更多信息，请参阅 [{{site.data.keyword.blockchainfull_notm}} Platform 区域和位置](/docs/services/blockchain/{site.data.keyword.blockchainfull_notm}} Platform 网络位置相同的国家或地区中。
 
 ### 数据存储位置的用例
 
@@ -125,7 +125,7 @@ lastupdated: "2018-11-27"
 ## 获取支持
 {: #remote-peer-support}
 
-IBM Blockchain Platform 不提供对此产品的支持。如果遇到与同级相关的问题，您可以使用免费区块链开发人员资源和支持论坛，并从 {{site.data.keyword.IBM_notm}} 和 Fabric 社区获取帮助。有关更多信息，请参阅[区块链资源和支持论坛](../ibmblockchain_support.html#resources)。您还可以在“网络监视器”的**获取帮助**屏幕上查看支持资源。
+IBM Blockchain Platform 不提供对此产品的支持。如果遇到与同级相关的问题，您可以使用免费区块链开发人员资源和支持论坛，并从 {{site.data.keyword.IBM_notm}} 和 Fabric 社区获取帮助。有关更多信息，请参阅[区块链资源和支持论坛](/docs/services/blockchain/ibmblockchain_support.html#resources)。您还可以在“网络监视器”的**获取帮助**屏幕上查看支持资源。
 
 - 对于与 AWS 相关的问题，您可以使用[社区支持论坛 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://forums.aws.amazon.com/index.jspa "AWS 社区支持论坛") 和 [AWS 高端支持 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://aws.amazon.com/premiumsupport/ "AWS 高端支持")。
 

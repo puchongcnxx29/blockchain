@@ -41,29 +41,29 @@ lastupdated: "2018-12-07"
   - **亲缘关系：**这将是身份所属的组织（如 `org1`）内的亲缘关系。
   - **最大注册数：**您可以使用此字段来限制可使用此身份注册或生成证书的次数。如果保留此字段为空，那么值缺省为不限制注册数。
 
-如果部署[远程同级](howto/remote_peer.html)，那么可使用此面板来注册新的同级身份。或者，如果开发可向网络提交事务的应用程序，那么可注册客户机。访问[开发应用程序教程](v10_application.html)以了解有关将 Fabric SDK 用于该平台的更多信息。
+如果部署[远程同级](/docs/services/blockchain/howto/remote_peer.html)，那么可使用此面板来注册新的同级身份。或者，如果开发可向网络提交事务的应用程序，那么可注册客户机。访问[开发应用程序教程](v10_application.html)以了解有关将 Fabric SDK 用于该平台的更多信息。
 
 ### 生成客户机端证书（注册）
 {: #enrollment}
 您需要进行认证才可以将第三方客户机连接到 {{site.data.keyword.blockchainfull_notm}} Platform。生成必需的证书、专用密钥和公用证书（也称为注册证书或 signCert）的过程被称为注册。客户机与网络通信时，需要这些证书。向网络提交调用的任何客户机都需要使用专用密钥为有效内容签名并附加正确签名的 x509 证书。
 
-访问[开发应用程序教程](v10_application.html)以了解如何[使用光纤网节点 SDK 进行注册](v10_application.html#enroll-app)。使用 SDK 进行注册将生成 3 个单独的项：专用密钥、signCert、用于创建 signCert 的公用密钥。
+访问[开发应用程序教程](v10_application.html)以了解如何[使用光纤网节点 SDK 进行注册](/docs/services/blockchain/v10_application.html#enroll-app)。使用 SDK 进行注册将生成 3 个单独的项：专用密钥、signCert、用于创建 signCert 的公用密钥。
 
 您还可以使用 [Fabric CA 客户机](#enroll-register-caclient)从命令行生成证书。Fabric CA 客户机返回“成员资格服务提供者”(MSP) 文件夹中更完整的证书集合。此文件夹包含 CA 签署的根证书、中间证书、专用密钥以及 signCert。有关 MSP 以及 MSP 文件夹包含的内容的更多信息，请参阅[成员资格服务提供者](#msp)。
 
 仅对已向认证中心注册的身份，您可以使用其名称和密钥生成证书。缺省情况下，**管理员**身份已向 CA 注册，并且列示在“认证中心”屏幕上。可以通过单击“网络监视器”中“概述”屏幕上的**连接概要文件**按钮来找到连接概要文件中管理员身份的密钥。您也可以通过单击“网络监视器”的“认证中心”屏幕上的[添加用户](#ca-panel)按钮来注册新身份，然后使用新身份的名称和密钥生成证书。
 
-**注：**如果遵循指示信息使用上述 Fabric Node SDK 或 Fabric CA 客户机来生成证书，请首先使用管理员身份进行注册。然后使用这些证书来向 CA 注册新客户机身份。如果使用[开发应用程序](v10_application.html)中的 SDK 指示信息，那么将使用客户机身份再次注册。然后，您将使用那些证书将事务提交到网络。<!---You can an illustration of how the developing applications tutorial interacts with your organization CA in the diagram below.--->
+**注：**如果遵循指示信息使用上述 Fabric Node SDK 或 Fabric CA 客户机来生成证书，请首先使用管理员身份进行注册。然后使用这些证书来向 CA 注册新客户机身份。如果使用[开发应用程序](/docs/services/blockchain/v10_application.html)中的 SDK 指示信息，那么将使用客户机身份再次注册。然后，您将使用那些证书将事务提交到网络。<!---You can an illustration of how the developing applications tutorial interacts with your organization CA in the diagram below.--->
 
 ### 使用网络监视器生成证书
 {: #certs-panel}
 
-您可以通过“网络监视器”使用管理员身份生成证书，然后将这些证书直接传递到 SDK。单击您的管理员身份旁边的**生成证书**按钮，以从您的 CA 获取新的 signCert 和专用密钥。**证书**字段包含 signCert，刚好位于**专用密钥**上方。您可以单击每个字段末尾的复制图标以复制值。然后，您需要将这些证书保存在可以将其导入应用程序的位置。有关更多信息，请参阅[开发应用程序教程](v10_application.html#enroll-panel)。**请注意**，{{site.data.keyword.blockchainfull_notm}} Platform 不存储这些证书。您需要安全地保存并存储它们。
+您可以通过“网络监视器”使用管理员身份生成证书，然后将这些证书直接传递到 SDK。单击您的管理员身份旁边的**生成证书**按钮，以从您的 CA 获取新的 signCert 和专用密钥。**证书**字段包含 signCert，刚好位于**专用密钥**上方。您可以单击每个字段末尾的复制图标以复制值。然后，您需要将这些证书保存在可以将其导入应用程序的位置。有关更多信息，请参阅[开发应用程序教程](/docs/services/blockchain/v10_application.html#enroll-panel)。**请注意**，{{site.data.keyword.blockchainfull_notm}} Platform 不存储这些证书。您需要安全地保存并存储它们。
 
 ### 将签名证书上载到 {{site.data.keyword.blockchainfull_notm}} Platform
 {: #upload-certs}
 
-应用程序只需要一个有效 signCert 就可以将事务提交到网络。但是，例如，如果客户机想要通过在同级上安装链代码或者将同级加入到通道来运行网络，那么需要将客户机识别为管理员。每个组件识别管理员拥有的一组 signCert。如果您需要从客户机运行网络，那么需要上传 signCert 并将其添加到管理员证书列表。您可以通过在“网络监视器”的[“概述”面板](v10_dashboard.html#members)的**证书**选项卡中上传 signCert，在平台上执行此操作。通过点击上传后出现的重新启动按钮，将此证书同步到同级。之后，您的客户机将能够操作网络。您还可以使用 [Swagger API](howto/swagger_apis.html) 来上传您的 signCert，以添加管理员证书。
+应用程序只需要一个有效 signCert 就可以将事务提交到网络。但是，例如，如果客户机想要通过在同级上安装链代码或者将同级加入到通道来运行网络，那么需要将客户机识别为管理员。每个组件识别管理员拥有的一组 signCert。如果您需要从客户机运行网络，那么需要上传 signCert 并将其添加到管理员证书列表。您可以通过在“网络监视器”的[“概述”面板](/docs/services/blockchain/v10_dashboard.html#members)的**证书**选项卡中上传 signCert，在平台上执行此操作。通过点击上传后出现的重新启动按钮，将此证书同步到同级。之后，您的客户机将能够操作网络。您还可以使用 [Swagger API](/docs/services/blockchain/howto/swagger_apis.html) 来上传您的 signCert，以添加管理员证书。
 
 通道还从允许操作通道（包括能够在通道上实例化链代码）的身份中识别一组管理员证书。如果您将新的 signCert 用于远程客户机，您必须将证书同步到通道才可以实例化链代码。在“网络监视器”中执行以下步骤以将证书添加到通道：
 
@@ -78,7 +78,7 @@ lastupdated: "2018-12-07"
 
 [传输层安全性 ![外部链接图标](images/external_link.svg "外部链接图标")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm) (TLS) 嵌入在 Hyperledger Fabric 的信任模型中。{{site.data.keyword.blockchainfull_notm}} Platform 上的所有组件都使用 TLS 进行认证并相互通信。因此，需要将平台发出的 TLS 证书连接到调用以验证和加密通信。本教程中讨论的其他证书可以为管理网络以及进行网络事务处理提供保护。TLS 证书用于保护对网络的调用。
 
-平台公开发布 TLS 证书，这些证书对于所有网络组件都是相同的。根据成员资格套餐和云位置，您可以使用以下链接下载 TLS 证书。您还可以在[凭证概要文件](v10_dashboard.html#connection-profile "凭证概要文件")中查找 TLS 证书。此证书可位于任意位置，只要可从应用程序或命令行进行引用即可。
+平台公开发布 TLS 证书，这些证书对于所有网络组件都是相同的。根据成员资格套餐和云位置，您可以使用以下链接下载 TLS 证书。您还可以在[凭证概要文件](/docs/services/blockchain/v10_dashboard.html#connection-profile "凭证概要文件")中查找 TLS 证书。此证书可位于任意位置，只要可从应用程序或命令行进行引用即可。
 
 - 入门套餐的根 TLS 证书
   - 美国：[us01.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert")；[us02.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
@@ -86,7 +86,7 @@ lastupdated: "2018-12-07"
   - 悉尼：[aus01.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--；[aus02.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
 - [企业套餐的根 TLS 证书 ![外部链接图标](images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
-所有 {{site.data.keyword.blockchainfull_notm}} Platform 网络都使用服务器端 TLS，网络需要在其中认证客户机。企业套餐网络还可支持相互 TLS，其中客户机和服务器相互认证以进一步保护您的应用程序。客户机端 TLS 证书（用于相互 TLS）由客户机 CA 颁发并且对于网络是唯一的。如果使用企业套餐网络，那么建议启用相互 TLS。有关相互 TLS 的更多信息，请参阅这些[指示信息](v10_dashboard.html#mutual-tls "相互 TLS 指示信息")。
+所有 {{site.data.keyword.blockchainfull_notm}} Platform 网络都使用服务器端 TLS，网络需要在其中认证客户机。企业套餐网络还可支持相互 TLS，其中客户机和服务器相互认证以进一步保护您的应用程序。客户机端 TLS 证书（用于相互 TLS）由客户机 CA 颁发并且对于网络是唯一的。如果使用企业套餐网络，那么建议启用相互 TLS。有关相互 TLS 的更多信息，请参阅这些[指示信息](/docs/services/blockchain/v10_dashboard.html#mutual-tls "相互 TLS 指示信息")。
 
 ### 从 TLS 证书中检索域名
 
@@ -142,7 +142,7 @@ Fabric 中的 MSP 文件夹具有已定义的结构。在使用 Fabric CA 客户
 
 您还可以使用“网络监视器”和 Swagger API 构建 Fabric CA 客户机可引用的 MSP 文件夹。
 
-- **cacerts** 和 **intermediatecerts**：您可以通过向 MSP API 发出 Get 请求，使用 [Swagger API](howto/swagger_apis.html) 访存这些证书。
+- **cacerts** 和 **intermediatecerts**：您可以通过向 MSP API 发出 Get 请求，使用 [Swagger API](/docs/services/blockchain/howto/swagger_apis.html) 访存这些证书。
 - **signcerts** 和 **keystore**：您可以通过单击“认证中心”面板上的**生成证书**按钮，生成这些证书。这样将打开一个列出两个证书的弹出窗口。复制并存储 signcerts 中的**证书**和 keystore 中的**专用密钥**。请将这些证书保存在安全位置，因为这些证书未存储在平台上。
 
 多个 Fabric 组件在其 MSP 文件夹中包含其他信息。例如，如果运行远程同级，那么可能会看到以下文件夹：
@@ -200,13 +200,13 @@ Fabric 中的 MSP 文件夹具有已定义的结构。在使用 Fabric CA 客户
   ./fabric-ca-client enroll -u https://admin:dda0c53f7b@n7413e3b503174a58b112d30f3af55016-org1-ca.us3.blockchain.ibm.com:31011 --caname org1CA --tls.certfiles $HOME/tls/us2.blockchain.ibm.com.cert
   ```
 
-6. 在 `$FABRIC_CA_CLIENT_HOME/msp/signcerts/cert.pem` 中查找您的管理证书。然后，您可以从“网络监视器”将管理证书上传到区块链网络。有关添加证书的更多信息，请参阅“网络监视器”中[“成员”面板的“证书”选项卡](v10_dashboard.html#members)。
+6. 在 `$FABRIC_CA_CLIENT_HOME/msp/signcerts/cert.pem` 中查找您的管理证书。然后，您可以从“网络监视器”将管理证书上传到区块链网络。有关添加证书的更多信息，请参阅“网络监视器”中[“成员”面板的“证书”选项卡](/docs/services/blockchain/v10_dashboard.html#members)。
 
   您还可以在以下目录中找到 CA 根证书和管理专用密钥：
   * CA 根证书：`$FABRIC_CA_CLIENT_HOME/msp/cacerts/--<ca_name>.pem`
   * 管理专用密钥：`$FABRIC_CA_CLIENT_HOME/msp/keystore/<>_sk file`
 
-有关使用 Fabric CA 客户机进行注册和使用生成的证书来操作网络组件的示例，请参阅[操作远程同级](howto/peer_operate_icp.html#peer-cli-operate)的指示信息。
+有关使用 Fabric CA 客户机进行注册和使用生成的证书来操作网络组件的示例，请参阅[操作远程同级](/docs/services/blockchain/howto/peer_operate_icp.html#peer-cli-operate)的指示信息。
 
 ### 使用 Fabric CA 客户机进行登记
 {: #register-app-caclient}

@@ -27,14 +27,14 @@ lastupdated: "2018-12-07"
 
 ## 开始之前
 
-确保您已阅读[关于入门套餐](./starter_plan.html)和[入门套餐入门](./get_start_starter_plan.html)。此外，请确保您已遵循[管理入门套餐网络](./get_start_starter_plan.html)中的指示信息，安装了 [{{site.data.keyword.blockchainfull_notm}} Platform 开发者环境](./develop_install.html)并创建了 {{site.data.keyword.blockchainfull_notm}} Platform 入门套餐实例。
+确保您已阅读[关于入门套餐](/docs/services/blockchain/starter_plan.html)和[入门套餐入门](/docs/services/blockchain/get_start_starter_plan.html)。此外，请确保您已遵循[管理入门套餐网络](/docs/services/blockchain/get_start_starter_plan.html)中的指示信息，安装了 [{{site.data.keyword.blockchainfull_notm}} Platform 开发者环境](/docs/services/blockchain/develop_install.html)并创建了 {{site.data.keyword.blockchainfull_notm}} Platform 入门套餐实例。
 
 确保您有 Node V8.9 或更高版本、npm V5.x 以及 Hyperledger Composer：
 
 - 如果您的网络位于 Fabric V1.2 上，请使用 Hyperledger Composer V0.20.x。
 - 如果您的网络位于 Fabric V1.1 上，请使用 Hyperledger Composer V0.19.x。  
 
-可以通过打开“网络监视器”中的[“网络首选项”窗口](../v10_dashboard.html#network-preferences)来找到 Fabric 版本。
+可以通过打开“网络监视器”中的[“网络首选项”窗口](/docs/services/blockchain//v10_dashboard.html#network-preferences)来找到 Fabric 版本。
 
 
 ## 步骤 1：检索管理私钥

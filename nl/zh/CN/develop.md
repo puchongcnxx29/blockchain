@@ -23,7 +23,7 @@ lastupdated: "2018-12-07"
 通过使用 {{site.data.keyword.blockchainfull}} Platform 开发区块链解决方案，可利用 Hyperledger Composer 开放式源代码开发工具集。Hyperledger Composer 使用定制建模语言，该语言与 JavaScript 事务处理和访问控制规则组合使用，可在将任何内容部署到真正的区块链网络_之前_，对区块链业务网络进行完全建模。
 {:shortdesc}
 
-**注**：入门套餐提供了您可以学习和试用的样本应用程序。在开发定制业务网络之前，可以先在入门套餐中运行样本应用程序。有关更多信息，请参阅[关于入门套餐](starter_plan.html)。
+**注**：入门套餐提供了您可以学习和试用的样本应用程序。在开发定制业务网络之前，可以先在入门套餐中运行样本应用程序。有关更多信息，请参阅[关于入门套餐](/docs/services/blockchain/starter_plan.html)。
 
 本教程将执行 {{site.data.keyword.blockchain}} 解决方案开发的整个过程，从业务网络创建和建模开始，一直到将其部署到正在运行的区块链网络。
 
@@ -39,7 +39,7 @@ lastupdated: "2018-12-07"
 
 ## 开始之前
 
-确保已安装 [{{site.data.keyword.blockchainfull_notm}}: Develop 开发工具](./develop_install.html)。
+确保已安装 [{{site.data.keyword.blockchainfull_notm}}: Develop 开发工具](/docs/services/blockchain/develop_install.html)。
 
 ## 步骤 1：创建业务网络结构
 
@@ -179,6 +179,6 @@ composer archive create -t dir -n .
 
 ## 步骤 4：部署业务网络并生成 REST 服务器
 
-使用[入门套餐](./develop_starter.html)或[企业套餐](./develop_enterprise.html)将业务网络部署到 {{site.data.keyword.blockchainfull_notm}} Platform。
+使用[入门套餐](./develop_starter.html)或[企业套餐](/docs/services/blockchain/develop_enterprise.html)将业务网络部署到 {{site.data.keyword.blockchainfull_notm}} Platform。
 
 将业务网络部署到 {{site.data.keyword.blockchainfull_notm}} Platform 后，可以生成定制的 REST 服务器。REST 服务器会检查业务网络的内容，并针对网络的资产、事务和参与者构建 RESTful API 调用。[Hyperledger Composer 文档](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api)中包含有关生成 REST 服务器的指示信息。

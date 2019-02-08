@@ -18,7 +18,7 @@ lastupdated: "2018-08-31"
 ***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform 公开了大量可用于在 {{site.data.keyword.cloud_notm}} 上创建或加入区块链网络的 REST API。您可以使用与网络相关联的 [Swagger UI](swagger_apis.html) 来试用这些 API。
+{{site.data.keyword.blockchainfull}} Platform 公开了大量可用于在 {{site.data.keyword.cloud_notm}} 上创建或加入区块链网络的 REST API。您可以使用与网络相关联的 [Swagger UI](/docs/services/blockchain/swagger_apis.html) 来试用这些 API。
 {:shortdesc}
 
 

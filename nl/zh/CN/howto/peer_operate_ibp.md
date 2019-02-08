@@ -36,10 +36,10 @@ lastupdated: "2018-12-07"
 Fabric SDK 是建议的路径，不过指示信息假定您熟悉 SDK 的操作。如果首选使用命令行，那么可以使用 Fabric 同级客户机。
 
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
-**注**：{{site.data.keyword.blockchainfull_notm}} Platform 同级无权访问在 {{site.data.keyword.blockchainfull_notm}} Platform 上托管的同级的完整功能，也无权获得完全支持。因此，无法使用“网络监视器”运行 ICP 上的同级。开始运行同级之前，请确保查看[注意事项和限制](../ibp-for-icp-about.html#ibp-icp-considerations)。
+**注**：{{site.data.keyword.blockchainfull_notm}} Platform 同级无权访问在 {{site.data.keyword.blockchainfull_notm}} Platform 上托管的同级的完整功能，也无权获得完全支持。因此，无法使用“网络监视器”运行 ICP 上的同级。开始运行同级之前，请确保查看[注意事项和限制](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)。
 
 ## 先决条件
 
@@ -171,13 +171,13 @@ npm install fabric-client@1.2
 
 同级将使用内部同级管理员的 signCert 进行部署。这允许您使用同级管理员的证书和 MSP 文件夹来操作同级。
 
-找到在[注册同级管理员](peer_deploy_ibp.html#enroll-admin)时创建的证书。如果使用的是示例命令，那么可以在 `$HOME/fabric-ca-client/peer-admin` 中找到同级管理员的 MSP 文件夹。
+找到在[注册同级管理员](/docs/services/blockchain/peer_deploy_ibp.html#enroll-admin)时创建的证书。如果使用的是示例命令，那么可以在 `$HOME/fabric-ca-client/peer-admin` 中找到同级管理员的 MSP 文件夹。
   - 可以使用 MSP 文件夹中的 signCert（公用密钥）和专用密钥通过 SDK 来构建同级管理员用户上下文。您可以在以下位置找到这些键：
     - signCert 可以在 **signcerts** 文件夹 `$HOME/fabric-ca-client/peer-admin/msp/signcerts` 中找到
     - 专用密钥可以在 **keystore:** 文件夹 `$HOME/fabric-ca-client/peer-admin/msp/keystore` 中找到
-    您可以在[开发应用程序教程的此部分](../v10_application.html#enroll-panel)中找到如何仅使用公用和专用密钥来构造用户上下文并运行 SDK 的示例。
+    您可以在[开发应用程序教程的此部分](/docs/services/blockchain/v10_application.html#enroll-panel)中找到如何仅使用公用和专用密钥来构造用户上下文并运行 SDK 的示例。
 
-您还可以使用 SDK 通过入门套餐或企业套餐上 CA 的端点信息以及[同级管理员用户名和密码](peer_deploy_ibp.html#register-admin)，生成同级管理员的 signCert 和专用密钥。
+您还可以使用 SDK 通过入门套餐或企业套餐上 CA 的端点信息以及[同级管理员用户名和密码](/docs/services/blockchain/peer_deploy_ibp.html#register-admin)，生成同级管理员的 signCert 和专用密钥。
 
 ### 将同级管理员的 signCert 上传到入门套餐或企业套餐
 {: #remote-peer-upload-sdk}
@@ -217,32 +217,32 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 
 您的组织需要成为通道的成员，然后才能将同级加入通道。
 
-  - 可以为同级启动新的通道。如果您是通道启动者，那么可以在[通道创建](create_channel.html#creating-a-channel)期间自动包含您的组织。
+  - 可以为同级启动新的通道。如果您是通道启动者，那么可以在[通道创建](/docs/services/blockchain/create_channel.html#creating-a-channel)期间自动包含您的组织。
 
-  - 区块链网络的其他成员也可以使用[通道更新](create_channel.html#updating-a-channel)将您的组织添加到现有通道。
+  - 区块链网络的其他成员也可以使用[通道更新](/docs/services/blockchain/create_channel.html#updating-a-channel)将您的组织添加到现有通道。
 
     将组织添加到通道后，需要将同级的 signCert 添加到该通道，以便其他成员可以在交易期间验证您的数字签名。在安装期间，同级会上传其 signCert，这意味着您只需要将该证书同步到通道即可。在“网络监视器”的“通道”屏幕中，找到组织加入的通道，然后从**操作**标题下的下拉列表中选择**同步证书**。此操作会同步通道上所有同级的证书。您可能需要等待几分钟，以便完成通道同步后，再发出 `join channel` 命令。
 
     **注：**仅当要添加到 ICP 并连接到入门套餐或企业套餐网络的同级与已使用“网络监视器”添加的同级属于同一组织时，才能在“网络监视器”的“通道”屏幕中查看正在添加到通道的新区块、正在实例化的链代码以及其他通道更新。这是因为“网络监视器”是在“通道”屏幕上收集同级的信息，因此无法查看 {{site.data.keyword.cloud_notm}} 外部的同级。如果没有任何同级在使用“专用数据”功能，那么“网络监视器”中针对组织中的不同同级的信息相同。
 
-在组织成为通道的成员后，请遵循指示信息使用 SDK [将同级加入通道](../v10_application.html#join-channel-sdk)。您需要提供排序服务的 URL 和通道名称。
+在组织成为通道的成员后，请遵循指示信息使用 SDK [将同级加入通道](/docs/services/blockchain/v10_application.html#join-channel-sdk)。您需要提供排序服务的 URL 和通道名称。
 
 ### 使用 SDK 在同级上安装链代码
 {: #peer-install-cc-sdk}
 
-使用以下指示信息通过 SDK 在同级上[安装链代码](../v10_application.html#install-cc-sdk)。
+使用以下指示信息通过 SDK 在同级上[安装链代码](/docs/services/blockchain/v10_application.html#install-cc-sdk)。
 
 ### 使用 SDK 在通道上实例化链代码
 {: #peer-instantiate-cc-sdk}
 
-只需要通道中的一个成员对链代码进行实例化或更新。因此，{{site.data.keyword.blockchainfull_notm}} Platform 上同级的通道的任何网络成员都可以使用“网络监视器”来实例化链代码并指定背书策略。但是，如果要使用同级在通道上实例化链代码，那么可以使用 SDK 并遵循指示信息来[实例化链代码](../v10_application.html#instantiate-cc-sdk)。
+只需要通道中的一个成员对链代码进行实例化或更新。因此，{{site.data.keyword.blockchainfull_notm}} Platform 上同级的通道的任何网络成员都可以使用“网络监视器”来实例化链代码并指定背书策略。但是，如果要使用同级在通道上实例化链代码，那么可以使用 SDK 并遵循指示信息来[实例化链代码](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk)。
 
 ## 使用 CLI 来操作同级
 {: #peer-cli-operate}
 
 您还可以通过命令行使用 Fabric `同级`客户机来操作同级。
 
-同级已使用内部同级管理员的 signCert 进行部署，允许该身份操作同级。以下指示信息将使用在[部署同级](peer_deploy_ibp.html#register-admin)时生成的同级管理员的 MSP 文件夹来将同级加入通道，在同级上安装链代码，然后在通道上实例化链代码。
+同级已使用内部同级管理员的 signCert 进行部署，允许该身份操作同级。以下指示信息将使用在[部署同级](/docs/services/blockchain/peer_deploy_ibp.html#register-admin)时生成的同级管理员的 MSP 文件夹来将同级加入通道，在同级上安装链代码，然后在通道上实例化链代码。
 
 ### 下载 Fabric 同级客户机
 {: #peer-client}
@@ -291,7 +291,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-需要在本地计算机上对证书执行一些管理工作，才能操作同级。例如，您需要将同级管理员的 signCert 上传到入门套餐或企业套餐，并确保您可以从 {{site.data.keyword.cloud_notm}} 上的同级和网络访问 TLS 证书。有关要使用的证书和要执行的任务的更多信息，请参阅[在 {{site.data.keyword.blockchainfull_notm}} Platform 上管理证书](../certificates.html)。
+需要在本地计算机上对证书执行一些管理工作，才能操作同级。例如，您需要将同级管理员的 signCert 上传到入门套餐或企业套餐，并确保您可以从 {{site.data.keyword.cloud_notm}} 上的同级和网络访问 TLS 证书。有关要使用的证书和要执行的任务的更多信息，请参阅[在 {{site.data.keyword.blockchainfull_notm}} Platform 上管理证书](/docs/services/blockchain/certificates.html)。
 
 1. 将同级管理员的 signCert 移至名为 `admincerts` 的新文件夹：
 
@@ -314,9 +314,9 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 
     **注**：在同级加入通道或在通道上实例化链代码之前，务必同步通道证书。您可能需要等待几分钟，以便完成通道同步后，再发出加入通道或实例化链代码的命令。
 
-3. 确保您已[下载同级 TLS 证书](#peer-tls)，并且可以通过命令行引用该证书。如果遵循的是示例命令，那么可以在 `$HOME/fabric-ca-client/peer-tls/peertls.pem` 文件中找到此 TLS 证书。
+3. 确保您已[下载同级 TLS 证书](/docs/services/blockchain/#peer-tls)，并且可以通过命令行引用该证书。如果遵循的是示例命令，那么可以在 `$HOME/fabric-ca-client/peer-tls/peertls.pem` 文件中找到此 TLS 证书。
 
-4. 在[注册同级管理员](peer_deploy_ibp.html#enroll-admin)时，还需要引用用于与入门套餐或企业套餐 CA 进行通信的 TLS 证书。如果遵循的是本文档中的示例命令，那么可以在 `$HOME/fabric-ca-client/tls-ibp/tls.pem` 文件中找到此 TLS 证书。
+4. 在[注册同级管理员](/docs/services/blockchain/peer_deploy_ibp.html#enroll-admin)时，还需要引用用于与入门套餐或企业套餐 CA 进行通信的 TLS 证书。如果遵循的是本文档中的示例命令，那么可以在 `$HOME/fabric-ca-client/tls-ibp/tls.pem` 文件中找到此 TLS 证书。
 
 您可以运行 tree 命令来验证是否已完成这些步骤。浏览至存储证书的目录。tree 命令应该生成类似于以下结构的结果：
 ```
@@ -433,8 +433,8 @@ tree
 
 需要通过下列其中一个方法将组织添加到网络中的通道后，才能运行 CLI 命令将同级加入通道。
 
-  - 可以为同级启动新的通道。作为通道启动者，您可以在[通道创建](create_channel.html#creating-a-channel)期间自动包含您的组织。
-  - 区块链网络的其他成员也可以使用[通道更新](create_channel.html#updating-a-channel)将您的组织添加到现有通道。
+  - 可以为同级启动新的通道。作为通道启动者，您可以在[通道创建](/docs/services/blockchain/create_channel.html#creating-a-channel)期间自动包含您的组织。
+  - 区块链网络的其他成员也可以使用[通道更新](/docs/services/blockchain/create_channel.html#updating-a-channel)将您的组织添加到现有通道。
 
     将组织添加到通道后，需要将同级的 signCert 添加到该通道，以便其他成员可以在交易期间验证您的数字签名。在安装期间，同级会上传其 signCert，这样您只需要将该证书同步到通道即可。在“网络监视器”的“通道”屏幕中，找到组织加入的通道，然后从**操作**标题下的下拉列表中选择**同步证书**。此操作会同步通道上所有同级的证书。
 
@@ -542,7 +542,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 
 2. 在通道上的所有同级上安装新的链代码后，使用“网络监视器”或[同级链代码升级 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) 命令来更新通道，以使用新的链代码。
 
-有关使用“网络监视器”的“安装代码”面板更新通道上的链代码的更多信息，请参阅这些[指示信息](install_instantiate_chaincode.html#updating-a-chaincode)中的步骤 2。
+有关使用“网络监视器”的“安装代码”面板更新通道上的链代码的更多信息，请参阅这些[指示信息](/docs/services/blockchain/install_instantiate_chaincode.html#updating-a-chaincode)中的步骤 2。
 
 ## 查看同级日志
 {: #peer-ibp-view-logs}

@@ -24,7 +24,7 @@ lastupdated: "2018-09-05"
 
 {{site.data.keyword.cloud_notm}} Private 是用于开发和管理内部部署容器化应用程序的应用程序平台。{{site.data.keyword.blockchainfull_notm}} Platform Remote Peer on {{site.data.keyword.cloud_notm}} Private 是一个 {{site.data.keyword.blockchainfull_notm}} 产品，与 ICP 捆绑在一起，供客户在自己的本地环境中部署同级。安装远程同级的 Helm 图表之后，您可在 ICP 目录中找到显示为应用程序的该项。ICP 的远程同级利用 ICP 的存储器、安全性、日志记录和支持服务进行同级管理。有关 ICP 的更多信息，请参阅 [{{site.data.keyword.cloud_notm}} Private 文档 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 文档")。
 
-在 ICP 上安装远程同级之前，请查看[远程同级注意事项](remote_peer.html#remote-peer-limitations)。
+在 ICP 上安装远程同级之前，请查看[远程同级注意事项](/docs/services/blockchain/remote_peer.html#remote-peer-limitations)。
 
 ## 先决条件
 {: #prerequisites-icp}
@@ -62,7 +62,7 @@ lastupdated: "2018-09-05"
 
 3. {{site.data.keyword.blockchainfull_notm}} Platform  
 
-  要使用远程同级，您必须拥有一个组织，该组织是在 {{site.data.keyword.blockchainfull_notm}} Platform 上托管的区块链网络的成员。您需要使用 {{site.data.keyword.cloud_notm}} 上的“网络监视器”来访问网络的网络凭证和 API 端点。如果您不是任何区块链网络的成员，那么需要创建或加入网络。有关更多信息，请参阅[创建网络](../get_start.html#creating-a-network)或[加入网络](../get_start.html#joining-a-network)。
+  要使用远程同级，您必须拥有一个组织，该组织是在 {{site.data.keyword.blockchainfull_notm}} Platform 上托管的区块链网络的成员。您需要使用 {{site.data.keyword.cloud_notm}} 上的“网络监视器”来访问网络的网络凭证和 API 端点。如果您不是任何区块链网络的成员，那么需要创建或加入网络。有关更多信息，请参阅[创建网络](/docs/services/blockchain/get_start.html#creating-a-network)或[加入网络](/docs/services/blockchain/get_start.html#joining-a-network)。
 
 ## 将 Helm 图表导入 ICP
 
@@ -178,7 +178,7 @@ lastupdated: "2018-09-05"
 |`同级注册私钥`|这是您在 {{site.data.keyword.blockchainfull_notm}} Platform“网络监视器”的“认证中心”屏幕上输入的注册私钥。|无|是|
 | | | | |
 |**远程同级数据库**|**分类帐数据库类型**| | |
-|`分类帐数据库`|用于存储通道分类帐的[状态数据库](../glossary.html#state-database)。远程同级需要使用与[区块链网络](../v10_dashboard.html#network-preferences)相同的数据库。|无|是|
+|`分类帐数据库`|用于存储通道分类帐的[状态数据库](/docs/services/blockchain/glossary.html#state-database)。远程同级需要使用与[区块链网络](/docs/services/blockchain/v10_dashboard.html#network-preferences)相同的数据库。|无|是|
 |`CouchDB 映像`|仅当选择了 CouchDB 作为分类帐数据库时才适用。|自动填充到安装路径，请勿更改此值。|是|
 |**数据持久性**|启用在集群重新启动或发生故障后持久存储数据的功能。有关更多信息，请参阅 [Kubernetes 中的存储器 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://kubernetes.io/docs/concepts/storage/ "卷")。| | |
 |`数据持久性已启用`|容器重新启动后，状态数据将可用。*如果未选中此项，那么在故障转移或 pod 重新启动时将丢失所有数据。*|已选中|否|
@@ -376,13 +376,13 @@ If you haven't, install [openssl](https://github.com/openssl/openssl) on your sy
   - 如果未在屏幕中看到任何日志，说明远程同级未成功启动。要查看其他日志以弄清楚问题，请单击左上角的**菜单**图标，然后单击**工作负载** > **Helm 发布**。单击 Helm 发布以将其打开。单击关联 **pod** 旁边的**查看日志**链接，以在 Kibana 界面中查看其他图表日志。
 3. 要验证远程同级是否可以连接到 {{site.data.keyword.blockchainfull}} Platform 网络，可以从远程同级容器内运行同级 CLI 命令。运行 `peer channel fetch` CLI 命令以从通道访存起源区块：
 
-   1. 如果尚未连接到 ICP 集群，请遵循以下[指示信息](remote_peer_operate_icp.html#remote-peer-kubectl-configure)以连接到该集群，并在同级容器内使用 CLI。
+   1. 如果尚未连接到 ICP 集群，请遵循以下[指示信息](/docs/services/blockchain/remote_peer_operate_icp.html#remote-peer-kubectl-configure)以连接到该集群，并在同级容器内使用 CLI。
 
    2. 您需要先将组织添加到网络中的通道，然后才能访存该起源区块。
 
-     - 可以为远程同级启动新的通道。作为通道启动者，您可以在[通道创建](create_channel.html#creating-a-channel)期间自动包含您的组织。请注意，您需要在 {{site.data.keyword.blockchainfull_notm}} Platform 上至少具有一个同级后，才能在“网络监视器”中创建通道。  
+     - 可以为远程同级启动新的通道。作为通道启动者，您可以在[通道创建](/docs/services/blockchain/create_channel.html#creating-a-channel)期间自动包含您的组织。请注意，您需要在 {{site.data.keyword.blockchainfull_notm}} Platform 上至少具有一个同级后，才能在“网络监视器”中创建通道。  
 
-     - 区块链网络的其他成员也可以使用[通道更新](create_channel.html#updating-a-channel)将您的组织添加到现有通道。{{site.data.keyword.blockchainfull_notm}} Platform 上同级的通道成员可以使用“网络监视器”将您的组织添加到通道，即使您未在该平台上托管任何同级。
+     - 区块链网络的其他成员也可以使用[通道更新](/docs/services/blockchain/create_channel.html#updating-a-channel)将您的组织添加到现有通道。{{site.data.keyword.blockchainfull_notm}} Platform 上同级的通道成员可以使用“网络监视器”将您的组织添加到通道，即使您未在该平台上托管任何同级。
       在安装期间，远程同级将上传其签名证书，因此您只需要将该证书同步到通道即可。在“网络监视器”的“通道”屏幕中，找到组织加入的通道，然后从**操作**标头下的下拉列表中选择**同步证书**。此操作会同步通道上所有同级的证书。
 
    3. 从“网络监视器”的“概述”屏幕上提供的 `creds.json` 文件中检索配置信息。单击**连接概要文件**，然后单击**下载**。
@@ -453,7 +453,7 @@ If you haven't, install [openssl](https://github.com/openssl/openssl) on your sy
 ## 后续步骤
 {: #whats-next-icp}
 
-在 ICP 中设置远程同级后，可以完成若干操作步骤，然后才能将事务提交到区块链网络的分布式总账，并读取该分布式总账。有关更多信息，请参阅[操作远程同级](remote_peer_operate_icp.html)。
+在 ICP 中设置远程同级后，可以完成若干操作步骤，然后才能将事务提交到区块链网络的分布式总账，并读取该分布式总账。有关更多信息，请参阅[操作远程同级](/docs/services/blockchain/remote_peer_operate_icp.html)。
 
 ## 高可用性
 {: #high-availability}
@@ -466,7 +466,7 @@ If you haven't, install [openssl](https://github.com/openssl/openssl) on your sy
 2. 在集群上多次安装同级，以将多个同级部署到不同的工作程序节点。Helm 图表包含基于网络标识和 OrgID 的反亲缘关系策略。ICP 集群会检测同级是否从同一组织连接到同一网络，并尝试在不同的工作程序节点上安排这些同级。  
   **注：**虽然策略“首选”将多个同级置于不同的工作程序节点上，但并不会强制这样做。例如，如果您只有一个工作程序节点，那么所有同级都会部署在这同一个节点上。
 
-如果部署了至少两个同级，那么还需要配置[应用程序以实现高可用性](../v10_application.html#ha-app)。
+如果部署了至少两个同级，那么还需要配置[应用程序以实现高可用性](/docs/services/blockchain/v10_application.html#ha-app)。
 
 ## 安全性注意事项
 {: #icp-security}
@@ -487,13 +487,13 @@ If you haven't, install [openssl](https://github.com/openssl/openssl) on your sy
 {: #icp-data-residency}
 
 数据存储位置要求所有区块链分类帐数据的处理和存储始终保持在一个国家或地区的境内执行。
-有关如何实现数据存储位置的更多信息，请参阅[数据存储位置](remote_peer.html#data-residency)。
+有关如何实现数据存储位置的更多信息，请参阅[数据存储位置](/docs/services/blockchain/remote_peer.html#data-residency)。
 
 ### 密钥管理
 {: #icp-security-key-management}
 
-密钥管理是远程同级安全性中至关重要的一个方面。如果专用密钥泄漏或丢失，那么恶意参与者可能有能力访问远程同级的数据和功能。{{site.data.keyword.blockchainfull_notm}} Platform 企业套餐使用[硬件安全模块](../glossary.html#hsm) (HSM) 来存储网络的专用密钥。HSM 是一种物理设备，用于阻止其他参与方访问您的专用密钥。
-在 ICP 上部署远程同级时，管理专用密钥是您的责任。虽然 {{site.data.keyword.blockchainfull_notm}} Platform 会生成专用密钥，但这些密钥不会存储在 Platform 上。因此，必须确保将密钥存储在安全的位置，避免密钥泄露。您可以在同级 MSP 的密钥库文件夹（即同级容器的 `/mnt/crypto/peer/peer/msp/keystore/` 目录）中找到远程同级的专用密钥。有关远程同级内的证书的更多信息，请参阅[在 {{site.data.keyword.blockchainfull_notm}} Platform 上管理证书](../certificates.html)教程中的[成员资格服务提供者](../certificates.html#msp)部分。
+密钥管理是远程同级安全性中至关重要的一个方面。如果专用密钥泄漏或丢失，那么恶意参与者可能有能力访问远程同级的数据和功能。{{site.data.keyword.blockchainfull_notm}} Platform 企业套餐使用[硬件安全模块](/docs/services/blockchain/glossary.html#hsm) (HSM) 来存储网络的专用密钥。HSM 是一种物理设备，用于阻止其他参与方访问您的专用密钥。
+在 ICP 上部署远程同级时，管理专用密钥是您的责任。虽然 {{site.data.keyword.blockchainfull_notm}} Platform 会生成专用密钥，但这些密钥不会存储在 Platform 上。因此，必须确保将密钥存储在安全的位置，避免密钥泄露。您可以在同级 MSP 的密钥库文件夹（即同级容器的 `/mnt/crypto/peer/peer/msp/keystore/` 目录）中找到远程同级的专用密钥。有关远程同级内的证书的更多信息，请参阅[在 {{site.data.keyword.blockchainfull_notm}} Platform 上管理证书](/docs/services/blockchain/certificates.html)教程中的[成员资格服务提供者](/docs/services/blockchain/certificates.html#msp)部分。
 
 您可以使用“密钥托管”来恢复丢失的专用密钥。这需要在丢失任何密钥之前执行。如果无法恢复专用密钥，那么需要通过向认证中心注册新的身份来获取新的专用密钥。您还应该从加入的任何通道中除去并替换 signCert。
 
@@ -511,7 +511,7 @@ If you haven't, install [openssl](https://github.com/openssl/openssl) on your sy
 ### 成员资格服务提供者配置
 {: #icp-security-MSP}
 
-{{site.data.keyword.blockchainfull_notm}} Platform 的组件通过成员资格服务提供者 (MSP) 来使用身份。MSP 将 CA 颁发的证书与网络和通道角色相关联。有关 MSP 如何用于远程同级的更多信息，请参阅[成员资格服务提供者 (MSP)](../certificates.html#msp)。
+{{site.data.keyword.blockchainfull_notm}} Platform 的组件通过成员资格服务提供者 (MSP) 来使用身份。MSP 将 CA 颁发的证书与网络和通道角色相关联。有关 MSP 如何用于远程同级的更多信息，请参阅[成员资格服务提供者 (MSP)](/docs/services/blockchain/certificates.html#msp)。
 
 ### 应用程序安全性
 {: #icp-security-appl}

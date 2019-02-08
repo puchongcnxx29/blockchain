@@ -39,7 +39,7 @@ lastupdated: "2018-11-27"
 {: #resources}
 
 **{{site.data.keyword.blockchainfull_notm}} Service 文档**
-[{{site.data.keyword.blockchainfull_notm}} Service 文档](index.html)（即此文档站点）提供有关如何开始使用 IBP 的指导信息。您可以在左侧导航器中查找相应主题，也可以使用顶部的搜索功能搜索任何项。
+[{{site.data.keyword.blockchainfull_notm}} Service 文档](/docs/services/blockchain/index.html)（即此文档站点）提供有关如何开始使用 IBP 的指导信息。您可以在左侧导航器中查找相应主题，也可以使用顶部的搜索功能搜索任何项。
 
 **{{site.data.keyword.IBM_notm}} dWAnswers**
 [{{site.data.keyword.IBM_notm}} dWAnswers ![外部链接图标](images/external_link.svg "外部链接图标")](https://developer.ibm.com/answers/smartspace/blockchain/ "区块链空间中的问题和解答") 是 IBP 和 Hyperledger Fabric 用户的社区论坛，由 {{site.data.keyword.IBM_notm}} 专家等进行监视。您可以搜索先前发布的问题的解答，也可以提交新问题。请确保在新问题中包含关键字**区块链**。

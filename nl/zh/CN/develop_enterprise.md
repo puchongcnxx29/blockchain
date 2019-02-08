@@ -28,7 +28,7 @@ lastupdated: "2018-12-07"
 
 确保已安装 {{site.data.keyword.blockchainfull_notm}} 开发者环境，并已熟悉开发和部署业务网络。[Hyperledger Composer 文档](https://hyperledger.github.io/composer/latest/business-network/business-network-index)中提供了有关编写业务网络的指导信息。
 
-您需要访问 {{site.data.keyword.blockchainfull_notm}} Platform 的企业套餐实例，并预先创建您的同级。有关 {{site.data.keyword.blockchainfull_notm}} Platform 企业套餐的更多信息，请参阅[企业套餐概述](./enterprise_plan.html)。
+您需要访问 {{site.data.keyword.blockchainfull_notm}} Platform 的企业套餐实例，并预先创建您的同级。有关 {{site.data.keyword.blockchainfull_notm}} Platform 企业套餐的更多信息，请参阅[企业套餐概述](/docs/services/blockchain//enterprise_plan.html)。
 
 ## 步骤 1：为 {{site.data.keyword.blockchainfull_notm}} Platform 创建连接概要文件
 

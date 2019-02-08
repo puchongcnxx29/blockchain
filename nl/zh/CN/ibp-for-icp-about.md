@@ -24,13 +24,13 @@ lastupdated: "2018-12-07"
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for ICP 提供的功能
 
-通过 {{site.data.keyword.blockchainfull_notm}} Platform for IBM Cloud Private (ICP)，可以部署 Hyperledger Fabric 区块链的所有基本组件：认证中心、排序服务和同级。利用 ICP 可根据业务需求灵活地部署不同的组件。可以使用 {{site.data.keyword.blockchainfull_notm}} for ICP 通过部署和配置在区块链联盟中将组织绑定在一起的排序服务来启动区块链网络。此外，还可部署同级并加入其他使用基于 Fabric 的组件的网络，包括使用 ICP 跨云部署的 {{site.data.keyword.blockchainfull_notm}} Platform 网络，或在 IBM Cloud 上托管的入门套餐和企业套餐网络。有关 Hyperledger Fabric 网络构建块的更多信息，请参阅[区块链组件概述](blockchain_component_overview.html)。
+通过 {{site.data.keyword.blockchainfull_notm}} Platform for IBM Cloud Private (ICP)，可以部署 Hyperledger Fabric 区块链的所有基本组件：认证中心、排序服务和同级。利用 ICP 可根据业务需求灵活地部署不同的组件。可以使用 {{site.data.keyword.blockchainfull_notm}} for ICP 通过部署和配置在区块链联盟中将组织绑定在一起的排序服务来启动区块链网络。此外，还可部署同级并加入其他使用基于 Fabric 的组件的网络，包括使用 ICP 跨云部署的 {{site.data.keyword.blockchainfull_notm}} Platform 网络，或在 IBM Cloud 上托管的入门套餐和企业套餐网络。有关 Hyperledger Fabric 网络构建块的更多信息，请参阅[区块链组件概述](/docs/services/blockchain/blockchain_component_overview.html)。
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for ICP 是否适用于您
 
 通过在 {{site.data.keyword.cloud_notm}} 之外运行 {{site.data.keyword.blockchainfull_notm}} Platform 组件，可以更灵活地扩展或加入区块链网络。这也有助于网络创始人允许新成员在使用其所选平台时加入网络，从而扩展其网络。此外，还支持有兴趣加入区块链网络的组织使用其现有应用程序与其同级并置，或者与记录系统集成。
 
-**重要信息：**部署 {{site.data.keyword.blockchainfull_notm}} Platform for ICP 的过程非常复杂，并且需要您掌握高水平的 Fabric 专业知识。如果您不熟悉 Fabric、ICP 或 {{site.data.keyword.blockchainfull_notm}} Platform，并且目标是设置开发环境或概念验证，请考虑改为使用[入门套餐](starter_plan.html)。另请注意，{{site.data.keyword.blockchainfull_notm}} Platform for ICP 中不一定支持所有潜在的部署配置。
+**重要信息：**部署 {{site.data.keyword.blockchainfull_notm}} Platform for ICP 的过程非常复杂，并且需要您掌握高水平的 Fabric 专业知识。如果您不熟悉 Fabric、ICP 或 {{site.data.keyword.blockchainfull_notm}} Platform，并且目标是设置开发环境或概念验证，请考虑改为使用[入门套餐](/docs/services/blockchain/starter_plan.html)。另请注意，{{site.data.keyword.blockchainfull_notm}} Platform for ICP 中不一定支持所有潜在的部署配置。
 
 此产品的用户应负责管理其自己的安全性和基础架构。{{site.data.keyword.cloud_notm}} 不提供这些服务。开始之前，请查看下一部分中的[注意事项和限制](#ibp-icp-considerations)。
 
@@ -81,7 +81,7 @@ lastupdated: "2018-12-07"
 ### 许可
 {: #ibp-icp-license}
 
-{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private 交付的组件需要在您自己的基础架构上运行区块链网络，并作为 ICP 应用程序进行部署。您可以访问 PPA 并[下载 Helm 图表](howto/helm_install_icp.html)。购买中包含 {{site.data.keyword.blockchainfull_notm}} 的技术支持。
+{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private 交付的组件需要在您自己的基础架构上运行区块链网络，并作为 ICP 应用程序进行部署。您可以访问 PPA 并[下载 Helm 图表](/docs/services/blockchain/howto/helm_install_icp.html)。购买中包含 {{site.data.keyword.blockchainfull_notm}} 的技术支持。
 
 {{site.data.keyword.blockchainfull_notm}} Platform on IBM Cloud Private Community Edition 是一个免费产品，适用于评估和试验，并作为 ICP 应用程序进行部署。请勿将 Community Edition 用于生产环境。{{site.data.keyword.blockchainfull_notm}} Platform 不提供对 Community Edition 的支持。您可以访问 [GitHub 包 ![外部链接图标](images/external_link.svg "外部链接图标")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts") 并下载 Helm 图表。
 
@@ -102,53 +102,53 @@ lastupdated: "2018-12-07"
 
 - {{site.data.keyword.blockchainfull_notm}} Platform Community Edition 用于探索、开发和测试。IBM Blockchain Platform for ICP 的这一免费版本可通过 GitHub 访问。**注：**{{site.data.keyword.blockchainfull_notm}} Platform 不提供对 Community Edition 的支持。
 
-有关如何安装 Helm 图表和必需的必备软件的指示信息，请参阅[安装 {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private](howto/helm_install_icp.html)。
+有关如何安装 Helm 图表和必需的必备软件的指示信息，请参阅[安装 {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html)。
 
-如果您是 {{site.data.keyword.cloud_notm}} Private 的新用户，并且希望了解有关安装和部署 ICP 的信息和技巧，请参阅[设置 {{site.data.keyword.cloud_notm}} Private](ICP_setup.html)。
+如果您是 {{site.data.keyword.cloud_notm}} Private 的新用户，并且希望了解有关安装和部署 ICP 的信息和技巧，请参阅[设置 {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html)。
 
-安装 {{site.data.keyword.blockchainfull_notm}} Platform for ICP 后，需要分别部署网络的每个组件。不能同时部署多个组件。请访问 [{{site.data.keyword.blockchainfull_notm}} Platform for ICP 部署指南](ibp_for_icp_deployment_guide.html)，以在开始之前了解创建或加入区块链网络的最佳实践。然后，在以下各部分中查看用于部署和操作各个组件的步骤。
+安装 {{site.data.keyword.blockchainfull_notm}} Platform for ICP 后，需要分别部署网络的每个组件。不能同时部署多个组件。请访问 [{{site.data.keyword.blockchainfull_notm}} Platform for ICP 部署指南](/docs/services/blockchain/ibp_for_icp_deployment_guide.html)，以在开始之前了解创建或加入区块链网络的最佳实践。然后，在以下各部分中查看用于部署和操作各个组件的步骤。
 
 ### 在防火墙后安装 {{site.data.keyword.blockchainfull_notm}} Platform for ICP
 {: #ibp-icp-firewall}
 
 您可以在防火墙后部署 {{site.data.keyword.blockchainfull_notm}} Platform 组件，而无需访问公用因特网。下载的 Helm 图表包中包含 {{site.data.keyword.blockchainfull_notm}} Platform 使用的所有 Fabric 组件 Docker 映像，无需在部署期间从 DockerHub 进行拉取。
 
-{{site.data.keyword.blockchainfull_notm}} Platform Community Edition Helm 图表包不包含必需的 Fabric 组件 Docker 映像。它配置为在部署期间从 DockerHub 下载这些映像，因此在无法访问公用因特网时会失败。但是，您可以执行一些额外的步骤，在防火墙后部署 Community Edition 组件。有关更多信息，请参阅[在防火墙后安装 Community Edition](howto/helm_install_icp.html#helm-install-prereqs-firewall)
+{{site.data.keyword.blockchainfull_notm}} Platform Community Edition Helm 图表包不包含必需的 Fabric 组件 Docker 映像。它配置为在部署期间从 DockerHub 下载这些映像，因此在无法访问公用因特网时会失败。但是，您可以执行一些额外的步骤，在防火墙后部署 Community Edition 组件。有关更多信息，请参阅[在防火墙后安装 Community Edition](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-prereqs-firewall)
 
 
 ## 关于 ICP 上的认证中心
 {: #ibp-icp-ca}
 
-认证中心 (CA) 在网络上提供身份。CA 可被视为类似于公证方，充当多个参与方之间的信任锚点。给予网络中的所有实体一个根 CA 签署的证书，该证书封装他们的数字身份。此证书是在网络上执行的所有签名和验证操作的信任根。有关认证中心及其在区块链网络中所扮演角色的更多信息，请参阅[区块链组件概述](blockchain_component_overview.html)。
+认证中心 (CA) 在网络上提供身份。CA 可被视为类似于公证方，充当多个参与方之间的信任锚点。给予网络中的所有实体一个根 CA 签署的证书，该证书封装他们的数字身份。此证书是在网络上执行的所有签名和验证操作的信任根。有关认证中心及其在区块链网络中所扮演角色的更多信息，请参阅[区块链组件概述](/docs/services/blockchain/blockchain_component_overview.html)。
 
 CA 将验证网络中需要部署的其他组件的身份，然后颁发证书。因此，您需要先为组织部署 CA，然后再部署其他组件。
 
-- 要了解如何在安装 Helm 图表后配置和部署 CA，请参阅[在 {{site.data.keyword.cloud_notm}} Private 中部署认证中心](howto/CA_deploy_icp.html)。
+- 要了解如何在安装 Helm 图表后配置和部署 CA，请参阅[在 {{site.data.keyword.cloud_notm}} Private 中部署认证中心](/docs/services/blockchain/howto/CA_deploy_icp.html)。
 
-- 要了解如何使用 CA 来生成证书并完成部署其他组件的必备步骤，请参阅[在 {{site.data.keyword.cloud_notm}} Private 中操作认证中心](howto/CA_operate.html)。
+- 要了解如何使用 CA 来生成证书并完成部署其他组件的必备步骤，请参阅[在 {{site.data.keyword.cloud_notm}} Private 中操作认证中心](/docs/services/blockchain/howto/CA_operate.html)。
 
 ## 关于 ICP 上的排序节点
 {: #ibp-icp-orderer}
 
-排序节点可在区块链网络中对客户机进行认证、对事务排序和广播事务。排序节点是基于 Hyperledger Fabric 的区块链网络的公共绑定。因此，创建网络的组织需要部署并启动“排序服务”（执行排序的节点或节点集合），然后其他组织才能部署其同级，加入通道并开始在网络上进行事务处理。有关排序节点及其在区块链网络中所扮演角色的更多信息，请参阅[区块链组件概述](blockchain_component_overview.html#orderer)。
+排序节点可在区块链网络中对客户机进行认证、对事务排序和广播事务。排序节点是基于 Hyperledger Fabric 的区块链网络的公共绑定。因此，创建网络的组织需要部署并启动“排序服务”（执行排序的节点或节点集合），然后其他组织才能部署其同级，加入通道并开始在网络上进行事务处理。有关排序节点及其在区块链网络中所扮演角色的更多信息，请参阅[区块链组件概述](/docs/services/blockchain/blockchain_component_overview.html#orderer)。
 
 如果您是区块链网络的创始人，那么需要部署排序节点。部署排序节点后，您可以邀请其他组织加入联盟，随后这些组织可以创建自己的通道。
 
-- 要了解如何在安装 Helm 图表后配置和部署排序节点，请参阅[在 ICP 中部署排序节点](howto/orderer_deploy_icp.html)。
+- 要了解如何在安装 Helm 图表后配置和部署排序节点，请参阅[在 ICP 中部署排序节点](/docs/services/blockchain/howto/orderer_deploy_icp.html)。
 
-- 要了解如何构建联盟，请参阅[在 ICP 上操作排序节点](howto/orderer_operate.html)。
+- 要了解如何构建联盟，请参阅[在 ICP 上操作排序节点](/docs/services/blockchain/howto/orderer_operate.html)。
 
 ## 关于 ICP 上的同级
 {: #ibp-icp-peer}
 
-同级是网络的基本元素，因为它们用于托管分类帐和智能合同。智能合同和分类帐分别用于封装网络中的共享过程和共享信息。有关同级及其在区块链网络中所扮演角色的更多信息，请参阅[区块链组件概述](blockchain_component_overview.html)。
+同级是网络的基本元素，因为它们用于托管分类帐和智能合同。智能合同和分类帐分别用于封装网络中的共享过程和共享信息。有关同级及其在区块链网络中所扮演角色的更多信息，请参阅[区块链组件概述](/docs/services/blockchain/blockchain_component_overview.html)。
 
-- 准备好加入网络时，即可以部署同级，同级将加入通道，对事务背书以及存储通道分类帐。有关在 ICP 上部署同级以连接到 ICP 上的其他组件的信息，请参阅[在 ICP 上部署同级](howto/peer_deploy_icp.html)。有关在 ICP 上部署同级以连接到入门套餐或企业套餐网络的信息，请参阅[部署将连接到入门套餐或企业套餐的同级](howto/peer_deploy_ibp.html)。
+- 准备好加入网络时，即可以部署同级，同级将加入通道，对事务背书以及存储通道分类帐。有关在 ICP 上部署同级以连接到 ICP 上的其他组件的信息，请参阅[在 ICP 上部署同级](/docs/services/blockchain/howto/peer_deploy_icp.html)。有关在 ICP 上部署同级以连接到入门套餐或企业套餐网络的信息，请参阅[部署将连接到入门套餐或企业套餐的同级](/docs/services/blockchain/howto/peer_deploy_ibp.html)。
 
 - 设置了同级后，需要完成若干操作步骤，然后才能将事务提交到区块链网络的分布式分类帐，并读取该分布式分类帐。
 
-  - 如果要将同级连接到在 ICP 上部署的 {{site.data.keyword.blockchainfull_notm}} Platform，请参阅[在使用多云网络的 {{site.data.keyword.cloud_notm}} Private 上操作同级](howto/peer_operate_icp.html)。
-  - 如果要将同级连接到在 {{site.data.keyword.cloud_notm}} 上部署的入门套餐或企业套餐网络，请参阅[在使用入门套餐或企业套餐的 {{site.data.keyword.cloud_notm}} Private 上操作同级](howto/peer_operate_ibp.html)。
+  - 如果要将同级连接到在 ICP 上部署的 {{site.data.keyword.blockchainfull_notm}} Platform，请参阅[在使用多云网络的 {{site.data.keyword.cloud_notm}} Private 上操作同级](/docs/services/blockchain/howto/peer_operate_icp.html)。
+  - 如果要将同级连接到在 {{site.data.keyword.cloud_notm}} 上部署的入门套餐或企业套餐网络，请参阅[在使用入门套餐或企业套餐的 {{site.data.keyword.cloud_notm}} Private 上操作同级](/docs/services/blockchain/howto/peer_operate_ibp.html)。
 
 
 ## 安全注意事项
@@ -171,9 +171,9 @@ CA 将验证网络中需要部署的其他组件的身份，然后颁发证书�
 ### 密钥管理
 {: #icp-security-key-management}
 
-密钥管理是安全性中至关重要的一个方面。如果专用密钥泄漏或丢失，那么恶意参与者可能有能力访问您的数据和功能。IBM 使用称为[硬件安全模块](../glossary.html#hsm) (HSM) 的物理设备来存储 {{site.data.keyword.blockchainfull_notm}} Platform 企业套餐网络的专用密钥。
+密钥管理是安全性中至关重要的一个方面。如果专用密钥泄漏或丢失，那么恶意参与者可能有能力访问您的数据和功能。IBM 使用称为[硬件安全模块](/docs/services/blockchain/glossary.html#hsm) (HSM) 的物理设备来存储 {{site.data.keyword.blockchainfull_notm}} Platform 企业套餐网络的专用密钥。
 
-在 ICP 上部署组件时，您负责管理专用密钥。虽然 {{site.data.keyword.blockchainfull_notm}} Platform 会生成专用密钥，但这些密钥不会存储在 Platform 上。因此，必须安全地存储密钥，避免密钥泄露。您可以在同级 MSP 的 keystore 文件夹（位于组件内的 `/mnt/crypto/peer/peer/msp/keystore/` 目录）中找到组件的专用密钥。有关同级内的证书的更多信息，请参阅[在 {{site.data.keyword.blockchainfull_notm}} Platform 上管理证书](../certificates.html)教程中的[成员资格服务提供者](../certificates.html#msp)部分。
+在 ICP 上部署组件时，您负责管理专用密钥。虽然 {{site.data.keyword.blockchainfull_notm}} Platform 会生成专用密钥，但这些密钥不会存储在 Platform 上。因此，必须安全地存储密钥，避免密钥泄露。您可以在同级 MSP 的 keystore 文件夹（位于组件内的 `/mnt/crypto/peer/peer/msp/keystore/` 目录）中找到组件的专用密钥。有关同级内的证书的更多信息，请参阅[在 {{site.data.keyword.blockchainfull_notm}} Platform 上管理证书](../certificates.html)教程中的[成员资格服务提供者](/docs/services/blockchain/certificates.html#msp)部分。
 
 您可以使用“密钥代管”来恢复丢失的专用密钥。这需要在丢失任何密钥之前执行。如果无法恢复专用密钥，那么需要通过向认证中心注册新的身份来获取新的专用密钥。您还应该从加入的任何通道中除去并替换 signCert。
 
@@ -189,7 +189,7 @@ You can use Mutual TLS, which requires two way (server-client) rather than one w
 ### 成员资格服务提供者配置
 {: #icp-security-MSP}
 
-{{site.data.keyword.blockchainfull_notm}} Platform 的组件通过成员资格服务提供者 (MSP) 使用身份。MSP 将 CA 颁发的证书与网络和通道角色相关联。有关 MSP 如何用于同级的更多信息，请参阅[成员资格服务提供者 (MSP)](../certificates.html#msp)。
+{{site.data.keyword.blockchainfull_notm}} Platform 的组件通过成员资格服务提供者 (MSP) 使用身份。MSP 将 CA 颁发的证书与网络和通道角色相关联。有关 MSP 如何用于同级的更多信息，请参阅[成员资格服务提供者 (MSP)](/docs/services/blockchain/certificates.html#msp)。
 
 ### 应用程序安全性
 {: #icp-security-appl}
@@ -199,13 +199,13 @@ You can use Mutual TLS, which requires two way (server-client) rather than one w
 ## 数据存储位置
 {: #icp-data-residency}
 
-由于区块链网络并不关注所处理的数据类型，因此有时必须采取额外的步骤来确保某些类型数据的安全。数据存储位置的最常见需求与特定国家或地区的法律相关，这要求在 IT 系统中处理和存储的所有数据必须保留在特定国家或地区境内。与此类似，受到高度监管的行业（例如，政府、医疗保健和金融服务）中的某些公司要求必须将数据完全存储在其防火墙之后。因此，为实现数据存储位置，区块链网络的所有组件都必须属于相同[通道](glossary.html#channel)并且位于单个国家或地区境内。
+由于区块链网络并不关注所处理的数据类型，因此有时必须采取额外的步骤来确保某些类型数据的安全。数据存储位置的最常见需求与特定国家或地区的法律相关，这要求在 IT 系统中处理和存储的所有数据必须保留在特定国家或地区境内。与此类似，受到高度监管的行业（例如，政府、医疗保健和金融服务）中的某些公司要求必须将数据完全存储在其防火墙之后。因此，为实现数据存储位置，区块链网络的所有组件都必须属于相同[通道](/docs/services/blockchain/glossary.html#channel)并且位于单个国家或地区境内。
 
 为满足数据存储位置需求，重要的是了解作为 {{site.data.keyword.blockchainfull_notm}} Platform 基础的 Hyperledger Fabric 体系结构。该体系结构主要围绕着三个关键组件：排序服务（由排序节点组成）、认证中心 (CA) 和同级。同级以区块形式接收来自排序服务的已排序状态更新并维护状态和分类帐。因此，同级和排序服务具有直接关系。分类帐包含所有事务日志所包含的所有密钥和数据的最新值。
 
 此外，客户机应用程序使用 [Fabric SDK](v10_application.html#using-the-fabric-sdks) 以将事务发送给同级和排序服务。这些事务包含[读/写集语义 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "读/写集语义") 数据，其中包含有关分类帐的密钥/值对。
 
-如果要求国家或地区内的数据存储位置，那么排序服务、同级和客户机应用程序必须位于同一国家或地区内。在 {{site.data.keyword.cloud_notm}} 中创建 {{site.data.keyword.blockchainfull_notm}} Platform 网络时，您可以选择网络的位置。<!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->有关区域和位置的更多信息，请参阅 [{{site.data.keyword.blockchainfull_notm}} Platform 区域和位置](reference/ibp_regions.html)。
+如果要求国家或地区内的数据存储位置，那么排序服务、同级和客户机应用程序必须位于同一国家或地区内。在 {{site.data.keyword.cloud_notm}} 中创建 {{site.data.keyword.blockchainfull_notm}} Platform 网络时，您可以选择网络的位置。<!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->有关区域和位置的更多信息，请参阅 [{{site.data.keyword.blockchainfull_notm}} Platform 区域和位置](/docs/services/blockchain/reference/ibp_regions.html)。
 
 ### 数据存储位置的用例
 
@@ -243,7 +243,7 @@ You can use Mutual TLS, which requires two way (server-client) rather than one w
 ## 获取支持
 {: #ibp-icp-support}
 
-有关数字支持产品的信息，请参阅 IBM Blockchain Platform 支持[资源和支持论坛](ibmblockchain_support.html#resources)。
+有关数字支持产品的信息，请参阅 IBM Blockchain Platform 支持[资源和支持论坛](/docs/services/blockchain/ibmblockchain_support.html#resources)。
 
 ### {{site.data.keyword.blockchainfull_notm}} Platform for ICP
 
@@ -253,6 +253,6 @@ You can use Mutual TLS, which requires two way (server-client) rather than one w
 
 Community Edition 用于探索、开发和测试。IBM Blockchain Platform 不提供对 {{site.data.keyword.blockchainfull_notm}} Platform Community Edition 的支持。
 
-如果遇到与区块链组件相关的问题，您可以使用免费区块链开发人员资源和支持论坛，并从 IBM 和 Fabric 社区获取帮助。有关更多信息，请参阅[区块链资源和支持论坛](ibmblockchain_support.html#resources)。
+如果遇到与区块链组件相关的问题，您可以使用免费区块链开发人员资源和支持论坛，并从 IBM 和 Fabric 社区获取帮助。有关更多信息，请参阅[区块链资源和支持论坛](/docs/services/blockchain/ibmblockchain_support.html#resources)。
 
 有关与 IBM Cloud Private 相关的问题，您可以利用 [ICP 提供的免费数字支持和付费支持](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e/entry/Learn_more_about_IBM_Cloud_Private_Support?lang=en_us)。

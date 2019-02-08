@@ -76,4 +76,4 @@ lastupdated: "2018-09-27"
 
 当有足够多的通道操作员就请求达成一致时，任何通道成员都可以单击**提交请求**按钮，此时将会更新通道。所有通道成员都可以在“网络监视器”的“通道”屏幕中找到更新的通道。
 
-**重要事项：**当新组织加入通道并安装链代码时，不会自动更新支持策略。例如，如果策略需要五个组织中的两个组织来支持事务处理，那么在一个新组织加入该通道时，该策略将不会更新为需要六个组织中的两个组织。相反，新组织将不会在策略上列出，并且他们将无法支持事务处理。您可以通过[更新相关链代码](install_instantiate_chaincode.html#updating-a-chaincode)来将新组织添加到支持策略中。有关更多信息，请参阅[指定链代码支持策略](install_instantiate_chaincode.html#endorsement-policy)。
+**重要事项：**当新组织加入通道并安装链代码时，不会自动更新支持策略。例如，如果策略需要五个组织中的两个组织来支持事务处理，那么在一个新组织加入该通道时，该策略将不会更新为需要六个组织中的两个组织。相反，新组织将不会在策略上列出，并且他们将无法支持事务处理。您可以通过[更新相关链代码](/docs/services/blockchain/install_instantiate_chaincode.html#updating-a-chaincode)来将新组织添加到支持策略中。有关更多信息，请参阅[指定链代码支持策略](/docs/services/blockchain/install_instantiate_chaincode.html#endorsement-policy)。

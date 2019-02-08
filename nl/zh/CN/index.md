@@ -16,7 +16,7 @@ lastupdated: "2018-11-27"
 
 ***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-**注意：**在使用 {{site.data.keyword.blockchainfull}} Platform 产品之前，请阅读[免责声明](needtoknow.html)一节中的技术和支持信息。
+**注意：**在使用 {{site.data.keyword.blockchainfull}} Platform 产品之前，请阅读[免责声明](/docs/services/blockchain/needtoknow.html)一节中的技术和支持信息。
 {:shortdesc}
 
 {{site.data.keyword.blockchainfull_notm}} Platform (IBP) 是唯一能够处理多组织区块链网络的完整生命周期的集成业务就绪型平台。它旨在通过每个阶段的协作来加速创建“为业务构建”全球区块链网络，该网络具有适用于最严苛用例和受监管行业的性能和安全性。{{site.data.keyword.cloud_notm}} 上的 {{site.data.keyword.IBM_notm}} 受管网络产品适合于区块链新客户。具备 Hyperledger Fabric 使用经验的客户可以通过 {{site.data.keyword.cloud_notm}} Private (ICP) 或 Amazon Web Services (AWS) 在其自己的基础架构上部署网络组件或网络。
@@ -26,14 +26,14 @@ lastupdated: "2018-11-27"
 |       |[**入门套餐**](#starter-enterprise)|[ **企业套餐**](#starter-enterprise)| [**IBP for ICP**](#ibp-for-icp) | [**IBP for AWS**](#ibp-for-aws)|
 | ------------------------- |--------------------------|-----|-----|------|
 | **包含的内容** | **基本服务级别、开发和测试环境** |**高级服务级别和企业生产就绪环境**|**可部署 CA、排序节点和同级 Helm 图表**|**AWS 同级快速入门**|
-| **计费策略** | **每月预订与[可用云信用值](howto/pricing.html#starter-plan-pricing)** |**每月预订**|  **[VPC 定价](ibp-for-icp-about.html#ibp-icp-pricing)和免费 Community Edition**| **免费** |
+| **计费策略** | **每月预订与[可用云信用值](/docs/services/blockchain/howto/pricing.html#starter-plan-pricing)** |**每月预订**|  **[VPC 定价](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-pricing)和免费 Community Edition**| **免费** |
 | **云平台**| **IBM Cloud**|**IBM Cloud**|**IBM Cloud Private**| **AWS**|
 
 **注意：**请勿将**入门套餐**用于生产用途。入门套餐是一个开发与测试环境，不适合生产工作负载。
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform 功能
 
-{{site.data.keyword.blockchainfull_notm}} 产品基于 [Hyperledger Fabric](reference/v10_fabric.html) 代码库构建，该代码库利用模块化体系结构来实现企业级别的安全性、数据完整性、可扩展性和性能，以满足您的业务需要。
+{{site.data.keyword.blockchainfull_notm}} 产品基于 [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html) 代码库构建，该代码库利用模块化体系结构来实现企业级别的安全性、数据完整性、可扩展性和性能，以满足您的业务需要。
 
 {{site.data.keyword.blockchainfull_notm}} Platform 提供高度安全和许可的区块链网络，通过此网络，已认证的成员可轻松定义资产并创建用于修改和交换资产的业务解决方案。借助
 {{site.data.keyword.blockchainfull_notm}} Platform 产品，您可以利用编排框架**快速地将联盟组织到活动区块链网络**。{{site.data.keyword.blockchainfull_notm}}
@@ -70,19 +70,19 @@ Hyperledger Fabric 体系结构的**模块性**和网络角色的显著分离提
 作为开发者，您可以在 {{site.data.keyword.blockchainfull_notm}} Platform 网络环境中使用交互式环境来开发、迭代和测试业务网络，从而快速轻松满足业务需求并加快区块链应用程序开发。这些工具旨在将业务规则转变为您首选环境中的业务网络代码：
 
 * **在线探索**
-  利用 [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool--> 了解关键区块链概念，创建网络定义，并利用可复用的行业模型和智能合同库。
+  利用 [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](/docs/services/blockchain/develop.html)<!--, which is powered by an open source development tool--> 了解关键区块链概念，创建网络定义，并利用可复用的行业模型和智能合同库。
 
-  开发了业务网络后，可以将其部署到在 {{site.data.keyword.blockchainfull_notm}} Platform 上运行的实时网络。有关更多信息，请参阅[使用入门套餐部署业务网络](./develop_starter.html)和[使用企业套餐部署业务网络](./develop_enterprise.html)。
+  开发了业务网络后，可以将其部署到在 {{site.data.keyword.blockchainfull_notm}} Platform 上运行的实时网络。有关更多信息，请参阅[使用入门套餐部署业务网络](/docs/services/blockchain/develop_starter.html)和[使用企业套餐部署业务网络](/docs/services/blockchain/develop_enterprise.html)。
 
 * **本地安装**
   利用 Hyperledger Fabric 在您的笔记本电脑上直接开发和测试。有关更多信息，请参阅[构建第一个网络](http://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html)。
 
 * **在云环境中协作**
-   通过入门套餐和企业套餐选项，使用随时可用型实时网络来开发代码并与他人共享。有关更多信息，请参阅[关于入门套餐](starter_plan.html)和[关于企业套餐](enterprise_plan.html)。
+   通过入门套餐和企业套餐选项，使用随时可用型实时网络来开发代码并与他人共享。有关更多信息，请参阅[关于入门套餐](/docs/services/blockchain/starter_plan.html)和[关于企业套餐](/docs/services/blockchain/enterprise_plan.html)。
 
 ## {{site.data.keyword.IBM_notm}} 支持
 
-{{site.data.keyword.IBM_notm}} 提供有关 {{site.data.keyword.IBM_notm}} 实施的区块链解决方案的各种支持选项。有关 {{site.data.keyword.blockchainfull_notm}} 支持的更多信息，请参阅[获取支持](ibmblockchain_support.html)。
+{{site.data.keyword.IBM_notm}} 提供有关 {{site.data.keyword.IBM_notm}} 实施的区块链解决方案的各种支持选项。有关 {{site.data.keyword.blockchainfull_notm}} 支持的更多信息，请参阅[获取支持](/docs/services/blockchain/ibmblockchain_support.html)。
 
 
 ## 入门套餐和企业套餐
@@ -116,7 +116,7 @@ IBP for ICP 支持在私有云上部署区块链网络，以应对数据存储�
  * 使客户能够通过使用 Hem 图表和详细的操作文档来配置 Fabric on Kubbernetes。
  * 使用高级技术支持来授权客户，除非您使用 Community Edition。
 
- 有关 IBP for ICP 的更多信息，请参阅[关于 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](ibp-for-icp-about.html)。
+ 有关 IBP for ICP 的更多信息，请参阅[关于 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html)。
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for AWS
 {: #ibp-for-aws}
@@ -131,4 +131,4 @@ IBP for ICP 支持在私有云上部署区块链网络，以应对数据存储�
  * 在公共子网中，两个可用性区域中的两个同级（每个子网中一个同级）。
  * 在每个公共子网中，具有嵌入式 LevelDB 数据库或辅助 CouchDB 容器的同级容器。
 
-有关 IBP for AWS 的更多信息，请参阅[关于 {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](howto/remote_peer.html)。
+有关 IBP for AWS 的更多信息，请参阅[关于 {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](/docs/services/blockchain/howto/remote_peer.html)。

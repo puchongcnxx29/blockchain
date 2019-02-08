@@ -18,9 +18,9 @@ lastupdated: "2017-08-14"
 
 ## 开始之前
 
-请确保在本地文件系统上安装所有必备软件。有关更多信息，请参阅[设置应用程序开发环境](../v10_application.html#setting-up-application-development-environment)。
+请确保在本地文件系统上安装所有必备软件。有关更多信息，请参阅[设置应用程序开发环境](/docs/services/blockchain/v10_application.html#setting-up-application-development-environment)。
 
-您还需要在配置了通道及其同级的 {{site.data.keyword.Bluemix_short}} 上拥有 {{site.data.keyword.blockchain}} 网络。有关更多信息，请参阅[管理网络](../get_start.html)。当网络准备好可以使用时，请检索应用程序将访问的网络资源的 API 端点。有关更多信息，请参阅[向应用程序添加网络服务凭证](../v10_application.html#adding-network-service-credentials-to-your-application)。
+您还需要在配置了通道及其同级的 {{site.data.keyword.Bluemix_short}} 上拥有 {{site.data.keyword.blockchain}} 网络。有关更多信息，请参阅[管理网络](/docs/services/blockchain/get_start.html)。当网络准备好可以使用时，请检索应用程序将访问的网络资源的 API 端点。有关更多信息，请参阅[向应用程序添加网络服务凭证](/docs/services/blockchain/v10_application.html#adding-network-service-credentials-to-your-application)。
 
 
 ## Marbles 应用程序

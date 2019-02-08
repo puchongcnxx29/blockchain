@@ -93,4 +93,4 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 
 2. 安装 IBM Cloud Private CLI [3.1.0 ![外部链接图标](images/external_link.svg "外部链接图标")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html) 以安装并运行 CA。
 
-安装 ICP 后，可以继续向 ICP 集群[导入 {{site.data.keyword.blockchainfull_notm}} Platform for ICP Helm 图表](howto/helm_install_icp.html)。
+安装 ICP 后，可以继续向 ICP 集群[导入 {{site.data.keyword.blockchainfull_notm}} Platform for ICP Helm 图表](/docs/services/blockchain/howto/helm_install_icp.html)。

@@ -19,20 +19,20 @@ lastupdated: "2018-12-07"
 ***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform 提供了可用于将应用程序连接到区块链网络的 API。可以使用连接概要文件中的网络 API 端点来调用链代码，并更新或查询同级上特定于通道的分类帐。此外，还可以在 [Swagger UI](howto/swagger_apis.html) 中使用 API 来管理节点、通道和网络的成员。
+{{site.data.keyword.blockchainfull}} Platform 提供了可用于将应用程序连接到区块链网络的 API。可以使用连接概要文件中的网络 API 端点来调用链代码，并更新或查询同级上特定于通道的分类帐。此外，还可以在 [Swagger UI](/docs/services/blockchain/howto/swagger_apis.html) 中使用 API 来管理节点、通道和网络的成员。
 {:shortdesc}
 
 您可以使用本教程来学习如何访问 {{site.data.keyword.blockchainfull_notm}} Platform API，并使用这些 API 向网络注册应用程序。您还将了解如何与网络交互以及从应用程序发出事务。本教程基于 Hyperledger Fabric 文档中的[编写第一个应用程序 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "编写第一个应用程序"){:new_window} 教程。您将用到**编写第一个应用程序**教程中的许多相同文件和命令，但这些文件和命令将用于与 {{site.data.keyword.blockchainfull_notm}} Platform 上的网络进行交互。本教程描述了使用 Hyperledger Fabric Node SDK 进行应用程序开发的每个步骤。您还将了解如何使用 Fabric CA 客户机作为使用 SDK 的替代方法注册和登记用户。
 
 
-除了本教程外，在创建自己的业务解决方案时，还可以使用 {{site.data.keyword.blockchainfull_notm}} Platform 提供的样本应用程序和链代码作为模板。有关更多信息，请参阅[部署样本应用程序](howto/prebuilt_samples.html)。
+除了本教程外，在创建自己的业务解决方案时，还可以使用 {{site.data.keyword.blockchainfull_notm}} Platform 提供的样本应用程序和链代码作为模板。有关更多信息，请参阅[部署样本应用程序](/docs/services/blockchain/howto/prebuilt_samples.html)。
 
 ## 先决条件
 您需要满足以下先决条件，才能在 {{site.data.keyword.blockchainfull_notm}} Platform 上使用**编写第一个应用程序**教程。
 
-- 如果 {{site.data.keyword.cloud_notm}} 上没有区块链网络，那么需要使用入门套餐或企业成员资格套餐创建区块链网络。有关更多信息，请参阅[创建入门套餐网络](get_start_starter_plan.html#creating-a-network)或[创建企业套餐网络](get_start.html#creating-a-network)。
+- 如果 {{site.data.keyword.cloud_notm}} 上没有区块链网络，那么需要使用入门套餐或企业成员资格套餐创建区块链网络。有关更多信息，请参阅[创建入门套餐网络](/docs/services/blockchain/get_start_starter_plan.html#creating-a-network)或[创建企业套餐网络](/docs/services/blockchain/get_start.html#creating-a-network)。
 
-  在进入网络的“网络监视器”后，在“概述”屏幕上至少为组织添加一个同级。然后，在网络中至少创建一个通道。有关更多信息，请参阅[创建通道](howto/create_channel.html#creating-a-channel)。**注**：如果使用的是入门套餐网络，那么网络已具有一个名称为 `defaultchannel` 的通道，您可以使用该通道来部署链代码。
+  在进入网络的“网络监视器”后，在“概述”屏幕上至少为组织添加一个同级。然后，在网络中至少创建一个通道。有关更多信息，请参阅[创建通道](/docs/services/blockchain/howto/create_channel.html#creating-a-channel)。**注**：如果使用的是入门套餐网络，那么网络已具有一个名称为 `defaultchannel` 的通道，您可以使用该通道来部署链代码。
 
 - 安装必需的工具以下载 Hyperledger Fabric 样本并使用 Node SDK。
   * [Curl ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") 或 [Git ![外部链接图标](images/external_link.svg "外部链接图标")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git"){:new_window}
@@ -41,7 +41,7 @@ lastupdated: "2018-12-07"
 - 通过下载 `fabric-samples` 目录来安装 Hyperledger Fabric 样本。您可以遵循 Hyperledger Fabric 文档中的[入门指南 ![外部链接图标](images/external_link.svg "外部链接图标 ")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/install.html "入门指南"){:new_window}。
 
 - 导航到本地计算机上的 `fabric-samples` 目录。
-  * 使用 `git checkout` 命令来使用与网络 Hyperledger Fabric 版本匹配的分支。可以通过打开“网络监视器”中的[“网络首选项”窗口](../v10_dashboard.html#network-preferences)来找到 Fabric 版本。
+  * 使用 `git checkout` 命令来使用与网络 Hyperledger Fabric 版本匹配的分支。可以通过打开“网络监视器”中的[“网络首选项”窗口](/docs/services/blockchain/v10_dashboard.html#network-preferences)来找到 Fabric 版本。
     - 如果您的网络位于 Fabric V1.2 上，您可以使用主要分支。
     - 如果您的网络位于 Fabric V1.1 上，请运行 `git checkout v1.1.0`。
     - 如果您的网络位于 Fabric V1.0 上，请运行 `git checkout v1.0.6`。
@@ -50,7 +50,7 @@ lastupdated: "2018-12-07"
 
   * 在 `fabcar` 目录中，运行 `npm install` 命令以安装使用 Fabric SDK 所必需的软件包，包括 `fabric-client` 和 `fabric-ca-client`。
 
-- 使用[网络监视器](howto/install_instantiate_chaincode.html#installchaincode)在通道上安装和实例化 fabcar 链代码。可以在 `fabric-samples > chaincode > fabcar > go` 文件夹下的 `fabric-samples` 文件夹中找到 fabcar 链代码。
+- 使用[网络监视器](/docs/services/blockchain/howto/install_instantiate_chaincode.html#installchaincode)在通道上安装和实例化 fabcar 链代码。可以在 `fabric-samples > chaincode > fabcar > go` 文件夹下的 `fabric-samples` 文件夹中找到 fabcar 链代码。
 
 - 在“网络监视器”的“概述”屏幕上检索网络的连接概要文件。将连接概要文件保存到 `fabcar` 目录中，并将其重命名为 `creds.json`。
 
@@ -81,14 +81,14 @@ Hyperledger Fabric SDK 提供了一组功能强大的 API，支持应用程序�
                   ...
   ```
 
-  **注**：您可能希望将组织外部的网络资源设定为应用程序的目标。例如，如果链代码[背书策略](howto/install_instantiate_chaincode.html#endorsement-policy)需要来自通道上其他组织的背书，那么您需要获取其同级的端点信息和附带的 TLS 证书。可以在连接概要文件的 peers 部分中找到这些信息。但是，您需要联系其他组织的管理员，了解哪些同级已加入特定通道。
+  **注**：您可能希望将组织外部的网络资源设定为应用程序的目标。例如，如果链代码[背书策略](/docs/services/blockchain/howto/install_instantiate_chaincode.html#endorsement-policy)需要来自通道上其他组织的背书，那么您需要获取其同级的端点信息和附带的 TLS 证书。可以在连接概要文件的 peers 部分中找到这些信息。但是，您需要联系其他组织的管理员，了解哪些同级已加入特定通道。
 
 3. 将 API 端点信息插入应用程序的配置文件，如以下示例中所示：
   ```
   grpcs://n7413e3b503174a58b112d30f3af55016-orderer.us3.blockchain.ibm.com:31001
   ```
 
-  您还可以将 [HEAD 请求](howto/monitor_network.html#monitor-nodes)发送到这些端点，以检查网络资源的可用性。
+  您还可以将 [HEAD 请求](/docs/services/blockchain/howto/monitor_network.html#monitor-nodes)发送到这些端点，以检查网络资源的可用性。
 
   如果使用的是 Fabric SDK，那么还可以使用连接概要文件来连接到网络。本教程提供了手动将 SDK 连接到网络的端点信息。但是，您可以在后面的部分中找到有关[将连接概要文件与 SDK 配合使用](#using-your-connection-profile-with-the-sdk)的教程和指南。
 
@@ -96,11 +96,11 @@ Hyperledger Fabric SDK 提供了一组功能强大的 API，支持应用程序�
 {: #enroll-app}
 
 在将应用程序连接到 {{site.data.keyword.blockchainfull_notm}} Platform 上的网络之前，需要向网络证明应用程序的真实性。我们不会深入探讨 x509 证书和公共密钥基础架构的详细信息，但您可以通过
-访问[管理 {{site.data.keyword.blockchainfull_notm}} Platform 上的证书](certificates.html)教程来了解更多相关信息。简单来说，Fabric 中的通信流在每个接触点都使用签名/验证操作。因此，任何将调用（例如，分类帐查询或更新）发送到网络的应用程序都需要使用自己的专用密钥对有效内容签名，并附加正确签名的 x509 证书，以用于验证目的。**注册**是从相应的认证中心生成必需的密钥和证书的过程。注册之后，应用程序就可以随时与网络通信了。
+访问[管理 {{site.data.keyword.blockchainfull_notm}} Platform 上的证书](/docs/services/blockchain/certificates.html)教程来了解更多相关信息。简单来说，Fabric 中的通信流在每个接触点都使用签名/验证操作。因此，任何将调用（例如，分类帐查询或更新）发送到网络的应用程序都需要使用自己的专用密钥对有效内容签名，并附加正确签名的 x509 证书，以用于验证目的。**注册**是从相应的认证中心生成必需的密钥和证书的过程。注册之后，应用程序就可以随时与网络通信了。
 
 本部分说明了如何通过样本代码（**编写第一个应用程序**教程中的一部分内容）检索 Fabric Node SDK 的密钥和证书。您只能使用向认证中心注册的身份来生成证书。以下教程首先使用已向您的 CA 注册的管理员身份进行登记。然后，使用这些证书注册新客户机身份。此教程使用新身份再次登记，并使用这些证书将事务提交到网络<!---You can find an illustration of how the developing applications tutorial interacts with your organization CA in the diagram below.--->
 
-您也可以使用“网络监视器”的“认证中心”屏幕来生成证书，并使用这些证书与网络交互。要了解其方式，请访问[使用网络监视器生成证书](#enroll-panel)。通过[管理证书](certificates.html)教程，您还可以了解如何从命令行使用 [Fabric CA 客户机](certificates.html#enroll-register-caclient)以生成证书并注册用户。
+您也可以使用“网络监视器”的“认证中心”屏幕来生成证书，并使用这些证书与网络交互。要了解其方式，请访问[使用网络监视器生成证书](#enroll-panel)。通过[管理证书](/docs/services/blockchain/certificates.html)教程，您还可以了解如何从命令行使用 [Fabric CA 客户机](/docs/services/blockchain/certificates.html#enroll-register-caclient)以生成证书并注册用户。
 
 ### 使用 Fabric SDK 进行注册
 {: #enroll-app-sdk}
@@ -234,7 +234,7 @@ node enrollAdmin.js
 
 ### 使用网络监视器进行注册
 
-或者，可以使用“网络监视器”的**认证中心**选项卡来注册客户机应用程序。有关更多指示信息，请参阅此[信息](v10_dashboard.html#ca)。
+或者，可以使用“网络监视器”的**认证中心**选项卡来注册客户机应用程序。有关更多指示信息，请参阅此[信息](/docs/services/blockchain/v10_dashboard.html#ca)。
 
 ## 通过调用和查询链代码来发出事务
 {: #invoke-query}
@@ -451,7 +451,7 @@ var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.pee
 ## 启用双向 TLS
 {: #mutual-tls}
 
-如果运行的是 Fabric V1.1 级别的企业套餐网络，那么可以选择为应用程序[启用双向 TLS](v10_dashboard.html#network-preferences)。如果启用双向 TLS，那么需要更新应用程序以支持此功能。否则，应用程序无法与网络通信。
+如果运行的是 Fabric V1.1 级别的企业套餐网络，那么可以选择为应用程序[启用双向 TLS](/docs/services/blockchain/v10_dashboard.html#network-preferences)。如果启用双向 TLS，那么需要更新应用程序以支持此功能。否则，应用程序无法与网络通信。
 
 在连接概要文件中，找到 `certificateAuthorities` 部分，您可在其中找到注册以及获取证书以使用双向 TLS 与网络进行通信所需的以下属性。
 
@@ -465,7 +465,7 @@ var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.pee
 ## （可选）使用 SDK 操作网络
 {: #operate-sdk}
 
-您还可以使用 SDK 来操作区块链网络。本教程说明了如何使用 SDK 将同级加入通道，在同级上安装链代码以及在通道上实例化链代码。这些步骤是可选的，因为如果所有同级都正在 {{site.data.keyword.blockchainfull_notm}} Platform 上运行，那么还可以在 [Swagger UI](howto/swagger_apis.html) 中使用“网络监视器”或 API 来执行这些操作。
+您还可以使用 SDK 来操作区块链网络。本教程说明了如何使用 SDK 将同级加入通道，在同级上安装链代码以及在通道上实例化链代码。这些步骤是可选的，因为如果所有同级都正在 {{site.data.keyword.blockchainfull_notm}} Platform 上运行，那么还可以在 [Swagger UI](/docs/services/blockchain/howto/swagger_apis.html) 中使用“网络监视器”或 API 来执行这些操作。
 
 您需要将 admin signCert 上传到 {{site.data.keyword.blockchainfull_notm}} Platform 来完成这些步骤。您可以在[注册部分](#enroll-app-sdk)末尾找到有关如何上传 signCert 的指示信息。
 
@@ -503,7 +503,7 @@ var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.pee
   });
   ```
 
-需要先将 signCert 添加到通道，才能访存起源区块。如果在组织加入通道后生成了证书，那么需要将您的 signCert 上传到平台，然后单击“通道”屏幕中的**同步证书**按钮。在发出加入通道的命令之前，您可能需要等待几分钟，以便通道完成同步。有关更多信息，请参阅[管理证书](certificates.html)教程中的[将签名证书上传到 {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html#upload-certs)。
+需要先将 signCert 添加到通道，才能访存起源区块。如果在组织加入通道后生成了证书，那么需要将您的 signCert 上传到平台，然后单击“通道”屏幕中的**同步证书**按钮。在发出加入通道的命令之前，您可能需要等待几分钟，以便通道完成同步。有关更多信息，请参阅[管理证书](/docs/services/blockchain/certificates.html)教程中的[将签名证书上传到 {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#upload-certs)。
 
 ### 安装链代码
 {: #install-cc-sdk}
@@ -546,7 +546,7 @@ var request = {
 
 将此请求发送到 `return channel.sendInstantiateProposal(request);`，而不是当前该文件中的 `return channel.sendTransactionProposal(request);`。将实例化请求发送到通道后，您需要将已背书建议作为事务发送给排序服务。此操作使用的方法与发送事务的方法相同，因此您可以使文件其余部分保持不变。您可能需要在实例化建议中[增大超时值](#set-timeout-in-sdk)。否则，在平台可以启动链代码容器之前，该请求可能会超时。
 
-需要先将 signCert 添加到通道，才能实例化链代码。如果在您加入通道后生成了证书，那么需要将您的 signCert 上传到平台，然后单击“通道”屏幕中的**同步证书**按钮。在发出实例化链代码的命令之前，您可能需要等待几分钟，以便通道完成同步。要了解更多信息，请参阅[管理证书](certificates.html)教程中的[将签名证书上传到 {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html#upload-certs)。
+需要先将 signCert 添加到通道，才能实例化链代码。如果在您加入通道后生成了证书，那么需要将您的 signCert 上传到平台，然后单击“通道”屏幕中的**同步证书**按钮。在发出实例化链代码的命令之前，您可能需要等待几分钟，以便通道完成同步。要了解更多信息，请参阅[管理证书](/docs/services/blockchain/certificates.html)教程中的[将签名证书上传到 {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#upload-certs)。
 
 ## （可选）在 Fabric SDK 中设置超时值
 {: #set-timeout-in-sdk}

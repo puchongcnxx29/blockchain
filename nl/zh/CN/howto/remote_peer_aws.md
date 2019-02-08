@@ -24,12 +24,12 @@ lastupdated: "2018-11-27"
 
 有关 AWS 的更多信息，请参阅 [AWS 概述文档 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://d1.awsstatic.com/whitepapers/aws-overview.pdf "AWS 概述文档")。
 
-部署 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级之前，请查看[同级注意事项](remote_peer.html#remote-peer-limitations)。
+部署 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级之前，请查看[同级注意事项](/docs/services/blockchain/remote_peer.html#remote-peer-limitations)。
 
 ## 先决条件
 {: #prerequisites-aws}
 
-要使用 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级（同级），您必须有一个组织，并且该组织是在 IBM Blockchain Platform 上托管的区块链网络的成员。您需要使用 IBM Cloud 上的“网络监视器”来访问网络的网络凭证和 API 端点。如果您不是任何区块链网络的成员，那么需要创建或加入一个网络。有关更多信息，请参阅[创建网络](../get_start.html#creating-a-network)或[加入网络](../get_start.html#joining-a-network)。
+要使用 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 同级（同级），您必须有一个组织，并且该组织是在 IBM Blockchain Platform 上托管的区块链网络的成员。您需要使用 IBM Cloud 上的“网络监视器”来访问网络的网络凭证和 API 端点。如果您不是任何区块链网络的成员，那么需要创建或加入一个网络。有关更多信息，请参阅[创建网络](/docs/services/blockchain/get_start.html#creating-a-network)或[加入网络](../get_start.html#joining-a-network)。
 
 同级的缺省 VPC 实例类型为 `m4.xlarge`。您应该根据自己的 CPU、内存和存储需求来优化选择的实例类型。同级至少需要：  
 -	2 个 CPU
@@ -261,9 +261,9 @@ AWS CloudFormation 模板成功创建堆栈后，AWS 帐户中将有两个 {{sit
 
 2. 您需要先将组织添加到网络中的通道，然后才能访存起源区块。
 
-  - 可以为同级启动新的通道。作为通道启动者，您可以在[通道创建](create_channel.html#creating-a-channel)期间自动包含您的组织。
+  - 可以为同级启动新的通道。作为通道启动者，您可以在[通道创建](/docs/services/blockchain/create_channel.html#creating-a-channel)期间自动包含您的组织。
 
-  - 区块链网络的其他成员也可以使用[通道更新](create_channel.html#updating-a-channel)将您的组织添加到现有通道。
+  - 区块链网络的其他成员也可以使用[通道更新](/docs/services/blockchain/create_channel.html#updating-a-channel)将您的组织添加到现有通道。
 
   - 将组织添加到通道后，需要将同级的签名证书添加到该通道。在安装期间，同级将上传其签名证书，因此您只需要将该证书同步到通道即可。在“网络监视器”的“通道”屏幕中，找到组织加入的通道，然后从**操作**标头下的下拉列表中选择**同步证书**。此操作会同步通道上所有同级的证书。
 
@@ -338,12 +338,12 @@ AWS CloudFormation 模板成功创建堆栈后，AWS 帐户中将有两个 {{sit
 ## 下一步做什么
 {: #whats-next-aws}
 
-在 AWS 中设置同级后，可以完成若干操作步骤，然后才能将事务提交到区块链网络的分布式分类帐，并读取该分布式分类帐。有关更多信息，请参阅[在 AWS 中操作同级](remote_peer_operate_aws.html#remote-peer-operate-aws)。
+在 AWS 中设置同级后，可以完成若干操作步骤，然后才能将事务提交到区块链网络的分布式分类帐，并读取该分布式分类帐。有关更多信息，请参阅[在 AWS 中操作同级](/docs/services/blockchain/remote_peer_operate_aws.html#remote-peer-operate-aws)。
 
 ## 高可用性 (HA)
 {: #aws-high-availability}
 
-缺省情况下，为了支持 HA，快速入门模板会将同级的两个实例部署在两个不同的可用性专区中。要利用此 HA 支持，您还需要配置[客户机应用程序以实现高可用性](../v10_application.html#ha-app)。
+缺省情况下，为了支持 HA，快速入门模板会将同级的两个实例部署在两个不同的可用性专区中。要利用此 HA 支持，您还需要配置[客户机应用程序以实现高可用性](/docs/services/blockchain/v10_application.html#ha-app)。
 
 ## 安全注意事项
 {: #remote-peer-aws-security}
@@ -380,13 +380,13 @@ AWS Cloud 提供了一个可扩展且高度可靠的平台，可帮助客户快�
 #### 数据存储位置
 {: #aws-security-data-residency}
 
-数据存储位置要求所有区块链分类帐数据的处理和存储始终限制在一个国家或地区境内。有关如何实现此操作的更多详细信息，请参阅此[主题](remote_peer.html#data-residency)。
+数据存储位置要求所有区块链分类帐数据的处理和存储始终限制在一个国家或地区境内。有关如何实现此操作的更多详细信息，请参阅此[主题](/docs/services/blockchain/remote_peer.html#data-residency)。
 
 #### 密钥管理
 {: #aws-security-key-management}
 
-密钥管理是同级安全性中至关重要的一个方面。如果专用密钥泄漏或丢失，那么恶意参与者可能有能力访问您同级的数据和功能。{{site.data.keyword.blockchainfull_notm}} Platform 企业套餐使用[硬件安全模块](../glossary.html#hsm) (HSM) 来存储网络的专用密钥。HSM 是一种物理设备，用于阻止其他参与方访问您的专用密钥。
-在 AWS 上部署同级时，您负责管理专用密钥。虽然 {{site.data.keyword.blockchainfull_notm}} Platform 会生成专用密钥，但这些密钥不会存储在 Platform 上。因此，必须确保将密钥存储在安全的位置，避免密钥泄露。您可以在同级 MSP 的 keystore 文件夹（位于同级容器内的 `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` 目录）中找到同级的专用密钥。有关同级内的证书的更多信息，请访问[在 {{site.data.keyword.blockchainfull_notm}} Platform 上管理证书](../certificates.html)主题中的[成员资格服务提供者](../certificates.html#msp)部分。
+密钥管理是同级安全性中至关重要的一个方面。如果专用密钥泄漏或丢失，那么恶意参与者可能有能力访问您同级的数据和功能。{{site.data.keyword.blockchainfull_notm}} Platform 企业套餐使用[硬件安全模块](/docs/services/blockchain/glossary.html#hsm) (HSM) 来存储网络的专用密钥。HSM 是一种物理设备，用于阻止其他参与方访问您的专用密钥。
+在 AWS 上部署同级时，您负责管理专用密钥。虽然 {{site.data.keyword.blockchainfull_notm}} Platform 会生成专用密钥，但这些密钥不会存储在 Platform 上。因此，必须确保将密钥存储在安全的位置，避免密钥泄露。您可以在同级 MSP 的 keystore 文件夹（位于同级容器内的 `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` 目录）中找到同级的专用密钥。有关同级内的证书的更多信息，请访问[在 {{site.data.keyword.blockchainfull_notm}} Platform 上管理证书](/docs/services/blockchain/certificates.html)主题中的[成员资格服务提供者](/docs/services/blockchain/certificates.html#msp)部分。
 
 您可以使用“密钥代管”来恢复丢失的专用密钥。这需要在丢失任何密钥之前执行。如果无法恢复专用密钥，那么需要通过从认证中心获取新的 signCert 来获取新的专用密钥。您还应该从加入的任何通道中除去并替换管理员证书。
 
@@ -403,7 +403,7 @@ In IBP when a private key is created, two sets of independent key material is ge
 #### 成员资格服务提供者配置
 {: #aws-security-MSP}
 
-IBM Blockchain Platform 的组件通过成员资格服务提供者 (MSP) 使用身份。MSP 将 CA 颁发的证书与网络和通道角色相关联。请参阅此[主题](../certificates.html#msp)，以获取有关 MSP 如何用于同级的更多信息。
+IBM Blockchain Platform 的组件通过成员资格服务提供者 (MSP) 使用身份。MSP 将 CA 颁发的证书与网络和通道角色相关联。请参阅此[主题](/docs/services/blockchain/certificates.html#msp)，以获取有关 MSP 如何用于同级的更多信息。
 
 #### 应用程序安全性
 {: #aws-security-appl}

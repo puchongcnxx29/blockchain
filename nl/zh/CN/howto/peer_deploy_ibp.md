@@ -21,9 +21,9 @@ lastupdated: "2018-12-07"
 以下指示信息描述了如何在 {{site.data.keyword.cloud_notm}} Private (ICP) 上部署 {{site.data.keyword.blockchainfull}} Platform 同级，该同级将连接到 {{site.data.keyword.cloud_notm}} 或您本地 ICP 上的入门套餐或企业套餐网络。
 {:shortdesc}
 
-部署同级之前，请查看[注意事项和限制](../ibp-for-icp-about.html#ibp-icp-considerations)。
+部署同级之前，请查看[注意事项和限制](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)。
 
-入门套餐或企业套餐网络必须运行的是 Hyperledger Fabric V1.1 或 V1.2.1。可以通过打开“网络监视器”中的[“网络首选项”窗口](../v10_dashboard.html#network-preferences)来找到 Hyperledger Fabric 版本。
+入门套餐或企业套餐网络必须运行的是 Hyperledger Fabric V1.1 或 V1.2.1。可以通过打开“网络监视器”中的[“网络首选项”窗口](/docs/services/blockchain/v10_dashboard.html#network-preferences)来找到 Hyperledger Fabric 版本。
 
 ## 需要的资源
 {: #peer-resources-required}
@@ -53,7 +53,7 @@ lastupdated: "2018-12-07"
 ## 部署同级的先决条件
 {: #prerequisites-peer-ibp}
 
-1. 必须先[安装 ICP](../ICP_setup.html) 并[安装 {{site.data.keyword.blockchainfull_notm}} Platform Helm 图表](helm_install_icp.html)，然后才能在 ICP 上安装同级。
+1. 必须先[安装 ICP](/docs/services/blockchain/ICP_setup.html) 并[安装 {{site.data.keyword.blockchainfull_notm}} Platform Helm 图表](helm_install_icp.html)，然后才能在 ICP 上安装同级。
 
 2. 如果使用 Community Edition 并且希望在没有因特网连接的 ICP 集群上运行此 Helm 图表，那么需要在连接因特网的机器上创建归档，然后才能在 ICP 集群上安装归档。有关更多信息，请参阅[向没有因特网连接的集群中添加精选应用程序 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "向没有因特网连接的集群中添加精选应用程序"){:new_window}。请注意，您可以在 Helm 图表中的 ibm-blockchain-platform-dev/ibm_cloud_pak 下找到规范文件 manifest.yaml。
 

@@ -52,13 +52,13 @@ lastupdated: "2018-12-07"
 
 “停止”和“启动”操作不可用于“排序”节点。通常，不需要在网络上停止和启动同级或 CA 节点。提供的“停止”和“启动”操作是为了满足重新启动同级的需要，例如要以全新方式启动同级时。
 
-您还可以通过单击**操作**标头下的下拉列表中的**查看日志**来检查组件日志。日志会公开在各种网络资源之间的调用，且在进行调试和故障诊断时非常有用。有关使用网络日志的更多信息，请参阅[监视区块链网络](howto/monitor_network.html)
+您还可以通过单击**操作**标头下的下拉列表中的**查看日志**来检查组件日志。日志会公开在各种网络资源之间的调用，且在进行调试和故障诊断时非常有用。有关使用网络日志的更多信息，请参阅[监视区块链网络](/docs/services/blockchain/howto/monitor_network.html)
 
 要了解启动和停止同级的效果，可通过停止同级并尝试将其设定为某个事务处理的目标来进行试验，您将在日志中看到连接错误。重新启动该同级并重试该事务处理时，您将看到连接成功。您还可以在通道继续进行事务处理时，使某个同级停止运行较长的一段时间。该同级再次启动后，您将注意到分类帐同步，因为该同级会收到在它停止运行期间提交的块。在分类帐完全同步后，您可以对其执行正常的调用和查询。
 
 ### 远程同级配置  
 
-如果在 {{site.data.keyword.cloud_notm}} 之外部署同级，那么需要在配置期间提供网络的 API 端点信息。单击**远程同级配置**按钮以检索网络的 API 端点信息来配置同级。弹出窗口提供网络标识、组织 MSP、CA 名称、CA URL 和 CA TLS 证书的 API 端点信息。您可以单击每个字段末尾的复制图标以复制此字段的值，或者单击**下载**按钮以在 JSON 文件中保存所有字段的值。有关更多信息，请参阅[关于适用于 Amazon Web Services 的 {{site.data.keyword.blockchainfull_notm}} Platform](howto/remote_peer.html) 和[适用于 {{site.data.keyword.cloud_notm}} Private 的 {{site.data.keyword.blockchainfull_notm}} Platform](ibp-for-icp-about.html)。
+如果在 {{site.data.keyword.cloud_notm}} 之外部署同级，那么需要在配置期间提供网络的 API 端点信息。单击**远程同级配置**按钮以检索网络的 API 端点信息来配置同级。弹出窗口提供网络标识、组织 MSP、CA 名称、CA URL 和 CA TLS 证书的 API 端点信息。您可以单击每个字段末尾的复制图标以复制此字段的值，或者单击**下载**按钮以在 JSON 文件中保存所有字段的值。有关更多信息，请参阅[关于适用于 Amazon Web Services 的 {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/remote_peer.html) 和[适用于 {{site.data.keyword.cloud_notm}} Private 的 {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/ibp-for-icp-about.html)。
 
 ### 连接概要文件
 {: #connection-profile}
@@ -69,7 +69,7 @@ lastupdated: "2018-12-07"
 ### 添加同级
 {: #peers}
 
-网络成员部署[同级](blockchain_component_overview.html#peer)来存储其网络分类帐副本并运行用于查询或更新分类帐的链代码。如果支持策略将某个同级定义为支持同级，那么该同级还会将支持结果返回给应用程序。
+网络成员部署[同级](/docs/services/blockchain/blockchain_component_overview.html#peer)来存储其网络分类帐副本并运行用于查询或更新分类帐的链代码。如果支持策略将某个同级定义为支持同级，那么该同级还会将支持结果返回给应用程序。
 
 单击右上角的**添加同级**按钮，以将同级节点添加到网络。在弹出的“添加同级”面板中，选择要添加的同级节点的数目和大小。您可以根据自己的需求为组织添加更多同级。如果需要更多同级，您可能处于不同的场景中。例如，您可能希望多个同级加入同一个通道以实现冗余。每个同级都会处理该通道的事务，并写入其各自的分类帐副本。如果其中一个同级发生故障，另一个同级（或其他多个同级）可以继续处理事务和应用程序请求。您还可以在各同级之间对所有应用程序请求进行对称负载均衡，或者可以针对不同的功能将不同的同级设定为目标。例如，可以使用一个同级来查询分类账，而使用另一个同级来处理对分类帐更新的支持。
 
@@ -125,7 +125,7 @@ lastupdated: "2018-12-07"
 
 操作员可以在“证书”选项卡中管理同一机构的成员的证书。单击**添加证书**以打开“添加证书”面板。向证书提供名称、将 PEM 格式的客户机端证书粘贴到“密钥”字段，然后单击**提交**。您需要在客户机端证书生效之前重新启动同级。
 
-有关生成证书密钥的更多信息，请参阅[注册应用程序](v10_application.html#enroll-app)。
+有关生成证书密钥的更多信息，请参阅[注册应用程序](/docs/services/blockchain/v10_application.html#enroll-app)。
 
 
 ## 通道
@@ -138,11 +138,11 @@ lastupdated: "2018-12-07"
 ![通道](images/channels.png "通道")
 *图 6. 通道*
 
-创建通道将生成特定于通道的分类帐。有关更多信息，请参阅[创建通道](howto/create_channel.html)。
+创建通道将生成特定于通道的分类帐。有关更多信息，请参阅[创建通道](/docs/services/blockchain/howto/create_channel.html)。
 
-您还可以选择现有通道以查看有关通道、成员资格和活动链代码的更精确详细信息。有关更多信息，请参阅[监视网络](howto/monitor_network.html)。
+您还可以选择现有通道以查看有关通道、成员资格和活动链代码的更精确详细信息。有关更多信息，请参阅[监视网络](/docs/services/blockchain/howto/monitor_network.html)。
 
-如果已使用“成员”屏幕的[“证书”选项卡](#certificates_tab)将新证书上传到平台，那么可以使用此面板将证书添加到通道。从相关通道旁的**操作**标头下的下拉列表中单击**同步证书**。这将允许您从远程客户机操作通道，包括能够在通道上实例化链代码。有关更多信息，请参阅[管理证书](certificates.html)教程中的[将签名证书上传到 {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html#upload-certs)。
+如果已使用“成员”屏幕的[“证书”选项卡](#certificates_tab)将新证书上传到平台，那么可以使用此面板将证书添加到通道。从相关通道旁的**操作**标头下的下拉列表中单击**同步证书**。这将允许您从远程客户机操作通道，包括能够在通道上实例化链代码。有关更多信息，请参阅[管理证书](/docs/services/blockchain/certificates.html)教程中的[将签名证书上传到 {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#upload-certs)。
 
 
 ## 通知
@@ -176,7 +176,7 @@ lastupdated: "2018-12-07"
 ![认证中心](images/CA_screen.png "认证中心")
 *图 8. 认证中心*
 
-单击您的管理员身份旁边的**生成证书**按钮，以从您的 CA 获取新的公用证书和专用密钥。**证书**字段包含公用证书，也称为 signCert 或注册证书，位于**专用密钥**正上方。您可以单击每个字段末尾的复制图标以复制值。此面板也可用作替代方法来针对使用 Fabric SDK 的客户机应用程序生成公用和专用密钥对。要了解更多信息，请参阅[开发应用程序教程](v10_application.html#enroll-panel)。**请注意**，{{site.data.keyword.blockchainfull_notm}} Platform 不存储这些证书。您需要安全地保存并存储它们。
+单击您的管理员身份旁边的**生成证书**按钮，以从您的 CA 获取新的公用证书和专用密钥。**证书**字段包含公用证书，也称为 signCert 或注册证书，位于**专用密钥**正上方。您可以单击每个字段末尾的复制图标以复制值。此面板也可用作替代方法来针对使用 Fabric SDK 的客户机应用程序生成公用和专用密钥对。要了解更多信息，请参阅[开发应用程序教程](/docs/services/blockchain/v10_application.html#enroll-panel)。**请注意**，{{site.data.keyword.blockchainfull_notm}} Platform 不存储这些证书。您需要安全地保存并存储它们。
 
 单击**添加用户**按钮以向组织注册新身份。在**添加用户**弹出窗口中，填写以下字段，然后单击**提交**。
   - **注册标识：**这将是新身份的名称，有时也称为 `enroll ID`。**保存此值**，配置远程同级或注册新应用程序时需要使用此值。
@@ -185,7 +185,7 @@ lastupdated: "2018-12-07"
   - **亲缘关系：**这将是身份所属的组织（如 `org1`）内的亲缘关系。
   - **最大注册数：**您可以使用此字段来限制可使用此身份注册或生成证书的次数。如果保留此字段为空，那么值缺省为不限制注册数。
 
-您可以通过访问[管理 {{site.data.keyword.blockchainfull_notm}} Platform 上的证书](certificates.html)教程来了解有关 CA 的更多信息。
+您可以通过访问[管理 {{site.data.keyword.blockchainfull_notm}} Platform 上的证书](/docs/services/blockchain/certificates.html)教程来了解有关 CA 的更多信息。
 
 
 ## API
@@ -198,7 +198,7 @@ lastupdated: "2018-12-07"
 ![API](images/API_screen.png "API")
 *图 9. API*
 
-单击 **Swagger UI** 链接以打开 Swagger UI。请注意，您需要先使用自己的网络凭证（可以在此 API 页面上找到）来授权 Swagger UI，然后才能运行 API。有关更多信息，请参阅[使用 Swagger API 与网络进行交互](howto/swagger_apis.html)。
+单击 **Swagger UI** 链接以打开 Swagger UI。请注意，您需要先使用自己的网络凭证（可以在此 API 页面上找到）来授权 Swagger UI，然后才能运行 API。有关更多信息，请参阅[使用 Swagger API 与网络进行交互](/docs/services/blockchain/howto/swagger_apis.html)。
 
 ## 开发代码
 {: #write-code}
@@ -210,7 +210,7 @@ lastupdated: "2018-12-07"
 ![开发代码](images/write_code.png "开发代码")
 *图 10. 开发代码*
 
-有关使用企业套餐来开发和部署代码的更多信息，请参阅[使用企业套餐开发业务网络](develop_enterprise.html)。
+有关使用企业套餐来开发和部署代码的更多信息，请参阅[使用企业套餐开发业务网络](/docs/services/blockchain/develop_enterprise.html)。
 
 ## 安装代码
 {: #chaincode}
@@ -222,13 +222,13 @@ lastupdated: "2018-12-07"
 ![安装代码](images/chaincode_install_overview.png "安装代码")
 *图 11. 安装代码*
 
-链代码首先安装在同级的文件系统上，然后在通道上进行实例化。有关更多信息，请参阅[安装、实例化和更新链代码](howto/install_instantiate_chaincode.html)。
+链代码首先安装在同级的文件系统上，然后在通道上进行实例化。有关更多信息，请参阅[安装、实例化和更新链代码](/docs/services/blockchain/howto/install_instantiate_chaincode.html)。
 
 
 ## 试用样本
 {: #samples}
 
-样本应用程序可帮助您更好地了解区块链网络和应用程序开发。请访问**在 GitHub 上查看**链接，以了解如何使用样本并将其部署到 {{site.data.keyword.blockchainfull_notm}} Platform。有关如何开发和部署样本的更多信息，请参阅[部署样本应用程序](howto/prebuilt_samples.html)。
+样本应用程序可帮助您更好地了解区块链网络和应用程序开发。请访问**在 GitHub 上查看**链接，以了解如何使用样本并将其部署到 {{site.data.keyword.blockchainfull_notm}} Platform。有关如何开发和部署样本的更多信息，请参阅[部署样本应用程序](/docs/services/blockchain/howto/prebuilt_samples.html)。
 
 **图 12** 显示“试用样本”屏幕：
 
@@ -250,10 +250,10 @@ lastupdated: "2018-12-07"
 ### 区块链资源和支持论坛
 {: #support-forums}
 
-使用“支持”选项卡中的资源对问题进行故障诊断，并从 {{site.data.keyword.IBM_notm}} 和 Fabric 社区获取帮助。有关“支持”选项卡上的链接的更多信息，请参阅[获取支持](ibmblockchain_support.html)中的[资源和支持论坛](ibmblockchain_support.html#resources)。
+使用“支持”选项卡中的资源对问题进行故障诊断，并从 {{site.data.keyword.IBM_notm}} 和 Fabric 社区获取帮助。有关“支持”选项卡上的链接的更多信息，请参阅[获取支持](/docs/services/blockchain/ibmblockchain_support.html)中的[资源和支持论坛](/docs/services/blockchain/ibmblockchain_support.html#resources)。
 
 [IBM dWAnswers ![外部链接图标](images/external_link.svg "外部链接图标")](https://developer.ibm.com/answers/smartspace/blockchain/) 是
-{{site.data.keyword.blockchainfull_notm}} Platform 和 Hyperledger Fabric 用户的社区论坛，由 IBM 专家监视。您可以搜索先前发布的问题的解答，也可以提交新问题。如果您无法调试问题或确定问题的答案，请在 {{site.data.keyword.cloud_notm}} 服务门户网站中提交支持案例。有关更多信息，请参阅[提交支持案例](ibmblockchain_support.html#support-cases)。
+{{site.data.keyword.blockchainfull_notm}} Platform 和 Hyperledger Fabric 用户的社区论坛，由 IBM 专家监视。您可以搜索先前发布的问题的解答，也可以提交新问题。如果您无法调试问题或确定问题的答案，请在 {{site.data.keyword.cloud_notm}} 服务门户网站中提交支持案例。有关更多信息，请参阅[提交支持案例](/docs/services/blockchain/ibmblockchain_support.html#support-cases)。
 
 
 ### Fabric 发行说明

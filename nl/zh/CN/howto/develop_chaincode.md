@@ -43,7 +43,7 @@ lastupdated: "2018-12-07"
 {: #install-chaincode}
 
 由于链代码提供了通道上事务的结构，因此需要将链代码安装在加入了该通道并且要使用该链代码更新或查询通道分类帐的所有同级上。然后，通道的一个成员可以实例化通道上的链代码，并设置链代码的背书策略。
-可以使用“网络监视器 UI”、Fabric Peer 命令行界面或者从使用 [Fabric SDK](../v10_application.html#operate-sdk) 的客户机应用程序执行链代码的安装和实例化。要了解如何使用“网络监视器 UI”部署链代码，请参阅[安装、实例化和更新链代码](install_instantiate_chaincode.html)。
+可以使用“网络监视器 UI”、Fabric Peer 命令行界面或者从使用 [Fabric SDK](/docs/services/blockchain/v10_application.html#operate-sdk) 的客户机应用程序执行链代码的安装和实例化。要了解如何使用“网络监视器 UI”部署链代码，请参阅[安装、实例化和更新链代码](/docs/services/blockchain/install_instantiate_chaincode.html)。
 
 ## 链代码和数据
 {: #chaincode-data}
@@ -148,4 +148,4 @@ Write Set: `{Key='CAR1', value[3]='Joe'}`
 如果分类帐数据存储在 CouchDB 中，那么强烈建议您为 CouchDB 查询创建索引，并在链代码中使用这些索引。索引允许应用程序在网络添加更多全局状态的事务和条目块时高效地检索数据。另外，CoupchDB 允许您根据通道分类帐上的数据从链代码执行丰富的数据查询。
 
 有关 CouchDB 以及如何设置索引的更多信息，请参阅 Hyperledger Fabric 文档中的 [CouchDB 作为状态数据库 ![外部链接图标](../images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB 作为状态数据库"){:new_window}。您还可以在 [Fabric CouchDB 教程 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html)
-中找到将索引用于链代码的示例。请访问“开发应用程序”教程中的[使用 CouchDB 时的最佳实践](../v10_application.html#couchdb-indices)，以获取有关如何从应用程序查询数据的更多信息。
+中找到将索引用于链代码的示例。请访问“开发应用程序”教程中的[使用 CouchDB 时的最佳实践](/docs/services/blockchain/v10_application.html#couchdb-indices)，以获取有关如何从应用程序查询数据的更多信息。

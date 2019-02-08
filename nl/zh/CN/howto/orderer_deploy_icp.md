@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-在具有排序节点组件的区块链网络中，排序节点可对客户机进行认证、对事务排序和广播事务。有关排序节点及其在区块链网络中所扮演角色的更多信息，请参阅[区块链组件概述](../blockchain_component_overview.html)。
+在具有排序节点组件的区块链网络中，排序节点可对客户机进行认证、对事务排序和广播事务。有关排序节点及其在区块链网络中所扮演角色的更多信息，请参阅[区块链组件概述](/docs/services/blockchain/blockchain_component_overview.html)。
 {:shortdesc}
 
-部署排序服务之前，请查看[注意事项和限制](../ibp-for-icp-about.html#ibp-icp-considerations)。
+部署排序服务之前，请查看[注意事项和限制](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)。
 
 ## 需要的资源
 {: #ca-resources-required}
@@ -51,7 +51,7 @@ lastupdated: "2018-12-07"
 ## 部署排序节点的先决条件
 {: #prerequisites-orderer-icp}
 
-1. 必须先[安装 ICP](../ICP_setup.html) 并[安装 {{site.data.keyword.blockchainfull_notm}} Platform Helm 图表](helm_install_icp.html)，然后才能在 ICP 上安装排序节点。
+1. 必须先[安装 ICP](/docs/services/blockchain/ICP_setup.html) 并[安装 {{site.data.keyword.blockchainfull_notm}} Platform Helm 图表](helm_install_icp.html)，然后才能在 ICP 上安装排序节点。
 
 2. 如果使用 Community Edition 并且希望在没有因特网连接的 ICP 集群上运行此 Helm 图表，那么需要在连接因特网的机器上创建归档，然后才能在 ICP 集群上安装归档。有关更多信息，请参阅[向没有因特网连接的集群中添加精选应用程序 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "向没有因特网连接的集群中添加精选应用程序"){:new_window}。请注意，您可以在 Helm 图表中的 ibm-blockchain-platform-dev/ibm_cloud_pak 下找到规范文件 `manifest.yaml`。
 

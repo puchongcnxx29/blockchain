@@ -37,9 +37,9 @@ lastupdated: "2018-09-05"
 
 Fabric SDK 是建议的路径，不过指示信息假定您熟悉 SDK 的操作。
 
-建议您至少部署远程同级 Helm 图表的两个实例，以实现[高可用性](remote_peer_icp.html#high-availability)。因此，对于每个同级，您需要执行一次以下操作步骤。准备好从应用程序调用和查询链代码时，请连接到这两个同级，以确保[应用程序具有高可用性](../v10_application.html#ha-app)。
+建议您至少部署远程同级 Helm 图表的两个实例，以实现[高可用性](/docs/services/blockchain/remote_peer_icp.html#high-availability)。因此，对于每个同级，您需要执行一次以下操作步骤。准备好从应用程序调用和查询链代码时，请连接到这两个同级，以确保[应用程序具有高可用性](/docs/services/blockchain/v10_application.html#ha-app)。
 
-**注**：{{site.data.keyword.blockchainfull_notm}} Platform Remote Peer 无权访问在 {{site.data.keyword.blockchainfull_notm}} Platform 上托管的同级的完整功能，也无权获得完全支持。因此，无法使用“网络监视器”来操作远程同级。开始运行远程同级之前，请确保查看[注意事项](remote_peer.html#remote-peer-limitations)。
+**注**：{{site.data.keyword.blockchainfull_notm}} Platform Remote Peer 无权访问在 {{site.data.keyword.blockchainfull_notm}} Platform 上托管的同级的完整功能，也无权获得完全支持。因此，无法使用“网络监视器”来操作远程同级。开始运行远程同级之前，请确保查看[注意事项](/docs/services/blockchain/remote_peer.html#remote-peer-limitations)。
 
 ## 先决条件
 
@@ -138,7 +138,7 @@ kubectl exec -it remotepeer-bd65c4769-95rmm bash
 
 3. 可以通过运行 `kubectl get pods` 命令并检查输出中 pod 的 **RESTART** 计数，验证远程同级是否已重新启动。
 
-此外，可以使用 [HEAD 请求](monitor_network.html#monitor-nodes)来检查远程同级的可用性。
+此外，可以使用 [HEAD 请求](/docs/services/blockchain/monitor_network.html#monitor-nodes)来检查远程同级的可用性。
 
 
 ## 使用 Fabric SDK 来操作远程同级
@@ -161,7 +161,7 @@ npm install fabric-client@1.1
 ### 准备 SDK 以使用远程同级
 {: #remote-peer-node-sdk}
 
-使用 SDK 来操作远程同级之前，需要生成必要的证书（注册），证书用于允许应用程序与 {{site.data.keyword.blockchainfull_notm}} Platform 上的网络以及远程同级进行通信。执行以 **admin** 身份[使用 SDK 注册](../v10_application.html#enroll-app-sdk)的步骤。[开发应用程序](../v10_application.html)教程中也将以 **admin** 身份进行注册，因此无需修改样本代码。
+使用 SDK 来操作远程同级之前，需要生成必要的证书（注册），证书用于允许应用程序与 {{site.data.keyword.blockchainfull_notm}} Platform 上的网络以及远程同级进行通信。执行以 **admin** 身份[使用 SDK 注册](/docs/services/blockchain/v10_application.html#enroll-app-sdk)的步骤。[开发应用程序](/docs/services/blockchain/v10_application.html)教程中也将以 **admin** 身份进行注册，因此无需修改样本代码。
 
 ### 将签名证书上传到 {{site.data.keyword.blockchainfull_notm}} Platform
 {: #remote-peer-upload-sdk}
@@ -219,23 +219,23 @@ var peer = fabric_client.newPeer('grpcs://9.46.126.89:31618', { pem:  Buffer.fro
 
 作为区块链网络的成员，您的组织需要添加到网络中的通道后，才能将远程同级加入通道。
 
-  - 可以为远程同级启动新的通道。作为通道启动者，您可以在[通道创建](create_channel.html#creating-a-channel)期间自动包含您的组织。请注意，您需要在 {{site.data.keyword.blockchainfull_notm}} Platform 上至少具有一个同级后，才能在“网络监视器”中创建通道。  
+  - 可以为远程同级启动新的通道。作为通道启动者，您可以在[通道创建](/docs/services/blockchain/create_channel.html#creating-a-channel)期间自动包含您的组织。请注意，您需要在 {{site.data.keyword.blockchainfull_notm}} Platform 上至少具有一个同级后，才能在“网络监视器”中创建通道。  
 
-  - 区块链网络的其他成员也可以使用[通道更新](create_channel.html#updating-a-channel)将您的组织添加到现有通道。{{site.data.keyword.blockchainfull_notm}} Platform 上同级的通道成员可以使用“网络监视器”将您的组织添加到通道，即使您未在该平台上托管任何同级。
+  - 区块链网络的其他成员也可以使用[通道更新](/docs/services/blockchain/create_channel.html#updating-a-channel)将您的组织添加到现有通道。{{site.data.keyword.blockchainfull_notm}} Platform 上同级的通道成员可以使用“网络监视器”将您的组织添加到通道，即使您未在该平台上托管任何同级。
 
     将组织添加到通道后，需要将同级的签名证书添加到该通道，以便其他成员可以在交易期间验证您的数字签名。在安装期间，远程同级将上传其签名证书，因此您只需要将该证书同步到通道即可。在“网络监视器”的“通道”屏幕中，找到组织加入的通道，然后从**操作**标题下的下拉列表中选择**同步证书**。此操作会同步通道上所有同级的证书。
 
-当您的组织是通道的一部分时，请遵循[加入通道](../v10_application.html#join-channel-sdk)的指示信息。您需要提供排序服务的 URL 和通道名称。
+当您的组织是通道的一部分时，请遵循[加入通道](/docs/services/blockchain/v10_application.html#join-channel-sdk)的指示信息。您需要提供排序服务的 URL 和通道名称。
 
 ### 使用 SDK 在同级上安装链代码
 {: #remote-peer-install-cc-sdk}
 
-使用以下指示信息通过 SDK 在远程同级上[安装链代码](../v10_application.html#install-cc-sdk)。
+使用以下指示信息通过 SDK 在远程同级上[安装链代码](/docs/services/blockchain/v10_application.html#install-cc-sdk)。
 
 ### 使用 SDK 在通道上实例化链代码
 {: #remote-peer-instantiate-cc-sdk}
 
-只需要通道中的一个成员对链代码进行实例化或更新。因此，{{site.data.keyword.blockchainfull_notm}} Platform 上同级的通道的任何网络成员都可以使用“网络监视器”来实例化链代码并指定背书策略。但是，如果要使用远程同级在通道上实例化链代码，那么可以使用 SDK 并遵循指示信息来[实例化链代码](../v10_application.html#instantiate-cc-sdk)。
+只需要通道中的一个成员对链代码进行实例化或更新。因此，{{site.data.keyword.blockchainfull_notm}} Platform 上同级的通道的任何网络成员都可以使用“网络监视器”来实例化链代码并指定背书策略。但是，如果要使用远程同级在通道上实例化链代码，那么可以使用 SDK 并遵循指示信息来[实例化链代码](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk)。
 
 
 ## 使用 CLI 来操作远程同级
@@ -312,7 +312,7 @@ var peer = fabric_client.newPeer('grpcs://9.46.126.89:31618', { pem:  Buffer.fro
 ### 管理本地系统上的证书
 {: #manage-certs}
 
-要能够操作远程同级，需要先对本地计算机上的证书执行一些管理操作，并将 Fabric CA 客户机生成的某些证书上传到 {{site.data.keyword.blockchainfull_notm}} Platform 和同级。此外，还需要从 Platform 和同级下载 TLS 证书。如果要了解有关将使用的证书以及要执行的任务的更多信息，请参阅[在 {{site.data.keyword.blockchainfull_notm}} Platform 上管理证书](../certificates.html)。
+要能够操作远程同级，需要先对本地计算机上的证书执行一些管理操作，并将 Fabric CA 客户机生成的某些证书上传到 {{site.data.keyword.blockchainfull_notm}} Platform 和同级。此外，还需要从 Platform 和同级下载 TLS 证书。如果要了解有关将使用的证书以及要执行的任务的更多信息，请参阅[在 {{site.data.keyword.blockchainfull_notm}} Platform 上管理证书](/docs/services/blockchain/certificates.html)。
 
 在本地计算机上，打开命令终端并浏览至将 Fabric-CA-Client 二进制文件移至其中并存储了 MSP 文件夹的目录。
 1. 将 `cert.pem` 文件从 `signcerts` 文件夹复制到新的 `admincerts` 文件夹。  
@@ -409,9 +409,9 @@ var peer = fabric_client.newPeer('grpcs://9.46.126.89:31618', { pem:  Buffer.fro
 
 需要将组织添加到网络中的通道后，才能运行 CLI 命令将远程同级加入通道。
 
-  - 可以为远程同级启动新的通道。作为通道启动者，您可以在[通道创建](create_channel.html#creating-a-channel)期间自动包含您的组织。请注意，您需要在 {{site.data.keyword.blockchainfull_notm}} Platform 上至少具有一个同级后，才能在“网络监视器”中创建通道。  
+  - 可以为远程同级启动新的通道。作为通道启动者，您可以在[通道创建](/docs/services/blockchain/create_channel.html#creating-a-channel)期间自动包含您的组织。请注意，您需要在 {{site.data.keyword.blockchainfull_notm}} Platform 上至少具有一个同级后，才能在“网络监视器”中创建通道。  
 
-  - 区块链网络的其他成员也可以使用[通道更新](create_channel.html#updating-a-channel)将您的组织添加到现有通道。{{site.data.keyword.blockchainfull_notm}} Platform 上同级的通道成员可以使用“网络监视器”将您的组织添加到通道，即使您未在该平台上托管任何同级。
+  - 区块链网络的其他成员也可以使用[通道更新](/docs/services/blockchain/create_channel.html#updating-a-channel)将您的组织添加到现有通道。{{site.data.keyword.blockchainfull_notm}} Platform 上同级的通道成员可以使用“网络监视器”将您的组织添加到通道，即使您未在该平台上托管任何同级。
 
     将组织添加到通道后，需要将同级的签名证书添加到该通道，以便其他成员可以在交易期间验证您的数字签名。在安装期间，远程同级将上传其签名证书，因此您只需要将该证书同步到通道即可。在“网络监视器”的“通道”屏幕中，找到组织加入的通道，然后从**操作**标题下的下拉列表中选择**同步证书**。此操作会同步通道上所有同级的证书。
 
@@ -574,7 +574,7 @@ CORE_PEER_TLS_ROOTCERT_FILE=/mnt/msp/tls/cacert.pem CORE_PEER_TLS_ENABLED=true C
 
 2. 在通道上的所有同级上安装新的链代码后，使用“网络监视器”或[同级链代码升级 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) 命令来更新通道，以使用新的链代码。
 
-有关使用“网络监视器”的“安装代码”面板更新通道上的链代码的更多信息，请参阅这些[指示信息](install_instantiate_chaincode.html#updating-a-chaincode)中的步骤 2。
+有关使用“网络监视器”的“安装代码”面板更新通道上的链代码的更多信息，请参阅这些[指示信息](/docs/services/blockchain/install_instantiate_chaincode.html#updating-a-chaincode)中的步骤 2。
 
 ## 故障诊断
 {: #icp-troubleshooting}

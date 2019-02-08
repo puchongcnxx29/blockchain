@@ -17,7 +17,7 @@ lastupdated: "2018-12-07"
 
 ***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-在 {{site.data.keyword.cloud_notm}} Private (ICP) 上设置 {{site.data.keyword.blockchainfull}} Platform 同级后，您需要完成若干操作步骤，同级才能发出事务来查询和调用区块链网络的分类帐。这些步骤包括将组织添加到通道，将同级连接到通道，在同级上安装链代码，在通道上实例化链代码，以及将应用程序连接到同级。如果要将同级连接到入门套餐或企业套餐网络，请参阅[在使用入门套餐或企业套餐的 {{site.data.keyword.cloud_notm}} Private 上操作同级](peer_operate_ibp.html#peer-operate_icp)。
+在 {{site.data.keyword.cloud_notm}} Private (ICP) 上设置 {{site.data.keyword.blockchainfull}} Platform 同级后，您需要完成若干操作步骤，同级才能发出事务来查询和调用区块链网络的分类帐。这些步骤包括将组织添加到通道，将同级连接到通道，在同级上安装链代码，在通道上实例化链代码，以及将应用程序连接到同级。如果要将同级连接到入门套餐或企业套餐网络，请参阅[在使用入门套餐或企业套餐的 {{site.data.keyword.cloud_notm}} Private 上操作同级](/docs/services/blockchain/peer_operate_ibp.html#peer-operate_icp)。
 {:shortdesc}
 
 您需要从 ICP 集群完成一些必备步骤才能操作同级。
@@ -37,7 +37,7 @@ Fabric SDK 是建议的路径，不过指示信息假定您熟悉 SDK 的操作�
 
 如果组织还不是联盟或通道的成员，那么可以使用这些步骤来[创建通道](#create-channel)。这些指示信息将指导您如何[准备组织定义](#organization-definition)。此定义将用于通过将您添加到排序节点系统通道，使您成为联盟的成员。在此之后，您将能够通过[创建通道事务](#peer-icp-channeltx)来构成新的通道。
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
 ## 先决条件
@@ -126,7 +126,7 @@ It is recommended that you deploy at least two instances of the peer Helm chart 
   ```
   {:codeblock}
 
-**注：**如果将同级部署在防火墙后，那么需要打开传递，以支持平台上的网络与同级完成 TlS 握手。您只需要对绑定到同级端口 7051 的 Node 端口启用传递。有关更多信息，请参阅[查找同级端点信息](peer_operate_ibp.html#peer-endpoint)。
+**注：**如果将同级部署在防火墙后，那么需要打开传递，以支持平台上的网络与同级完成 TlS 握手。您只需要对绑定到同级端口 7051 的 Node 端口启用传递。有关更多信息，请参阅[查找同级端点信息](/docs/services/blockchain/peer_operate_ibp.html#peer-endpoint)。
 
 ### 下载同级 TLS 证书
 {: #peer-tls}
@@ -170,13 +170,13 @@ npm install fabric-client@1.2
 
 同级已使用内部同级管理员的 signCert 进行部署。这将允许您使用同级管理员的证书和 MSP 文件夹来操作同级。
 
-找到在[注册同级管理员](CA_operate.html#enroll-admin)时创建的证书。如果使用的是示例命令，那么可以在 `$HOME/fabric-ca-client/peer-admin` 中找到同级管理员的 MSP 文件夹。
+找到在[注册同级管理员](/docs/services/blockchain/CA_operate.html#enroll-admin)时创建的证书。如果使用的是示例命令，那么可以在 `$HOME/fabric-ca-client/peer-admin` 中找到同级管理员的 MSP 文件夹。
   - 可以使用 MSP 文件夹中的 signCert（公用密钥）和专用密钥通过 SDK 来构建同级管理员用户上下文。您可以在以下位置找到这些键：
     - signCert 可以在 **signcerts** 文件夹 `$HOME/fabric-ca-client/peer-admin/msp/signcerts` 中找到
     - 专用密钥可以在 **keystore:** 文件夹 `$HOME/fabric-ca-client/peer-admin/msp/keystore` 中找到
-    有关如何仅使用公用和专用密钥来构造用户上下文并操作 SDK 的示例，请参阅[使用网络监视器生成证书](../v10_application.html#enroll-panel)。
+    有关如何仅使用公用和专用密钥来构造用户上下文并操作 SDK 的示例，请参阅[使用网络监视器生成证书](/docs/services/blockchain/v10_application.html#enroll-panel)。
 
-<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](CA_operate.html#register-admin). -->
+<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/CA_operate.html#register-admin). -->
 
 ### 将同级的 TLS 证书传递到 SDK
 {: #icp-peer-download-tlscert}
@@ -207,7 +207,7 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 ### 将排序节点的 TLS 证书传递到 SDK
 {: #icp-orderer-download-tlscert}
 
-您还需要联盟的排序节点的 TLS 证书，才能加入通道并提交事务。如果您是排序节点的管理员，请遵循相关指示信息[下载排序节点 TLS 证书](orderer_operate.html#orderer-tls)。如果使用的是示例命令，那么可以在 `$HOME/fabric-ca-client/orderer-tls/orderertls.pem` 中找到同级 TLS 证书。如果排序节点由其他组织进行管理，那么他们需要在频带外操作中向您提供 TLS 证书。然后，您可以将 TLS 证书导入应用程序。
+您还需要联盟的排序节点的 TLS 证书，才能加入通道并提交事务。如果您是排序节点的管理员，请遵循相关指示信息[下载排序节点 TLS 证书](/docs/services/blockchain/orderer_operate.html#orderer-tls)。如果使用的是示例命令，那么可以在 `$HOME/fabric-ca-client/orderer-tls/orderertls.pem` 中找到同级 TLS 证书。如果排序节点由其他组织进行管理，那么他们需要在频带外操作中向您提供 TLS 证书。然后，您可以将 TLS 证书导入应用程序。
 
 ```
 var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
@@ -217,7 +217,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 ### 向 SDK 提供排序节点信息
 {: #orderer-SDK-endpoints}
 
-要使用 SDK，您还需要联盟中排序节点的端点信息。如果您是排序节点的管理员，那么可以使用这些指示信息来[检索排序节点端点信息](orderer_operate.html#orderer-endpoint)。如果排序节点由其他组织进行管理，那么他们需要在频带外操作中向您提供排序节点 URL。以下示例将排序节点定义为端点，并向其传递排序节点 TLS 证书。
+要使用 SDK，您还需要联盟中排序节点的端点信息。如果您是排序节点的管理员，那么可以使用这些指示信息来[检索排序节点端点信息](/docs/services/blockchain/orderer_operate.html#orderer-endpoint)。如果排序节点由其他组织进行管理，那么他们需要在频带外操作中向您提供排序节点 URL。以下示例将排序节点定义为端点，并向其传递排序节点 TLS 证书。
 
 ```
 var orderer = fabric_client.newOrderer('grpcs://9.30.94.174:30167', { pem:  Buffer.from(ordererTLSCert).toString(), 'ssl-target-name-override': null});
@@ -232,24 +232,24 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 
 您的组织需要成为通道的成员，然后才能将同级加入通道。如果您不是通道的成员，那么可以遵循相关指示信息[创建新的通道](#create-channel)。
 
-在组织成为通道的成员后，请遵循相关指示信息使用 SDK [将同级加入通道](../v10_application.html#join-channel-sdk)。
+在组织成为通道的成员后，请遵循相关指示信息使用 SDK [将同级加入通道](/docs/services/blockchain/v10_application.html#join-channel-sdk)。
 
 ### 使用 SDK 在同级上安装链代码
 {: #peer-install-cc-sdk}
 
-使用以下指示信息通过 SDK 在同级上[安装链代码](../v10_application.html#install-cc-sdk)。
+使用以下指示信息通过 SDK 在同级上[安装链代码](/docs/services/blockchain/v10_application.html#install-cc-sdk)。
 
 ### 使用 SDK 在通道上实例化链代码
 {: #peer-instantiate-cc-sdk}
 
-只需要通道中的一个成员对链代码进行实例化或更新。因此，在其同级上安装了链代码的任何通道成员都可以实例化链代码并指定背书策略。但是，如果要使用同级在通道上实例化链代码，那么可以使用 SDK 并遵循指示信息来[实例化链代码](../v10_application.html#instantiate-cc-sdk)。
+只需要通道中的一个成员对链代码进行实例化或更新。因此，在其同级上安装了链代码的任何通道成员都可以实例化链代码并指定背书策略。但是，如果要使用同级在通道上实例化链代码，那么可以使用 SDK 并遵循指示信息来[实例化链代码](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk)。
 
 ## 使用 CLI 来操作同级
 {: #peer-cli-operate}
 
 您还可以通过命令行使用 Fabric Peer 二进制文件来操作同级。
 
-同级已使用内部同级管理员的 signCert 进行部署，允许该身份操作同级。以下指示信息将使用在[部署同级](CA_operate.html#register-admin)时生成的同级管理员的 MSP 文件夹来将同级加入通道，在同级上安装链代码，然后在通道上实例化链代码。
+同级已使用内部同级管理员的 signCert 进行部署，允许该身份操作同级。以下指示信息将使用在[部署同级](/docs/services/blockchain/CA_operate.html#register-admin)时生成的同级管理员的 MSP 文件夹来将同级加入通道，在同级上安装链代码，然后在通道上实例化链代码。
 
 ### 下载 Fabric 同级客户机
 {: #peer-client}
@@ -299,7 +299,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-需要在本地计算机上对证书执行一些管理工作，才能操作同级。您还需要确保可以从同级访问 TLS 证书。有关要使用的证书的更多信息，请参阅[在 {{site.data.keyword.cloud_notm}} Private 上操作认证中心](CA_operate.html)中的[成员资格服务提供者](CA_operate.html#msp)。
+需要在本地计算机上对证书执行一些管理工作，才能操作同级。您还需要确保可以从同级访问 TLS 证书。有关要使用的证书的更多信息，请参阅[在 {{site.data.keyword.cloud_notm}} Private 上操作认证中心](/docs/services/blockchain/CA_operate.html)中的[成员资格服务提供者](/docs/services/blockchain/CA_operate.html#msp)。
 
 1. 将同级管理员的 signCert 移至名为 `admincerts` 的新文件夹：
 
@@ -312,7 +312,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 
 2. 确保您已[下载同级 TLS 证书](#peer-tls)，并且可以通过命令行引用该证书。如果遵循的是本文档中的示例命令，那么可以在 `$HOME/fabric-ca-client/peer-tls/peertls.pem` 文件中找到此 TLS 证书。
 
-3. 您还需要引用排序节点的 TLS 证书。如果您是排序节点的管理员，请遵循相关指示信息[下载排序节点 TLS 证书](orderer_operate.html#orderer-tls)。如果排序节点由其他组织进行管理，那么他们需要在频带外操作中向您提供 TLS 证书。将此证书保存在可在未来命令中引用此证书的位置。
+3. 您还需要引用排序节点的 TLS 证书。如果您是排序节点的管理员，请遵循相关指示信息[下载排序节点 TLS 证书](/docs/services/blockchain/orderer_operate.html#orderer-tls)。如果排序节点由其他组织进行管理，那么他们需要在频带外操作中向您提供 TLS 证书。将此证书保存在可在未来命令中引用此证书的位置。
 
 您可以运行 tree 命令来验证是否已完成这些步骤。浏览至存储证书的目录。tree 命令应该生成类似于以下结构的结果：
 ```
@@ -374,7 +374,7 @@ tree
 
     通过设置此变量，可以在任何目录中使用同级客户机来运行命令。
 
-3. 您需要排序节点的端点信息。如果您是排序节点的管理员，那么可以使用这些指示信息来[检索排序节点端点信息](orderer_operate.html#orderer-endpoint)。如果排序节点由其他组织进行管理，那么他们需要在频带外操作中向您提供排序节点 URL。
+3. 您需要排序节点的端点信息。如果您是排序节点的管理员，那么可以使用这些指示信息来[检索排序节点端点信息](/docs/services/blockchain/orderer_operate.html#orderer-endpoint)。如果排序节点由其他组织进行管理，那么他们需要在频带外操作中向您提供排序节点 URL。
 
 4. [检索同级端点信息](#peer-endpoint)。我们将使用此 URL 来设置 `PEERADDR` 环境变量。您需要去除开头的 `http://`。
 
@@ -608,7 +608,7 @@ export PATH=$PATH:$HOME/bin
 
 ### 准备加密资料
 
-准备组织定义之前，需要注册和登记[同级的管理员](CA_operate.html#register-admin)。浏览至在其中创建同级管理员的 MSP 文件夹的目录。示例步骤在 `$HOME/fabric-ca-client/peer-admin/msp` 中创建了此文件夹。您需要在此文件夹中执行其他一些步骤，然后 `configtxgen` 工具才能使用 MSP。
+准备组织定义之前，需要注册和登记[同级的管理员](/docs/services/blockchain/CA_operate.html#register-admin)。浏览至在其中创建同级管理员的 MSP 文件夹的目录。示例步骤在 `$HOME/fabric-ca-client/peer-admin/msp` 中创建了此文件夹。您需要在此文件夹中执行其他一些步骤，然后 `configtxgen` 工具才能使用 MSP。
 
 1. 从 CA 复制 TLS 证书，并将其放入名为 `tlscacerts` 的新文件夹中。
 
@@ -671,7 +671,7 @@ Organizations:
 ```
 {:codeblock}
 
-此文件包含用于在联盟内定义组织的信息。在[下载的 Fabric 同级客户机](peer_operate_icp.html#peer-client)的 `/config` 文件夹中还提供了此文件的更复杂版本。您可以选择编辑该文件，也可以将其替换为以上样本。请记下此 `/config` 文件夹的位置，以设置下面的 `FABRIC_CFG_PATH` 的值。编辑此文件的 `Organizations` 部分，并设置以下值：
+此文件包含用于在联盟内定义组织的信息。在[下载的 Fabric 同级客户机](/docs/services/blockchain/peer_operate_icp.html#peer-client)的 `/config` 文件夹中还提供了此文件的更复杂版本。您可以选择编辑该文件，也可以将其替换为以上样本。请记下此 `/config` 文件夹的位置，以设置下面的 `FABRIC_CFG_PATH` 的值。编辑此文件的 `Organizations` 部分，并设置以下值：
 
 - `Name:` 可以是您希望用于组织的任何名称。
 
@@ -717,12 +717,12 @@ configtxgen -printOrg org1 > $HOME/fabric-ca-client/org-definitions/org1definiti
 ```
 {:codeblock}
 
-如果此命令成功，那么 `configtxgen` 将显示 JSON 格式的组织定义。您需要在频带外操作中将此文件发送到排序节点组织以加入联盟。然后，排序节点组织可以通过将定义添加到系统通道来[构成联盟或添加到现有联盟](orderer_operate.html#consortium)，从而允许您创建新的通道以及由其他联盟成员将您添加到通道。
+如果此命令成功，那么 `configtxgen` 将显示 JSON 格式的组织定义。您需要在频带外操作中将此文件发送到排序节点组织以加入联盟。然后，排序节点组织可以通过将定义添加到系统通道来[构成联盟或添加到现有联盟](/docs/services/blockchain/orderer_operate.html#consortium)，从而允许您创建新的通道以及由其他联盟成员将您添加到通道。
 
 ## 创建通道事务
 {: #peer-icp-channeltx}
 
-您的组织应该已准备好[组织定义](#organization-definition)并成为联盟的成员，然后您才能创建新的渠道。如果需要[构成联盟或添加到联盟](orderer_operate.html#consortium)，请遵循以下指示信息进行操作。如果联盟成员的组织已经添加到系统通道，那么还可以轻松地将这些成员添加到新的通道。对于不属于系统通道成员的组织，只能通过使用[通道更新请求 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) 将其组织定义添加到通道，从而手动将这些组织加入通道。您还可以使用这些步骤来更新现有通道。
+您的组织应该已准备好[组织定义](#organization-definition)并成为联盟的成员，然后您才能创建新的渠道。如果需要[构成联盟或添加到联盟](/docs/services/blockchain/orderer_operate.html#consortium)，请遵循以下指示信息进行操作。如果联盟成员的组织已经添加到系统通道，那么还可以轻松地将这些成员添加到新的通道。对于不属于系统通道成员的组织，只能通过使用[通道更新请求 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) 将其组织定义添加到通道，从而手动将这些组织加入通道。您还可以使用这些步骤来更新现有通道。
 
 ### 构成新通道
 {: #peer-icp-create-channel}

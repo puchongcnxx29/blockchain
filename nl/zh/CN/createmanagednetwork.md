@@ -14,14 +14,14 @@ lastupdated: "2017-12-06"
 
 # 创建受管通道 
 
-**注意：**在使用 {{site.data.keyword.blockchainfull}} 产品之前，请阅读[免责声明](needtoknow.html)一节中的技术和支持信息。  
+**注意：**在使用 {{site.data.keyword.blockchainfull}} 产品之前，请阅读[免责声明](/docs/services/blockchain/needtoknow.html)一节中的技术和支持信息。  
 {:shortdesc}
 
 在某些用例中（例如，高度管制的外汇市场），可能需要让一个值得信赖的第三方负责管理通道上的角色，这些通道通常由各种操作员或成员负责处理。 
 
 供应此类网络的过程类似于创建任何网络。主要差别在于为成员分配他们如何在通道内进行事务处理的许可权。  
 
-以下是用于创建网络和邀请成员的步骤：[管理网络](get_start.html#creating-a-network)。 
+以下是用于创建网络和邀请成员的步骤：[管理网络](/docs/services/blockchain/get_start.html#creating-a-network)。 
 
 **注**：在现实世界示例中，此类网络的操作员可能会使用策略编辑器在“创建网络”阶段期间安装定制链代码，但出于本示例的需要，我们假定您的网络配置为标准配置。 
 

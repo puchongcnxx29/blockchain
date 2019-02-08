@@ -62,11 +62,11 @@ lastupdated: "2018-12-07"
     {{site.data.keyword.blockchainfull_notm}} Platform 向入门套餐的新用户提供 500 美元的云信用值。这些信用值帮助用户从一个月的免费缺省网络配置开始。
     - 新用户必须注册以获取云信用值。不会为他们自动应用。如果还没有，请[注册 ![外部链接图标](images/external_link.svg "外部链接图标")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-32798 "注册") 以申请信用值。等待 24 小时以确保信用值进入您的[帐户 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/docs/billing-usage/viewing_usage.html#credits "帐户")，然后再访问入门套餐。否则，在应用信用值前，可能向您收取费用。
     - 云信用值适用于所有 {{site.data.keyword.cloud_notm}} 服务。可供在 {{site.data.keyword.cloud_notm}} 上使用的非 {{site.data.keyword.blockchainfull_notm}} Platform 产品使用。
-    - 产品提供生存期信用值。只要您保留 {{site.data.keyword.cloud_notm}} 帐户，就会保留您的信用值。您不必在第一个月使用它们。使用[定价指南](howto/pricing.html#starter-plan-pricing)了解有关使用试用信用值的更多信息。
+    - 产品提供生存期信用值。只要您保留 {{site.data.keyword.cloud_notm}} 帐户，就会保留您的信用值。您不必在第一个月使用它们。使用[定价指南](/docs/services/blockchain/howto/pricing.html#starter-plan-pricing)了解有关使用试用信用值的更多信息。
 - **与企业套餐的差异**
-    - [CA](glossary.html#ca) 和[排序服务](glossary.html#orderer)不具有容错性，因为每个组织只有一个 CA，并且一个网络只有一个[排序者](glossary.html#orderer)。
-    - 排序服务仅使用 [SOLO](glossary.html#solo) [共识](glossary.html#consensus)。入门套餐网络只包含一个[排序者](glossary.html#orderer)，此排序者对所有同级执行共识。
-    - [硬件安全模块 (HSM)](glossary.html#hsm) 不可用于保护和管理用于高强度认证和加密处理的数字密钥。
+    - [CA](glossary.html#ca) 和[排序服务](/docs/services/blockchain/glossary.html#orderer)不具有容错性，因为每个组织只有一个 CA，并且一个网络只有一个[排序者](/docs/services/blockchain/glossary.html#orderer)。
+    - 排序服务仅使用 [SOLO](/docs/services/blockchain/glossary.html#solo) [共识](/docs/services/blockchain/glossary.html#consensus)。入门套餐网络只包含一个[排序者](glossary.html#orderer)，此排序者对所有同级执行共识。
+    - [硬件安全模块 (HSM)](/docs/services/blockchain/glossary.html#hsm) 不可用于保护和管理用于高强度认证和加密处理的数字密钥。
 - **入门套餐版本和升级**
     - 2018 年 10 月 4 日之后创建的新入门套餐网络基于 Hyperledger Fabric V1.2.1 进行构建。较旧的入门套餐网络仍使用 Fabric V1.1.0 级别。
     - 添加到较旧的入门套餐网络的新同级将基于 Fabric v1.2.1 进行构建。由于向后兼容，网络的性能不受影响。
@@ -76,15 +76,15 @@ lastupdated: "2018-12-07"
 
     - Hyperledger Fabric v1.2 的 [服务发现 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "服务发现") 功能在 {{site.data.keyword.blockchainfull_notm}} 上不受支持。
 
-    - 如果您[重置](v10_dashboard.html#reset-network)较旧的入门套餐网络 Fabric V1.1.0，那么您的新网络将为 Fabric V1.2 级别。如果重置网络，那么需要在新网络中安装链代码或 .bna 文件，以及重新邀请旧网络的成员。
+    - 如果您[重置](/docs/services/blockchain/v10_dashboard.html#reset-network)较旧的入门套餐网络 Fabric V1.1.0，那么您的新网络将为 Fabric V1.2 级别。如果重置网络，那么需要在新网络中安装链代码或 .bna 文件，以及重新邀请旧网络的成员。
 - **网络资源限制**
-    入门套餐为每个同级分配 1 个 CPU 和 4 Gi RAM，为每个 {{site.data.keyword.cloud_notm}} 服务实例（包括同级）分配 20 Gi 存储器。链代码容器和分类帐区块是消耗资源最多的网络组件。如果用户在网络上具有多个同级，或者生成大量区块，或者使用大型链代码文件，就可能会遇到资源限制影响性能的问题。您还可以在[“网络监视器”的“概述”屏幕](v10_dashboard.html#storage)中查看网络存储使用情况。
+    入门套餐为每个同级分配 1 个 CPU 和 4 Gi RAM，为每个 {{site.data.keyword.cloud_notm}} 服务实例（包括同级）分配 20 Gi 存储器。链代码容器和分类帐区块是消耗资源最多的网络组件。如果用户在网络上具有多个同级，或者生成大量区块，或者使用大型链代码文件，就可能会遇到资源限制影响性能的问题。您还可以在[“网络监视器”的“概述”屏幕](/docs/services/blockchain/v10_dashboard.html#storage)中查看网络存储使用情况。
 - **维护和升级**
     入门套餐维护和网络更新会定期执行。在维护期间，不能供应新网络，并且您可能会注意到有短暂的网络中断。
 - **数据保留**
     入门套餐不保证在发行版升级时保留数据。
 - **迁移注意事项**
-    目前不支持将数据从入门套餐网络迁移到其他成员资格套餐。但是，可以迁移在入门套餐上经过测试的 `.bna` 文件、链代码和应用程序。有关更多信息，请参阅[从入门套餐迁移到企业套餐](howto/migrate_sp_ep.html)。
+    目前不支持将数据从入门套餐网络迁移到其他成员资格套餐。但是，可以迁移在入门套餐上经过测试的 `.bna` 文件、链代码和应用程序。有关更多信息，请参阅[从入门套餐迁移到企业套餐](/docs/services/blockchain/howto/migrate_sp_ep.html)。
 
 
 <!--

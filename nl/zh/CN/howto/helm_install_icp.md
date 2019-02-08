@@ -17,7 +17,7 @@ lastupdated: "2018-12-07"
 
 {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private 作为 Helm 图表文件提供，可安装在本地 ICP 集群上。安装 Helm 图表之后，您可在 ICP 目录中发现 {{site.data.keyword.blockchainfull_notm}} Platform 显示为应用程序。
 
-在安装 {{site.data.keyword.blockchainfull_notm}} Platform for ICP 之前，请查看[注意事项和限制](../ibp-for-icp-about.html#ibp-icp-considerations)。有关如何部署 Helm 图表中包含的区块链组件以及有关价格和支持的更多信息，请参阅[关于 {{site.data.keyword.blockchainfull_notm}} Platform for ICP](../ibp-for-icp-about.html)。
+在安装 {{site.data.keyword.blockchainfull_notm}} Platform for ICP 之前，请查看[注意事项和限制](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)。有关如何部署 Helm 图表中包含的区块链组件以及有关价格和支持的更多信息，请参阅[关于 {{site.data.keyword.blockchainfull_notm}} Platform for ICP](/docs/services/blockchain/ibp-for-icp-about.html)。
 
 {{site.data.keyword.blockchainfull_notm}} Platform for ICP 提供了两个版本：
 
@@ -28,7 +28,7 @@ lastupdated: "2018-12-07"
 ## 安装 Helm 图表的先决条件
 {: #helm-install-prereqs}
 
-安装 Helm 图表之前，您必须配置 ICP 集群。查看[设置和配置 ICP 集群](../ICP_setup.html)的指示信息。
+安装 Helm 图表之前，您必须配置 ICP 集群。查看[设置和配置 ICP 集群](/docs/services/blockchain/ICP_setup.html)的指示信息。
 
 ##  从防火墙后安装 {{site.data.keyword.blockchainfull_notm}} Platform 
 {: #helm-install-prereqs-firewall}
@@ -281,10 +281,10 @@ lastupdated: "2018-12-07"
 
 ## 部署个别组件
 
-在安装 Helm 图表之后，在 ICP 目录中单击 **ibm-blockchain-platform-prod** 或 **ibm-blockchain-platform-dev** 磁贴以将其打开。您可以使用配置页面来部署区块链网络的任何个别组件。有关区块链解决方案所需的组件以及部署这些组件时必须采用的顺序的更多详细信息，请参阅 [{{site.data.keyword.blockchainfull_notm}} Platform for ICP 部署指南](../ibp_for_icp_deployment_guide.html)。
+在安装 Helm 图表之后，在 ICP 目录中单击 **ibm-blockchain-platform-prod** 或 **ibm-blockchain-platform-dev** 磁贴以将其打开。您可以使用配置页面来部署区块链网络的任何个别组件。有关区块链解决方案所需的组件以及部署这些组件时必须采用的顺序的更多详细信息，请参阅 [{{site.data.keyword.blockchainfull_notm}} Platform for ICP 部署指南](/docs/services/blockchain/ibp_for_icp_deployment_guide.html)。
 
 然后部署个别组件：
 
-- 如果要部署排序节点，首先需要为排序节点设置认证中心。CA 会生成将由组织中的其他组件使用的证书。有关更多信息，请参阅[在 ICP 中部署 {{site.data.keyword.blockchainfull_notm}} Platform 认证中心](CA_deploy_icp.html)。然后，您可以部署将作为网络公共绑定的排序节点。有关更多信息，请参阅[在 ICP 中部署 {{site.data.keyword.blockchainfull_notm}} Platform 排序节点](orderer_deploy_icp.html)
+- 如果要部署排序节点，首先需要为排序节点设置认证中心。CA 会生成将由组织中的其他组件使用的证书。有关更多信息，请参阅[在 ICP 中部署 {{site.data.keyword.blockchainfull_notm}} Platform 认证中心](/docs/services/blockchain/CA_deploy_icp.html)。然后，您可以部署将作为网络公共绑定的排序节点。有关更多信息，请参阅[在 ICP 中部署 {{site.data.keyword.blockchainfull_notm}} Platform 排序节点](/docs/services/blockchain/orderer_deploy_icp.html)
 
-- 如果要部署同级，首先需要为同级设置认证中心。CA 会生成将由同级使用的证书。有关更多信息，请参阅[在 ICP 中部署 {{site.data.keyword.blockchainfull_notm}} Platform 认证中心](CA_deploy_icp.html)。然后，当您准备加入网络时，可以部署同级，这些同级将加入通道，对事务背书以及存储数据。有关更多信息，请参阅[在 ICP 中部署 {{site.data.keyword.blockchainfull_notm}} 同级](peer_deploy_icp.html)或[部署入门套餐或企业套餐网络的 {{site.data.keyword.blockchainfull_notm}} 同级](peer_deploy_ibp.html)，具体取决于同级将加入的区块链网络。
+- 如果要部署同级，首先需要为同级设置认证中心。CA 会生成将由同级使用的证书。有关更多信息，请参阅[在 ICP 中部署 {{site.data.keyword.blockchainfull_notm}} Platform 认证中心](/docs/services/blockchain/CA_deploy_icp.html)。然后，当您准备加入网络时，可以部署同级，这些同级将加入通道，对事务背书以及存储数据。有关更多信息，请参阅[在 ICP 中部署 {{site.data.keyword.blockchainfull_notm}} 同级](/docs/services/blockchain/peer_deploy_icp.html)或[部署入门套餐或企业套餐网络的 {{site.data.keyword.blockchainfull_notm}} 同级](/docs/services/blockchain/peer_deploy_ibp.html)，具体取决于同级将加入的区块链网络。

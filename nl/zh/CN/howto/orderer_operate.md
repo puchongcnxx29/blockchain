@@ -148,7 +148,7 @@ lastupdated: "2018-12-07"
 
 切换到在其中生成排序节点管理员的 MSP 文件夹的目录。根据您执行本文档中示例步骤的方式，或者根据要部署的组件数，您可以在 `$HOME/fabric-ca-client/orderer-admin/msp` 或 `$HOME/fabric-ca-client/peer-admin/msp` 中找到 MSP 文件夹。
 
-需要在本地计算机上对证书执行一些管理工作，才能操作排序节点。您还需要确保可以从排序节点访问 TLS 证书。有关要使用的证书的更多信息，请参阅[在 {{site.data.keyword.cloud_notm}} Private 上操作认证中心](CA_operate.html)中的[成员资格服务提供者](CA_operate.html#msp)。
+需要在本地计算机上对证书执行一些管理工作，才能操作排序节点。您还需要确保可以从排序节点访问 TLS 证书。有关要使用的证书的更多信息，请参阅[在 {{site.data.keyword.cloud_notm}} Private 上操作认证中心](/docs/services/blockchain/CA_operate.html)中的[成员资格服务提供者](/docs/services/blockchain/CA_operate.html#msp)。
 
 1. 将排序节点管理员的 signCert 移至名为 `admincerts` 的新文件夹：
 
@@ -220,9 +220,9 @@ tree
 
 以下列表显示了常规步骤，并且这些任务将由联盟中的不同组织集来执行。
 
-1. 每个加入联盟的组织都需要[准备组织定义](peer_operate_icp.html#organization-definition)。
+1. 每个加入联盟的组织都需要[准备组织定义](/docs/services/blockchain/peer_operate_icp.html#organization-definition)。
 2. 通过将组织添加到排序节点系统通道，排序节点组织管理员可[构成联盟](#consortium)。
-3. 通过准备通道配置事务，联盟的任何组织都可以[创建新的通道](peer_operate_icp.html#peer-icp-channeltx)。
+3. 通过准备通道配置事务，联盟的任何组织都可以[创建新的通道](/docs/services/blockchain/peer_operate_icp.html#peer-icp-channeltx)。
 
 ## 获取 Fabric 工具
 {: #get-fabric-tools}
@@ -268,7 +268,7 @@ tree
 ## 创建组织定义
 {: #org-definition}
 
-组织的**定义**包含组织名称（MSP 标识）和相关证书。系统通道和应用程序通道将使用此定义在策略中包含组织，策略用于控制通道创建、更新和事务背书。每个想加入联盟的组织都需要完成此步骤。要了解更多信息，请参阅[准备组织定义](peer_operate_icp.html#organization-definition)。
+组织的**定义**包含组织名称（MSP 标识）和相关证书。系统通道和应用程序通道将使用此定义在策略中包含组织，策略用于控制通道创建、更新和事务背书。每个想加入联盟的组织都需要完成此步骤。要了解更多信息，请参阅[准备组织定义](/docs/services/blockchain/peer_operate_icp.html#organization-definition)。
 
 ## 构成联盟
 {: #consortium}
@@ -280,7 +280,7 @@ tree
 
 ### 获取组织定义
 
-排序节点需要接收来自希望加入联盟的成员的[组织定义](peer_operate_icp.html#organization-definition)。这需要在与向您发送 JSON 文件（包含成员的 MSP 标识和加密资料）的其他成员的频带外操作中完成。对于以下命令中的参考信息，我们假定您已创建名为 `org-definitions` 的文件夹，并已将所有相关文件放在该目录中。
+排序节点需要接收来自希望加入联盟的成员的[组织定义](/docs/services/blockchain/peer_operate_icp.html#organization-definition)。这需要在与向您发送 JSON 文件（包含成员的 MSP 标识和加密资料）的其他成员的频带外操作中完成。对于以下命令中的参考信息，我们假定您已创建名为 `org-definitions` 的文件夹，并已将所有相关文件放在该目录中。
 
 ### 访存系统通道的起源区块
 
@@ -377,7 +377,7 @@ tree
 
 这些步骤遵循有关[将区块转换为 JSON 格式]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down)的通道更新教程的常规流程。您需要对教程中的命令进行一些更改，以反映出您更新的是排序节点系统通道，而不是应用程序通道。您可以访问该教程以了解有关此过程的更多详细信息。本部分仅提供了命令。
 
-1. 将组织定义 JSON 文件从在其中[创建组织](peer_operate_icp.html#organization-definition)的文件夹复制到 `configupdate` 文件夹。在以下示例命令中，组织定义 JSON 文件为 `org1definition.json`：
+1. 将组织定义 JSON 文件从在其中[创建组织](/docs/services/blockchain/peer_operate_icp.html#organization-definition)的文件夹复制到 `configupdate` 文件夹。在以下示例命令中，组织定义 JSON 文件为 `org1definition.json`：
 
    ```
    cp <path_to_config_folder>/org1definition.json $HOME/fabric-ca-client/org-definitions/configupdate
@@ -393,7 +393,7 @@ tree
   ```
   {:codeblock}
 
-3. 运行以下命令，将组织的加密资料添加到联盟配置中。将 <NEWORGMSP> 替换为[已创建的组织](peer_operate_icp.html#organization-definition)的组织 MSP 标识。
+3. 运行以下命令，将组织的加密资料添加到联盟配置中。将 <NEWORGMSP> 替换为[已创建的组织](/docs/services/blockchain/peer_operate_icp.html#organization-definition)的组织 MSP 标识。
 
   ```
   jq -s '.[0] * {"channel_group":{"groups":{"Consortiums":{"groups":{"SampleConsortium":{"groups": {"<NEWORGMSP>":.[1]}}}}}}}' config.json ./orgdefinition.json > modified_config.json
